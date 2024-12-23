@@ -1,22 +1,49 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { useTranslations } from "../i18n/utils";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const translate = useTranslations(Astro.currentLocale);
+const title = translate("title");
+const description = translate("description");
+---
+
+<!doctype html>
+<html lang={Astro.currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    {
+      Astro.currentLocale === "fr" ? (
+        <link
+          rel="canonical"
+          href={Astro.url.pathname.replace("fr/", "").replace("/fr", "/")}
+        />
+      ) : null
+    }
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta name="twitter:image" content="https://ff7.rocks/share.png" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:site" content="@sylvhama" />
+    <meta name="twitter:card" content="summary" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content="https://ff7.rocks/share.png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="665" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ff7.rocks" />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={Astro.currentLocale} />
+  </head>
+  <body
+    class="mx-auto max-w-[67.5rem] bg-realWhite px-4 dark:bg-black dark:text-white"
+  >
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
