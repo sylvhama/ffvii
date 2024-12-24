@@ -10,6 +10,8 @@ export const translations = {
     darkSubHeading: "Theme",
     lightHeading: "Light",
     lightSubHeading: "Theme",
+    breadcrumb: "Breadcrumb",
+    home: "Home",
   },
   fr: {
     title: "Collection Final Fantasy VII",
@@ -23,5 +25,7 @@ export const translations = {
     darkSubHeading: "Sombre",
     lightHeading: "Thème",
     lightSubHeading: "Clair",
+    breadcrumb: "fil d'Ariane",
+    home: "Accueil",
   },
 } as const;

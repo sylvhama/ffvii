@@ -1,0 +1,37 @@
+---
+import { useTranslations } from "@i18n/utils";
+import Anchor from "./Anchor.astro";
+
+interface Props {
+  breadcrumbs: string[];
+}
+
+const { breadcrumbs } = Astro.props;
+const translate = useTranslations(Astro.currentLocale);
+
+const previousBreadcrumbs = [...breadcrumbs];
+const currentBreadcrumb = previousBreadcrumbs.pop();
+
+if (previousBreadcrumbs.length === 0) {
+  previousBreadcrumbs.push(translate("home"));
+}
+---
+
+<nav aria-label={translate("breadcrumb")}>
+  <ol class="flex gap-6 align-center">
+    {
+      previousBreadcrumbs.map((previousBreadcrumb, index) => (
+        <li class="relative after:content-['>'] after:absolute after:-right-4">
+          <Anchor href={`${"../".repeat(index + 1)}`}>
+            {previousBreadcrumb}
+          </Anchor>
+        </li>
+      ))
+    }
+    <li>
+      <Anchor href="" aria-current="page" classname="font-bold"
+        >{currentBreadcrumb}</Anchor
+      >
+    </li>
+  </ol>
+</nav>

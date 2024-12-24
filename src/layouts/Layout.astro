@@ -1,13 +1,19 @@
 ---
+interface Props {
+  breadcrumbs?: string[];
+}
+
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Anchor from "@components/Anchor.astro";
 import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
+import Breadcrumb from "@components/Breadcrumb.astro";
 
 const translate = useTranslations(Astro.currentLocale);
 const title = translate("title");
 const description = translate("description");
 const isFrench = Astro.currentLocale === "fr";
 const otherLocaleUrl = getOtherLocalePathname(isFrench, Astro.url.pathname);
+const { breadcrumbs } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,10 +46,10 @@ const otherLocaleUrl = getOtherLocalePathname(isFrench, Astro.url.pathname);
     class="mx-auto max-w-[67.5rem] pt-8 bg-white px-4 dark:bg-black dark:text-white"
   >
     <main>
-      <div class="grid grid-cols-[1fr_auto_auto] items-start gap-4">
-        <h1 class="pb-4 text-3xl font-bold">
-          {title}
-        </h1>
+      <div class="pb-4 grid grid-cols-[1fr_auto_auto] items-center gap-4">
+        <div>
+          {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
+        </div>
         <Anchor href={otherLocaleUrl}>
           {translate("langLink")}
         </Anchor>
@@ -57,6 +63,10 @@ const otherLocaleUrl = getOtherLocalePathname(isFrench, Astro.url.pathname);
           ></Anchor
         >
       </div>
+
+      <h1 class="pb-4 text-3xl font-bold">
+        {title}
+      </h1>
 
       <slot />
 
