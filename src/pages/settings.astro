@@ -1,0 +1,14 @@
+---
+import ThemeOptions from "@components/ThemeOptions.astro";
+import Layout from "@layouts/Layout.astro";
+import { useTranslations } from "@i18n/utils";
+
+const translate = useTranslations(Astro.currentLocale);
+---
+
+<Layout>
+  <h2 class="pb-4 text-xl text-gray-500 dark:text-gray-400">
+    {translate("settings")}
+  </h2>
+  <ThemeOptions />
+</Layout>
