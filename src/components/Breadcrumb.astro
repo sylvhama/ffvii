@@ -18,7 +18,7 @@ if (previousBreadcrumbs.length === 0) {
 ---
 
 <nav aria-label={translate("breadcrumb")}>
-  <ol class="flex gap-6 align-center">
+  <ol class="flex flex-wrap gap-x-6 align-center">
     {
       previousBreadcrumbs.map((previousBreadcrumb, index) => (
         <li class="relative after:content-['>'] after:absolute after:-right-4">
