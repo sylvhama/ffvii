@@ -45,6 +45,17 @@ const { breadcrumbs } = Astro.props;
   <body
     class="mx-auto max-w-[67.5rem] pt-8 bg-white px-4 dark:bg-black dark:text-white"
   >
+    <script is:inline>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <main>
       <div class="pb-4 grid grid-cols-[1fr_auto_auto] items-center gap-4">
         <div>
