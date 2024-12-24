@@ -13,7 +13,7 @@ export function useTranslations(lang: string = "en") {
 
 export function getOtherLocalePathname(isFrench: boolean, pathname: string) {
   if (!isFrench) {
-    const frenchPathname = `fr${pathname}`;
+    const frenchPathname = `/fr${pathname}`;
     return frenchPathname.endsWith("/")
       ? frenchPathname.slice(0, -1)
       : frenchPathname;
