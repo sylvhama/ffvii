@@ -10,3 +10,14 @@ export function useTranslations(lang: string = "en") {
     return translations[normalizedLang][key];
   };
 }
+
+export function getOtherLocalePathname(isFrench: boolean, pathname: string) {
+  if (!isFrench) {
+    const frenchPathname = `fr${pathname}`;
+    return frenchPathname.endsWith("/")
+      ? frenchPathname.slice(0, -1)
+      : frenchPathname;
+  }
+
+  return pathname.replace("fr/", "").replace("/fr", "/");
+}
