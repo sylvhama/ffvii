@@ -47,3 +47,7 @@ const translate = useTranslations(Astro.currentLocale);
     }
   </ul>
 </nav>
+
+<h2 class="sr-only">
+  {translate(`${currentPage}Heading` as Page)}
+</h2>
