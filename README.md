@@ -8,3 +8,4 @@ A website to showcase my Final Fantasy VII collection.
 - Theme picker: https://ui.shadcn.com/examples/forms/appearance
 - Breadcrumb: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
 - Busted sword: https://www.reddit.com/r/FinalFantasy/comments/98hmdn/minimalist_vector_of_the_buster_sword/
+- Cursor: https://finalfantasy.fandom.com/wiki/Cursor

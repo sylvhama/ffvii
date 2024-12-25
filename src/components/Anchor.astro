@@ -3,19 +3,16 @@ import clsx from "clsx";
 
 interface Props {
   href: string;
-  underline?: boolean;
   classname?: string;
 }
 
-const { href, underline = true, classname, ...restProps } = Astro.props;
+const { href, classname, ...restProps } = Astro.props;
 ---
 
 <a
   class={clsx(
     href && "text-blue-600 dark:text-blue-500",
-    underline &&
-      href &&
-      "underline hover:no-underline focus-visible:no-underline",
+    href && "hover:underline focus-visible:underline",
     classname
   )}
   href={href}

@@ -70,9 +70,8 @@ const { breadcrumbs } = Astro.props;
           {translate("langLink")}
         </Anchor>
         <Anchor
-          underline={false}
           href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-          classname="hover:rotate-360 transition-transform duration-500"
+          classname="hover:rotate-360 transition-transform duration-500 hover:no-underline focus-visible:no-underline"
           ><span
             title={translate("settings")}
             aria-label={translate("settings")}>⚙️</span

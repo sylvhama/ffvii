@@ -17,6 +17,13 @@ export const translations = {
     quote:
       "Embrace your dreams. And, whatever happens... protect your honor as SOLDIER!",
     swordAlt: "Minimalist vector of the Buster Sword from Final Fantasy 7",
+    categories: "Categories",
+    games: "Games",
+    movies: "Movies",
+    books: "Books",
+    music: "Music",
+    events: "Events",
+    merch: "Merch",
   },
   fr: {
     title: "Collection de Final Fantasy VII",
@@ -37,5 +44,12 @@ export const translations = {
     quote:
       "Vis tes rêves. Et quoi qu'il arrive... protège ton honneur en tant que SOLDAT !",
     swordAlt: "Vecteur minimaliste de l'Épée Broyeuse de Final Fantasy 7",
+    categories: "Catégories",
+    games: "Jeux",
+    movies: "Films",
+    books: "Livres",
+    music: "Musique",
+    events: "Évènements",
+    merch: "Produits dérivés",
   },
 } as const;

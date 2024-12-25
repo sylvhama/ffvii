@@ -6,6 +6,9 @@ export default {
       rotate: {
         360: "360deg",
       },
+      content: {
+        cursor: 'url("/cursor.webp")',
+      },
     },
   },
   plugins: [],
