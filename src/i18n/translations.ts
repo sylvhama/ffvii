@@ -14,6 +14,8 @@ export const translations = {
     home: "Home",
     github: "GitHub",
     notFound: "Page not found",
+    quote:
+      "Embrace your dreams. And, whatever happens... protect your honor as SOLDIER!",
     swordAlt: "Minimalist vector of the Buster Sword from Final Fantasy 7",
   },
   fr: {
@@ -32,6 +34,8 @@ export const translations = {
     home: "Accueil",
     github: "GitHub",
     notFound: "Page inexistante",
+    quote:
+      "Vis tes rêves. Et quoi qu'il arrive... protège ton honneur en tant que SOLDAT !",
     swordAlt: "Vecteur minimaliste de l'Épée Broyeuse de Final Fantasy 7",
   },
 } as const;
