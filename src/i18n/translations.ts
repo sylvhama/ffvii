@@ -3,7 +3,7 @@ export const translations = {
     title: "Collection of Final Fantasy VII",
     description: "A gallery of all my Final Fantasy 7 collectibles",
     langLink: "Français",
-    madeBy: "Made by",
+    madeBy: "Crafted by",
     settings: "Settings",
     pickTheme: "Pick website theme",
     darkHeading: "Dark",
@@ -36,7 +36,7 @@ export const translations = {
     description:
       "Une galerie de tous mes objets en rapport avec Final Fantasy 7",
     langLink: "English",
-    madeBy: "Fait par",
+    madeBy: "Conçu par",
     settings: "Paramètres",
     pickTheme: "Choisissez le thème du site",
     darkHeading: "Thème",
