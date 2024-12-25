@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    title: "Final Fantasy VII Collection",
+    title: "Collection of Final Fantasy VII",
     description: "A gallery of all my Final Fantasy 7 collectibles",
     langLink: "Français",
     madeBy: "Made by",
@@ -19,7 +19,7 @@ export const translations = {
     swordAlt: "Minimalist vector of the Buster Sword from Final Fantasy 7",
   },
   fr: {
-    title: "Collection Final Fantasy VII",
+    title: "Collection de Final Fantasy VII",
     description:
       "Une galerie de tous mes objets en rapport avec Final Fantasy 7",
     langLink: "English",
