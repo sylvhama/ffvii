@@ -7,3 +7,4 @@ A website to showcase my Final Fantasy VII collection.
 - i18n: https://docs.astro.build/en/guides/internationalization/ and https://docs.astro.build/en/recipes/i18n/
 - Theme picker: https://ui.shadcn.com/examples/forms/appearance
 - Breadcrumb: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
+- Busted sword: https://www.reddit.com/r/FinalFantasy/comments/98hmdn/minimalist_vector_of_the_buster_sword/

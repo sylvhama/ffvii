@@ -13,6 +13,8 @@ export const translations = {
     breadcrumb: "Breadcrumb",
     home: "Home",
     github: "GitHub",
+    notFound: "Page not found",
+    swordAlt: "Minimalist vector of the Buster Sword from Final Fantasy 7",
   },
   fr: {
     title: "Collection Final Fantasy VII",
@@ -29,5 +31,7 @@ export const translations = {
     breadcrumb: "fil d'Ariane",
     home: "Accueil",
     github: "GitHub",
+    notFound: "Page inexistante",
+    swordAlt: "Vecteur minimaliste de l'Épée Broyeuse de Final Fantasy 7",
   },
 } as const;
