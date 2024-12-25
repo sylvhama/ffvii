@@ -34,8 +34,7 @@ const translate = useTranslations(Astro.currentLocale);
                     )
               }
               classname={clsx(
-                `relative before:absolute before:scale-50 before:left-[-36px] hover:before:content-cursor focus-visible:before:content-cursor`,
-                "text-xl uppercase font-mono outline-none",
+                "text-xl uppercase font-mono",
                 isCurrent ? "font-bold" : ""
               )}
               aria-current={isCurrent ? "page" : undefined}

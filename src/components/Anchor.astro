@@ -11,6 +11,7 @@ const { href, classname, ...restProps } = Astro.props;
 
 <a
   class={clsx(
+    `relative before:absolute before:scale-50 before:left-[-36px] hover:before:content-cursor focus-visible:before:content-cursor outline-none`,
     href && "text-blue-600 dark:text-blue-500",
     href && "hover:underline focus-visible:underline",
     classname
