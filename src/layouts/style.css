@@ -13,3 +13,15 @@
 .pointer:focus-visible::before {
   @apply block;
 }
+
+@layer utilities {
+  .bg-ff7 {
+    background-image: radial-gradient(
+      circle at -180px 0px,
+      #0053ad 300px,
+      #001b85 500px,
+      #000223
+    );
+    background-repeat: no-repeat;
+  }
+}

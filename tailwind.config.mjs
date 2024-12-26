@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,18 +8,24 @@ export default {
     extend: {
       colors: {
         realWhite: "#ffffff",
+        realBlack: "#000000",
         white: "#f8f8f2",
         black: "#1d1e26",
         purple: "#7357ff",
         pink: "#ff80bf",
         blue: "#80ffea",
-        current: "currentColor",
+        cyan: "#20B2AA",
+        ff7Pink: "#ffaaaa",
       },
       fontFamily: {
         mono: ['"Lucida Console"', "Courier", ...defaultTheme.fontFamily.mono],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addVariant }) {
+      addVariant("ff7", [".ff7 & ", "&.ff7"]);
+    }),
+  ],
   darkMode: "class",
 };

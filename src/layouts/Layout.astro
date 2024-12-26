@@ -57,7 +57,7 @@ const description = descriptionProp || translate("description");
     {Astro.url.pathname.includes("/settings") ? null : <ClientRouter />}
   </head>
   <body
-    class="mx-auto max-w-[67.5rem] pt-8 pb-4 bg-realWhite px-4 dark:bg-black dark:text-white"
+    class="mx-auto max-w-[70rem] pt-4 bg-realWhite px-4 dark:bg-black dark:text-white ff7:bg-realBlack ff7:text-white"
   >
     <script is:inline>
       function setTheme() {
@@ -67,8 +67,12 @@ const description = descriptionProp || translate("description");
             window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
           document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("ff7");
         } else {
           document.documentElement.classList.remove("dark");
+          if (localStorage.theme === "ff7") {
+            document.documentElement.classList.add("ff7");
+          }
         }
       }
 
@@ -76,7 +80,9 @@ const description = descriptionProp || translate("description");
 
       document.addEventListener("astro:after-swap", setTheme);
     </script>
-    <main>
+    <main
+      class="ff7:bg-ff7 p-4 ff7:rounded-md border-4 border-transparent ff7:border-white"
+    >
       <div
         class="pb-4 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-start gap-4"
       >
