@@ -1,0 +1,17 @@
+---
+import Post from "@components/Post.astro";
+import { getEnglishStaticPaths } from "@utils";
+
+export async function getStaticPaths() {
+  return await getEnglishStaticPaths("music")();
+}
+
+const {
+  post: { data, render },
+} = Astro.props;
+const { Content } = await render();
+---
+
+<Post data={data} collection="music">
+  <Content />
+</Post>

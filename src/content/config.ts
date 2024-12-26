@@ -1,6 +1,6 @@
 import { z, defineCollection } from "astro:content";
 
-const gamesCollection = defineCollection({
+const collection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -11,5 +11,10 @@ const gamesCollection = defineCollection({
 });
 
 export const collections = {
-  games: gamesCollection,
+  games: collection,
+  movies: collection,
+  books: collection,
+  music: collection,
+  events: collection,
+  merch: collection,
 };
