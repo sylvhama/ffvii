@@ -19,32 +19,34 @@ const posts = await getLocaleCollection(collection, Astro.currentLocale);
 
 <Layout>
   <Nav currentPage={collection} />
-  <div class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+  <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
       posts.map(({ id, data, slug }) => (
-        <Anchor
-          href={getRelativeLocaleUrl(
-            Astro.currentLocale || "en",
-            `${collection}/${slug.replace("fr/", "")}`
-          )}
-          classname="group hover:no-underline focus-visible:no-underline"
-        >
-          <div class="relative overflow-hidden">
-            <Image
-              transition:name={`${id}-image`}
-              class="object-contain rounded-md"
-              src={data.images[0]}
-              alt={data.title}
-            />
-            <div
-              class="absolute left-0 bottom-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0 group-focus-visible:translate-y-0 w-full text-base p-2 font-bold bg-white text-black dark:bg-black dark:text-white bg-opacity-75 dark:bg-opacity-75"
-              aria-hidden="true"
-            >
-              {data.title}
+        <li>
+          <Anchor
+            href={getRelativeLocaleUrl(
+              Astro.currentLocale || "en",
+              `${collection}/${slug.replace("fr/", "")}`
+            )}
+            classname="group hover:no-underline focus-visible:no-underline"
+          >
+            <div class="relative overflow-hidden">
+              <Image
+                transition:name={`${id}-image`}
+                class="object-contain rounded-md"
+                src={data.images[0]}
+                alt={data.title}
+              />
+              <div
+                class="absolute left-0 bottom-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0 group-focus-visible:translate-y-0 w-full text-base p-2 font-bold bg-white text-black dark:bg-black dark:text-white bg-opacity-75 dark:bg-opacity-75"
+                aria-hidden="true"
+              >
+                {data.title}
+              </div>
             </div>
-          </div>
-        </Anchor>
+          </Anchor>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </Layout>
