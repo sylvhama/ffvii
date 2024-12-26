@@ -54,13 +54,13 @@ const description = descriptionProp || translate("description");
     <meta property="og:url" content="https://ff7.rocks" />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={Astro.currentLocale} />
-    {Astro.url.pathname.includes("/settings") ? null : <ClientRouter />}
+    <ClientRouter />
   </head>
   <body
     class="mx-auto max-w-[70rem] pt-4 bg-realWhite px-4 dark:bg-black dark:text-white ff7:bg-realBlack ff7:text-white"
   >
     <script is:inline>
-      function setTheme() {
+      function init() {
         if (
           localStorage.theme === "dark" ||
           (!("theme" in localStorage) &&
@@ -76,9 +76,9 @@ const description = descriptionProp || translate("description");
         }
       }
 
-      setTheme();
+      init();
 
-      document.addEventListener("astro:after-swap", setTheme);
+      document.addEventListener("astro:after-swap", init);
     </script>
     <main
       class="ff7:bg-ff7 p-4 ff7:rounded-md border-4 border-transparent ff7:border-white"

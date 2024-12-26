@@ -17,22 +17,29 @@ const translate = useTranslations(Astro.currentLocale);
 ---
 
 <script>
-  const inputs = document.querySelectorAll<HTMLInputElement>(
-    'input[name="image"]'
-  );
-  const mainImages = document.querySelectorAll<HTMLImageElement>(".main-image");
-  inputs.forEach((input) => {
-    input.addEventListener("change", (event) => {
-      const target = event.target as HTMLInputElement;
-      const indexToShow = Number(target.value);
-      if (!Number.isNaN(indexToShow)) {
-        mainImages.forEach((image) => {
-          image.classList.add("hidden");
-        });
-        mainImages[indexToShow].classList.remove("hidden");
-      }
+  function init() {
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+      'input[name="image"]'
+    );
+    const mainImages =
+      document.querySelectorAll<HTMLImageElement>(".main-image");
+    inputs.forEach((input) => {
+      input.addEventListener("change", (event) => {
+        const target = event.target as HTMLInputElement;
+        const indexToShow = Number(target.value);
+        if (!Number.isNaN(indexToShow)) {
+          mainImages.forEach((image) => {
+            image.classList.add("hidden");
+          });
+          mainImages[indexToShow].classList.remove("hidden");
+        }
+      });
     });
-  });
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", init);
 </script>
 
 <Layout
