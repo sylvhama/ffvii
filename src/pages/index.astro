@@ -1,17 +1,5 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Nav from "@components/Nav.astro";
-import { getCollection } from "astro:content";
-
-const gamesPosts = await getCollection("games");
+import ImageGrid from "@components/ImageGrid.astro";
 ---
 
-<Layout>
-  <Nav currentPage="games" />
-  <div class="grid grid-cols-4 gap-4">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-  </div>
-</Layout>
+<ImageGrid collection="games" />

@@ -37,3 +37,13 @@ export function getFrenchStaticPaths(collection: CollectionKey) {
     });
   };
 }
+
+export async function getLocaleCollection(
+  collection: CollectionKey,
+  currentLocale: string = "en"
+) {
+  return await getCollection(collection, ({ id }) => {
+    if (currentLocale === "en") return !id.startsWith("fr/");
+    return id.startsWith("fr/");
+  });
+}

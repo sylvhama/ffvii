@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { CollectionKey } from "astro:content";
+
+import Layout from "@layouts/Layout.astro";
+import Nav from "@components/Nav.astro";
+import Anchor from "@components/Anchor.astro";
+import { getLocaleCollection } from "@utils";
+
+interface Props {
+  collection: CollectionKey;
+}
+
+const { collection } = Astro.props;
+
+const posts = await getLocaleCollection(collection, Astro.currentLocale);
+---
+
+<Layout>
+  <Nav currentPage={collection} />
+  <div class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    {
+      posts.map(({ data, slug }) => (
+        <Anchor
+          href={getRelativeLocaleUrl(
+            Astro.currentLocale || "en",
+            `${collection}/${slug.replace("fr/", "")}`
+          )}
+          classname="hover:no-underline focus-visible:no-underline"
+        >
+          <Image
+            class="object-contain rounded-md"
+            src={data.images[0]}
+            alt={data.imagesAlt[0]}
+          />
+        </Anchor>
+      ))
+    }
+  </div>
+</Layout>
