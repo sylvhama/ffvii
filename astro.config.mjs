@@ -10,4 +10,8 @@ export default defineConfig({
     locales: ["en", "fr"],
     defaultLocale: "en",
   },
+  redirects: {
+    "/games": "/",
+    "/fr/games": "/fr",
+  },
 });

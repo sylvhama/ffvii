@@ -8,7 +8,7 @@ const translate = useTranslations(Astro.currentLocale);
 const settings = translate("settings");
 ---
 
-<Layout breadcrumbs={[settings]}>
+<Layout breadcrumbs={[{ name: settings }]}>
   <H2 class="pb-4 text-xl text-gray-500 dark:text-gray-400">
     {settings}
   </H2>

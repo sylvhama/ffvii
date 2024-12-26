@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
 import { Image } from "astro:assets";
@@ -37,7 +38,13 @@ const translate = useTranslations(Astro.currentLocale);
 <Layout
   titlePrefix={data.title}
   description={data.description}
-  breadcrumbs={[translate(collection), data.title]}
+  breadcrumbs={[
+    {
+      name: translate(collection),
+      path: getRelativeLocaleUrl(Astro.currentLocale || "en", collection),
+    },
+    { name: data.title },
+  ]}
 >
   <div class="md:grid md:grid-cols-[auto_1fr] gap-8">
     {

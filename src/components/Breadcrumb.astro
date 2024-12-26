@@ -1,9 +1,10 @@
 ---
 import { useTranslations } from "@i18n/utils";
 import Anchor from "./Anchor.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props {
-  breadcrumbs: string[];
+  breadcrumbs: { name: string; path?: string }[];
 }
 
 const { breadcrumbs } = Astro.props;
@@ -13,24 +14,25 @@ const previousBreadcrumbs = [...breadcrumbs];
 const currentBreadcrumb = previousBreadcrumbs.pop();
 
 if (previousBreadcrumbs.length === 0) {
-  previousBreadcrumbs.push(translate("home"));
+  previousBreadcrumbs.push({
+    path: getRelativeLocaleUrl(Astro.currentLocale || "en", ""),
+    name: translate("home"),
+  });
 }
 ---
 
 <nav aria-label={translate("breadcrumb")}>
   <ol class="flex flex-wrap gap-x-6 align-center">
     {
-      previousBreadcrumbs.map((previousBreadcrumb, index) => (
+      previousBreadcrumbs.map(({ name, path }) => (
         <li class="relative after:content-['>'] after:absolute after:-right-4">
-          <Anchor href={`${"../".repeat(index + 1)}`}>
-            {previousBreadcrumb}
-          </Anchor>
+          <Anchor href={path!}>{name}</Anchor>
         </li>
       ))
     }
     <li>
       <Anchor href="" aria-current="page" classname="font-bold"
-        >{currentBreadcrumb}</Anchor
+        >{currentBreadcrumb!.name}</Anchor
       >
     </li>
   </ol>

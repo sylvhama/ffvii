@@ -2,7 +2,7 @@
 interface Props {
   titlePrefix?: string;
   description?: string;
-  breadcrumbs?: string[];
+  breadcrumbs?: { name: string; path?: string }[];
 }
 
 import { getRelativeLocaleUrl } from "astro:i18n";
