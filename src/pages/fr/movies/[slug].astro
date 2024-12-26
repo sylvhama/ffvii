@@ -7,11 +7,11 @@ export async function getStaticPaths() {
 }
 
 const {
-  post: { data, render },
+  post: { id, data, render },
 } = Astro.props;
 const { Content } = await render();
 ---
 
-<Post data={data} collection="movies">
+<Post id={id} data={data} collection="movies">
   <Content />
 </Post>

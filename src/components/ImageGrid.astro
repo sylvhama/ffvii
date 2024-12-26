@@ -21,16 +21,17 @@ const posts = await getLocaleCollection(collection, Astro.currentLocale);
   <Nav currentPage={collection} />
   <div class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
-      posts.map(({ data, slug }) => (
+      posts.map(({ id, data, slug }) => (
         <Anchor
           href={getRelativeLocaleUrl(
             Astro.currentLocale || "en",
             `${collection}/${slug.replace("fr/", "")}`
           )}
-          classname="hover:no-underline focus-visible:no-underline"
+          classname="group hover:no-underline focus-visible:no-underline"
         >
-          <div class="group relative overflow-hidden">
+          <div class="relative overflow-hidden">
             <Image
+              transition:name={`${id}-image`}
               class="object-contain rounded-md"
               src={data.images[0]}
               alt={data.title}

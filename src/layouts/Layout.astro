@@ -6,10 +6,13 @@ interface Props {
 }
 
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { ClientRouter } from "astro:transitions";
+
 import Anchor from "@components/Anchor.astro";
-import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import BustedSword from "@components/BustedSword.astro";
+import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
+
 import "./style.css";
 
 const translate = useTranslations(Astro.currentLocale);
@@ -51,6 +54,7 @@ const description = descriptionProp || translate("description");
     <meta property="og:url" content="https://ff7.rocks" />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={Astro.currentLocale} />
+    <ClientRouter />
   </head>
   <body
     class="mx-auto max-w-[67.5rem] pt-8 pb-4 bg-white px-4 dark:bg-black dark:text-white"

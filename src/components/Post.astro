@@ -7,11 +7,11 @@ import { Image } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
 import type { CollectionEntry, CollectionKey } from "astro:content";
 
-interface Props extends Pick<CollectionEntry<CollectionKey>, "data"> {
+interface Props extends Pick<CollectionEntry<CollectionKey>, "data" | "id"> {
   collection: Parameters<ReturnType<typeof useTranslations>>[0];
 }
 
-const { data, collection } = Astro.props;
+const { id, data, collection } = Astro.props;
 
 const translate = useTranslations(Astro.currentLocale);
 ---
@@ -50,6 +50,7 @@ const translate = useTranslations(Astro.currentLocale);
     {
       data.images.map((image, index) => (
         <Image
+          transition:name={`${id}-image`}
           class={clsx(
             "main-image object-contain rounded-md md:max-w-[360px] lg:max-w-full",
             index > 0 && "hidden"
