@@ -29,11 +29,19 @@ const posts = await getLocaleCollection(collection, Astro.currentLocale);
           )}
           classname="hover:no-underline focus-visible:no-underline"
         >
-          <Image
-            class="object-contain rounded-md"
-            src={data.images[0]}
-            alt={data.imagesAlt[0]}
-          />
+          <div class="group relative overflow-hidden">
+            <Image
+              class="object-contain rounded-md"
+              src={data.images[0]}
+              alt={data.title}
+            />
+            <div
+              class="absolute left-0 bottom-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0 group-focus-visible:translate-y-0 w-full text-xl p-2 font-bold bg-white text-black dark:bg-black dark:text-white dark:bg-opacity-75"
+              aria-hidden="true"
+            >
+              {data.title}
+            </div>
+          </div>
         </Anchor>
       ))
     }
