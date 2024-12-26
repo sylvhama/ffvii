@@ -1,0 +1,89 @@
+---
+import clsx from "clsx";
+import Layout from "@layouts/Layout.astro";
+import H2 from "@components/H2.astro";
+import { Image } from "astro:assets";
+import { useTranslations } from "@i18n/utils";
+import type { CollectionEntry, CollectionKey } from "astro:content";
+
+interface Props extends Pick<CollectionEntry<CollectionKey>, "data"> {
+  collection: Parameters<ReturnType<typeof useTranslations>>[0];
+}
+
+const { data, collection } = Astro.props;
+
+const translate = useTranslations(Astro.currentLocale);
+---
+
+<script>
+  const inputs = document.querySelectorAll<HTMLInputElement>(
+    'input[name="image"]'
+  );
+  const mainImages = document.querySelectorAll<HTMLImageElement>(".main-image");
+  inputs.forEach((input) => {
+    input.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement;
+      const indexToShow = Number(target.value);
+      if (!Number.isNaN(indexToShow)) {
+        mainImages.forEach((image) => {
+          image.classList.add("hidden");
+        });
+        mainImages[indexToShow].classList.remove("hidden");
+      }
+    });
+  });
+</script>
+
+<Layout
+  titlePrefix={data.title}
+  description={data.description}
+  breadcrumbs={[translate(collection), data.title]}
+>
+  <div class="md:grid md:grid-cols-[auto_1fr] gap-8">
+    {
+      data.images.map((image, index) => (
+        <Image
+          class={clsx(
+            "main-image rounded-md md:max-w-[360px] lg:max-w-full",
+            index > 0 && "hidden"
+          )}
+          width={500}
+          height={500}
+          src={image}
+          alt={data.imagesAlt[index]}
+        />
+      ))
+    }
+    <div class="pt-8 md:pt-0">
+      <H2>{data.title}</H2>
+      <slot />
+      {
+        data.images.length > 1 ? (
+          <fieldset class="pt-8">
+            <legend class="sr-only">{translate("setPicture")}</legend>
+            <div class="flex flex-wrap gap-4">
+              {data.images.map((image, index) => (
+                <label class="cursor-pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black">
+                  <input
+                    class="sr-only peer"
+                    name="image"
+                    value={index}
+                    type="radio"
+                    checked={index === 0}
+                  />
+                  <Image
+                    class="rounded-md peer-checked:opacity-50"
+                    width={130}
+                    height={130}
+                    src={image}
+                    alt={data.imagesAlt[index]}
+                  />
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ) : null
+      }
+    </div>
+  </div>
+</Layout>

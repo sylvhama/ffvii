@@ -30,6 +30,7 @@ export const translations = {
     musicHeading: "Final Fantasy 7 Music",
     eventsHeading: "Final Fantasy 7 Events",
     merchHeading: "Final Fantasy 7 Merch",
+    setPicture: "Set main picture",
   },
   fr: {
     title: "Collection de Final Fantasy VII",
@@ -63,5 +64,6 @@ export const translations = {
     musicHeading: "Musique de Final Fantasy 7",
     eventsHeading: "Évènements Final Fantasy 7",
     merchHeading: "Produits dérivés de Final Fantasy 7",
+    setPicture: "Définir l'image principale",
   },
 } as const;
