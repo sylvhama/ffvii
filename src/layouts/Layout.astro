@@ -57,7 +57,7 @@ const description = descriptionProp || translate("description");
     {Astro.url.pathname.includes("/settings") ? null : <ClientRouter />}
   </head>
   <body
-    class="mx-auto max-w-[67.5rem] pt-8 pb-4 bg-white px-4 dark:bg-black dark:text-white"
+    class="mx-auto max-w-[67.5rem] pt-8 pb-4 bg-realWhite px-4 dark:bg-black dark:text-white"
   >
     <script is:inline>
       function setTheme() {
@@ -96,7 +96,7 @@ const description = descriptionProp || translate("description");
         >
       </div>
 
-      <h1 class="pb-8 text-3xl font-bold">
+      <h1 class="pb-8 text-3xl font-bold font-mono">
         {title}
       </h1>
 

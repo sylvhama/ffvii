@@ -11,8 +11,9 @@ const { href, classname, ...restProps } = Astro.props;
 
 <a
   class={clsx(
-    "pointer",
-    href && "text-blue-600 dark:text-blue-500",
+    "pointer font-mono",
+    href &&
+      "text-purple hover:text-pink hover:underline focus:text-pink dark:text-blue dark:hover:text-pink dark:focus:text-pink",
     href && "hover:underline focus-visible:underline",
     classname
   )}
