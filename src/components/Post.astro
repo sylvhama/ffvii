@@ -70,7 +70,7 @@ const translate = useTranslations(Astro.currentLocale);
             <legend class="sr-only">{translate("setPicture")}</legend>
             <div class="flex flex-wrap gap-4">
               {data.images.map((image, index) => (
-                <label class="cursor-pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black">
+                <label class="pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black">
                   <input
                     class="sr-only peer"
                     name="image"
