@@ -25,6 +25,7 @@ export default {
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant("ff7", [".ff7 & ", "&.ff7"]);
+      addVariant("starting", "@starting-style");
     }),
   ],
   darkMode: "class",
