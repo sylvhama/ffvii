@@ -111,12 +111,12 @@ const description = descriptionProp || translate("description");
       <BustedSword />
 
       <footer class="flex flex-wrap gap-x-2 items-center">
-        <p>
+        <p class="font-mono">
           {translate("madeBy")}
-          <Anchor href={`https://shamann.${isFrench ? "fr" : "dev"}`}
-            >Sylvain Hamann</Anchor
-          >
         </p>
+        <Anchor href={`https://shamann.${isFrench ? "fr" : "dev"}`}
+          >Sylvain Hamann</Anchor
+        >
         <span class="font-mono" aria-hidden="true">|</span>
         <Anchor href="https://github.com/sylvhama/ffvii"
           >{translate("github")}</Anchor
