@@ -20,7 +20,7 @@ const translate = useTranslations(Astro.currentLocale);
 
 <nav aria-label={translate("categories")}>
   <ul
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0"
+    class="grid grid-cols-[auto_auto] sm:grid-cols-[auto_auto_auto] md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0"
   >
     {
       pages.map((page, index) => {
@@ -28,10 +28,12 @@ const translate = useTranslations(Astro.currentLocale);
         return (
           <li
             class={clsx(
-              "md:p-2 text-center",
+              "relative md:p-2 text-center",
               isCurrent ? "md:border-x md:border-t" : "md:border-b",
               index === 0 &&
-                "relative before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[1px] before:hidden md:before:block"
+                "before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[1px] before:hidden md:before:block",
+              index === pages.length - 1 &&
+                "after:absolute after:border-b after:w-4 after:-right-4 after:-bottom-[1px] after:hidden md:after:block"
             )}
           >
             <Anchor
