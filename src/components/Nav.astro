@@ -17,7 +17,9 @@ const translate = useTranslations(Astro.currentLocale);
 ---
 
 <nav aria-label={translate("categories")}>
-  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-0">
+  <ul
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0"
+  >
     {
       pages.map((page, index) => {
         const isCurrent = currentPage === page;
@@ -40,7 +42,7 @@ const translate = useTranslations(Astro.currentLocale);
                     )
               }
               classname={clsx(
-                "text-xl uppercase font-mono",
+                "text-xl uppercase font-mono break-words",
                 isCurrent ? "font-bold" : ""
               )}
               aria-current={isCurrent ? "page" : undefined}
