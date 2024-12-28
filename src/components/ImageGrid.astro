@@ -5,6 +5,7 @@ import type { CollectionKey } from "astro:content";
 
 import Layout from "@layouts/Layout.astro";
 import Nav from "@components/Nav.astro";
+import H2 from "@components/H2.astro";
 import Anchor from "@components/Anchor.astro";
 import { getLocaleCollection } from "@utils";
 
@@ -28,7 +29,7 @@ const posts = await getLocaleCollection(collection, Astro.currentLocale);
               Astro.currentLocale || "en",
               `${collection}/${slug.replace("fr/", "")}`
             )}
-            classname="group hover:no-underline focus-visible:no-underline"
+            classname="hover:no-underline focus-visible:no-underline"
           >
             <div class="relative overflow-hidden">
               <Image
@@ -37,11 +38,14 @@ const posts = await getLocaleCollection(collection, Astro.currentLocale);
                 src={data.images[0]}
                 alt={data.title}
               />
-              <div
-                class="rounded-b-md absolute left-0 bottom-0 translate-y-full transition-transform duration-[250ms] group-hover:translate-y-0 group-focus-visible:translate-y-0 w-full text-base p-2 font-bold bg-white text-black dark:bg-black dark:text-white bg-opacity-75 dark:bg-opacity-75"
-                aria-hidden="true"
-              >
-                {data.title}
+              <div class="absolute rounded-b-md left-0 top-0 opacity-0 transition-opacity duration-[250ms] hover:opacity-100 focus-visible:opacity-100 w-full h-full text-center flex items-center justify-center p-2 bg-realWhite dark:bg-realBlack ff7:bg-realBlack bg-opacity-50 dark:bg-opacity-50 ff7:bg-opacity-50">
+                <H2
+                  classname="text-base text-realBlack dark:text-realWhite ff7:text-realWhite"
+                  aria-hidden="true"
+                  transition:name={`${id}-title`}
+                >
+                  {data.title}
+                </H2>
               </div>
             </div>
           </Anchor>

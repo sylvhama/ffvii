@@ -73,7 +73,7 @@ const translate = useTranslations(Astro.currentLocale);
       ))
     }
     <div class="pt-8 md:pt-0">
-      <H2>{data.title}</H2>
+      <H2 transition:name={`${id}-title`}>{data.title}</H2>
       <slot />
       {
         data.images.length > 1 ? (
