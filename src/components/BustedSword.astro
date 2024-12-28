@@ -6,7 +6,9 @@ import { useTranslations } from "@i18n/utils";
 const translate = useTranslations(Astro.currentLocale);
 ---
 
-<div class="mt-8 pr-5 w-full max-w-[320px] h-60 overflow-hidden text-right">
+<div
+  class="mt-8 pr-5 w-full max-w-[320px] h-[240px] overflow-hidden text-right"
+>
   <Image
     class="inline-block rotate-12"
     src={sword}
@@ -15,5 +17,5 @@ const translate = useTranslations(Astro.currentLocale);
   />
 </div>
 <hr
-  class="mb-8 w-full max-w-[320px] border-black opacity-50 dark:border-white ff7:border-white"
+  class="mb-4 w-full max-w-[320px] border-t overflow-visible relative before:content-[''] before:absolute before:border-t before:w-8 before:-left-8 before:-top-[1px] before:hidden md:before:block"
 />

@@ -57,7 +57,7 @@ const description = descriptionProp || translate("description");
     <ClientRouter />
   </head>
   <body
-    class="mx-auto max-w-[70rem] pt-4 bg-realWhite px-4 dark:bg-black dark:text-white ff7:bg-realBlack ff7:text-white"
+    class="mx-auto max-w-[75rem] bg-realWhite md:p-4 dark:bg-black dark:text-white ff7:bg-realBlack ff7:text-white"
   >
     <script is:inline>
       function init() {
@@ -81,47 +81,54 @@ const description = descriptionProp || translate("description");
       document.addEventListener("astro:after-swap", init);
     </script>
     <main
-      class="ff7:bg-ff7 p-4 ff7:rounded-md border-4 border-transparent ff7:border-white"
+      class="md:grid grid-cols-[auto_1fr] gap-8 ff7:bg-ff7 px-4 ff7:rounded-md border-4 border-transparent ff7:border-realWhite"
     >
-      <div
-        class="pb-4 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-start gap-4"
+      <h1
+        class="hidden md:block py-4 pr-4 vertical-text border-r text-xl font-bold font-mono relative before:absolute before:border-r before:h-6 before:-top-6 before:-right-[1px] before:hidden md:before:block after:absolute after:border-r after:h-6 after:-bottom-6 after:-right-[1px] after:hidden md:after:block ff7:before:hidden ff7:after:hidden"
       >
-        <div>
-          {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
-        </div>
-        <Anchor href={otherLocaleUrl}>
-          {translate("langLink")}
-        </Anchor>
-        <Anchor
-          href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-          classname="hover:no-underline focus-visible:no-underline"
-          ><span
-            title={translate("settings")}
-            aria-label={translate("settings")}>⚙️</span
-          ></Anchor
-        >
-      </div>
-
-      <h1 class="pb-8 text-3xl font-bold font-mono">
         {title}
       </h1>
-
-      <slot />
-
-      <BustedSword />
-
-      <footer class="flex flex-wrap gap-x-2 items-center">
-        <p class="font-mono">
-          {translate("madeBy")}
-        </p>
-        <Anchor href={`https://shamann.${isFrench ? "fr" : "dev"}`}
-          >Sylvain Hamann</Anchor
+      <div class="pt-4">
+        <div
+          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-start gap-4"
         >
-        <span class="font-mono" aria-hidden="true">|</span>
-        <Anchor href="https://github.com/sylvhama/ffvii"
-          >{translate("github")}</Anchor
-        >
-      </footer>
+          <div>
+            {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
+          </div>
+          <Anchor href={otherLocaleUrl}>
+            {translate("langLink")}
+          </Anchor>
+          <Anchor
+            href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
+            classname="hover:no-underline focus-visible:no-underline"
+            ><span
+              title={translate("settings")}
+              aria-label={translate("settings")}>⚙️</span
+            ></Anchor
+          >
+        </div>
+
+        <h1 class="block md:hidden pb-8 text-xl font-bold font-mono">
+          {title}
+        </h1>
+
+        <slot />
+
+        <BustedSword />
+
+        <footer class="pb-2 flex flex-wrap gap-x-2 items-center">
+          <p class="font-mono">
+            {translate("madeBy")}
+          </p>
+          <Anchor href={`https://shamann.${isFrench ? "fr" : "dev"}`}
+            >Sylvain Hamann</Anchor
+          >
+          <span class="font-mono" aria-hidden="true">|</span>
+          <Anchor href="https://github.com/sylvhama/ffvii"
+            >{translate("github")}</Anchor
+          >
+        </footer>
+      </div>
     </main>
   </body>
 </html>
