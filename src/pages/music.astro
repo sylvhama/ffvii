@@ -1,5 +1,9 @@
 ---
 import ImageGrid from "@components/ImageGrid.astro";
+import { useTranslations } from "@i18n/utils";
+
+const translate = useTranslations();
+const collection = "music";
 ---
 
-<ImageGrid collection="music" />
+<ImageGrid titlePrefix={translate(collection)} collection={collection} />

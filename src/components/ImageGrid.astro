@@ -10,15 +10,16 @@ import Anchor from "@components/Anchor.astro";
 import { getLocaleCollection } from "@utils";
 
 interface Props {
+  titlePrefix: string;
   collection: CollectionKey;
 }
 
-const { collection } = Astro.props;
+const { titlePrefix, collection } = Astro.props;
 
 const posts = await getLocaleCollection(collection, Astro.currentLocale);
 ---
 
-<Layout>
+<Layout titlePrefix={titlePrefix}>
   <Nav currentPage={collection} />
   <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
