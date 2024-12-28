@@ -11,3 +11,5 @@ A website to showcase my Final Fantasy VII collection.
 - Cursor: https://finalfantasy.fandom.com/wiki/Cursor
 - Dracula colors: https://draculatheme.com/
 - Dark theme: https://www.joshwcomeau.com/react/dark-mode/
+- Nav: https://tympanus.net/Development/LineMenuStyles/#Ceres
+- FF7 theme: https://codepen.io/XaelGa/full/rqYZNP

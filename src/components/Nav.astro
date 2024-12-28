@@ -17,12 +17,19 @@ const translate = useTranslations(Astro.currentLocale);
 ---
 
 <nav aria-label={translate("categories")}>
-  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-0">
     {
-      pages.map((page) => {
+      pages.map((page, index) => {
         const isCurrent = currentPage === page;
         return (
-          <li class="text-center">
+          <li
+            class={clsx(
+              "md:p-2 text-center",
+              isCurrent ? "md:border-x md:border-t" : "md:border-b",
+              index === 0 &&
+                "relative before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[1px] before:hidden md:before:block"
+            )}
+          >
             <Anchor
               href={
                 isCurrent
