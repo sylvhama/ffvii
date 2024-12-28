@@ -7,6 +7,7 @@ interface Props {
 
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ClientRouter } from "astro:transitions";
+import { Icon } from "astro-icon/components";
 
 import Anchor from "@components/Anchor.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
@@ -90,7 +91,7 @@ const description = descriptionProp || translate("description");
       </h1>
       <div class="pt-4">
         <div
-          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-start gap-4"
+          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-center gap-4"
         >
           <div>
             {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
@@ -101,11 +102,12 @@ const description = descriptionProp || translate("description");
           <Anchor
             href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
             classname="hover:no-underline focus-visible:no-underline"
-            ><span
+            ><Icon
+              name="settings"
               title={translate("settings")}
-              aria-label={translate("settings")}>⚙️</span
-            ></Anchor
-          >
+              aria-label={translate("settings")}
+            />
+          </Anchor>
         </div>
 
         <h1 class="block md:hidden pb-8 text-xl font-bold font-mono">
