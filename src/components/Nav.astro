@@ -1,6 +1,8 @@
 ---
 import clsx from "clsx";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
+
 import { useTranslations } from "@i18n/utils";
 import Anchor from "./Anchor.astro";
 
@@ -42,11 +44,14 @@ const translate = useTranslations(Astro.currentLocale);
                     )
               }
               classname={clsx(
-                "text-xl uppercase font-mono break-words",
+                "group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-2 items-center justify-center",
                 isCurrent ? "font-bold" : ""
               )}
               aria-current={isCurrent ? "page" : undefined}
             >
+              <div class="pointer group-hover:before:block group-focus-visible:before:block">
+                <Icon name={page} aria-hidden="true" width="24" height="24" />
+              </div>
               {translate(page)}
             </Anchor>
           </li>

@@ -7,7 +7,7 @@
 }
 .pointer::before {
   @apply hidden absolute scale-50 left-[-36px] top-1/2 mt-[-12px];
-  content: url("/cursor.webp");
+  content: url("/cursor.webp") !important;
 }
 .pointer:hover::before,
 .pointer:focus-visible::before {

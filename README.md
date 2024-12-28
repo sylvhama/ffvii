@@ -13,3 +13,4 @@ A website to showcase my Final Fantasy VII collection.
 - Dark theme: https://www.joshwcomeau.com/react/dark-mode/
 - Nav: https://tympanus.net/Development/LineMenuStyles/#Ceres
 - FF7 theme: https://codepen.io/XaelGa/full/rqYZNP
+- icons: https://icon-sets.iconify.design/
