@@ -12,6 +12,11 @@ export const translations = {
     lightSubHeading: "Theme",
     ff7Heading: "FF7",
     ff7SubHeading: "Theme",
+    about: "About my collection",
+    aboutText: `This website showcases my Final Fantasy 7 collection. 
+      I've gathered these items from everywhere I've lived: France, South Korea, Japan, and Canada. 
+      My goal is to share the memories tied to each piece, not to own every collectible.
+      It also includes photos from concerts and events I've attended, showcasing some of my most cherished moments as a Final Fantasy 7 fan.`,
     breadcrumb: "Breadcrumb",
     home: "Home",
     github: "GitHub",
@@ -48,6 +53,11 @@ export const translations = {
     lightSubHeading: "Clair",
     ff7Heading: "Thème",
     ff7SubHeading: "FF7",
+    about: "À propos de ma collection",
+    aboutText: `Ce site présente ma collection Final Fantasy 7.  
+      J'ai rassemblé ces objets dans tous les endroits où j'ai vécu : France, Corée du Sud, Japon et Canada.  
+      Mon objectif est de partager les souvenirs attachés à chaque pièce, et non de posséder tous les objets de collection.  
+      Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux en tant que fan de Final Fantasy 7.`,
     breadcrumb: "fil d'Ariane",
     home: "Accueil",
     github: "GitHub",

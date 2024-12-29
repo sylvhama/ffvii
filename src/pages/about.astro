@@ -1,16 +1,15 @@
 ---
-import ThemeOptions from "@components/ThemeOptions.astro";
 import Layout from "@layouts/Layout.astro";
 import { useTranslations } from "@i18n/utils";
 import H2 from "@components/H2.astro";
 
 const translate = useTranslations(Astro.currentLocale);
-const settings = translate("settings");
+const about = translate("about");
 ---
 
-<Layout breadcrumbs={[{ name: settings }]}>
+<Layout breadcrumbs={[{ name: about }]}>
   <H2>
-    {settings}
+    {about}
   </H2>
-  <ThemeOptions />
+  <p>{translate("aboutText")}</p>
 </Layout>

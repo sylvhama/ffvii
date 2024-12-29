@@ -15,6 +15,7 @@ import BustedSword from "@components/BustedSword.astro";
 import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
 
 import "./style.css";
+import { undefined } from "astro:schema";
 
 const translate = useTranslations(Astro.currentLocale);
 const isFrench = Astro.currentLocale === "fr";
@@ -91,7 +92,7 @@ const description = descriptionProp || translate("description");
       </h1>
       <div class="pt-4">
         <div
-          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto] items-center gap-4"
+          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto_auto] items-center gap-4"
         >
           <div>
             {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
@@ -102,10 +103,25 @@ const description = descriptionProp || translate("description");
           <Anchor
             href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
             classname="hover:no-underline focus-visible:no-underline"
+            aria-current={Astro.url.pathname.includes("/settings")
+              ? "page"
+              : undefined}
             ><Icon
               name="settings"
               title={translate("settings")}
               aria-label={translate("settings")}
+            />
+          </Anchor>
+          <Anchor
+            href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
+            classname="hover:no-underline focus-visible:no-underline"
+            aria-current={Astro.url.pathname.includes("/about")
+              ? "page"
+              : undefined}
+            ><Icon
+              name="question"
+              title={translate("about")}
+              aria-label={translate("about")}
             />
           </Anchor>
         </div>
