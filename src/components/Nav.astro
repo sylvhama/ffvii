@@ -41,7 +41,7 @@ const translate = useTranslations(Astro.currentLocale!);
                     )
               }
               classname={clsx(
-                "group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-2 items-center justify-center",
+                "relative z-10 group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-2 items-center justify-center",
                 isCurrent && "font-bold"
               )}
               aria-current={isCurrent ? "page" : undefined}
@@ -52,16 +52,10 @@ const translate = useTranslations(Astro.currentLocale!);
               {translate(page)}
             </Anchor>
             <div
+              transition:name={`${page}-active-sides`}
               class={clsx(
-                "hidden md:block absolute bottom-0 left-0 w-full",
-                !isCurrent && "border-t"
-              )}
-            />
-            <div
-              transition:name={`${page}-active`}
-              class={clsx(
-                "hidden md:block absolute top-0 left-0 w-full h-full",
-                isCurrent ? "border-t border-x" : "translate-y-full"
+                "hidden md:block absolute top-0 left-0 w-full h-full border-t ",
+                isCurrent ? "border-x" : "translate-y-full -top-[1px]"
               )}
             />
           </li>
