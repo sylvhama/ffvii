@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { currentPage } = Astro.props;
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 ---
 
 <nav aria-label={translate("categories")}>

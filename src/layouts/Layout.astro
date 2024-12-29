@@ -17,7 +17,7 @@ import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
 import "./style.css";
 import { undefined } from "astro:schema";
 
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 const isFrench = Astro.currentLocale === "fr";
 const otherLocaleUrl = getOtherLocalePathname(isFrench, Astro.url.pathname);
 const { titlePrefix, description: descriptionProp, breadcrumbs } = Astro.props;

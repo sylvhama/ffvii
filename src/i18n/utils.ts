@@ -1,6 +1,6 @@
 import { translations } from "./translations";
 
-export function useTranslations(lang: string = "en") {
+export function useTranslations(lang: string) {
   const normalizedLang = (
     ["en", "fr"].includes(lang) ? lang : "en"
   ) as keyof typeof translations;

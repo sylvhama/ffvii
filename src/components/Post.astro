@@ -13,7 +13,7 @@ interface Props extends Pick<CollectionEntry<CollectionKey>, "data" | "id"> {
 
 const { id, data, collection } = Astro.props;
 
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 ---
 
 <script>

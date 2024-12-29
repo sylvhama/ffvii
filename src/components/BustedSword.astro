@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import sword from "@assets/sword.png";
 import { useTranslations } from "@i18n/utils";
 
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 ---
 
 <div

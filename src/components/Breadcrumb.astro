@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { breadcrumbs } = Astro.props;
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 
 const previousBreadcrumbs = [...breadcrumbs];
 const currentBreadcrumb = previousBreadcrumbs.pop();

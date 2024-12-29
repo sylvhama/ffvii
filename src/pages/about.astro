@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { useTranslations } from "@i18n/utils";
 import H2 from "@components/H2.astro";
 
-const translate = useTranslations(Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 const about = translate("about");
 ---
 

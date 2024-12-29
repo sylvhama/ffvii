@@ -8,18 +8,19 @@ import Nav from "@components/Nav.astro";
 import H2 from "@components/H2.astro";
 import Anchor from "@components/Anchor.astro";
 import { getLocaleCollection } from "@utils";
+import { useTranslations } from "@i18n/utils";
 
 interface Props {
-  titlePrefix: string;
   collection: CollectionKey;
 }
 
-const { titlePrefix, collection } = Astro.props;
+const { collection } = Astro.props;
 
 const posts = await getLocaleCollection(collection, Astro.currentLocale);
+const translate = useTranslations(Astro.currentLocale!);
 ---
 
-<Layout titlePrefix={titlePrefix}>
+<Layout titlePrefix={translate(collection)}>
   <Nav currentPage={collection} />
   <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
