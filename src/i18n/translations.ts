@@ -13,10 +13,10 @@ export const translations = {
     ff7Heading: "FF7",
     ff7SubHeading: "Theme",
     about: "About my collection",
-    aboutText: `This website showcases my Final Fantasy 7 collection. 
+    aboutText: `As a Final Fantasy 7 fan since its release in 1997, this website showcases my collection dedicated to my favorite game. 
       I've gathered these items from everywhere I've lived: France, South Korea, Japan, and Canada. 
       My goal is to share the memories tied to each piece, not to own every collectible.
-      It also includes photos from concerts and events I've attended, showcasing some of my most cherished moments as a Final Fantasy 7 fan.`,
+      It also includes photos from concerts and events I've attended, showcasing some of my most cherished moments.`,
     breadcrumb: "Breadcrumb",
     home: "Home",
     github: "GitHub",
@@ -54,10 +54,10 @@ export const translations = {
     ff7Heading: "Thème",
     ff7SubHeading: "FF7",
     about: "À propos de ma collection",
-    aboutText: `Ce site présente ma collection Final Fantasy 7.  
+    aboutText: `En tant que fan de Final Fantasy 7 depuis sa sortie en 1997, ce site présente ma collection dédiée à mon jeu préféré.  
       J'ai rassemblé ces objets dans tous les endroits où j'ai vécu : France, Corée du Sud, Japon et Canada.  
       Mon objectif est de partager les souvenirs attachés à chaque pièce, et non de posséder tous les objets de collection.  
-      Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux en tant que fan de Final Fantasy 7.`,
+      Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux.`,
     breadcrumb: "fil d'Ariane",
     home: "Accueil",
     github: "GitHub",
