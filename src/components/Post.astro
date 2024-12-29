@@ -51,7 +51,10 @@ const translate = useTranslations(Astro.currentLocale!);
   breadcrumbs={[
     {
       name: translate(collection),
-      path: getRelativeLocaleUrl(Astro.currentLocale || "en", collection),
+      path: getRelativeLocaleUrl(
+        Astro.currentLocale || "en",
+        collection === "games" ? "/" : collection
+      ),
     },
     { name: data.title },
   ]}
