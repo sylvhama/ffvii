@@ -62,7 +62,7 @@ const translate = useTranslations(Astro.currentLocale!);
         <Image
           transition:name={`${id}-image`}
           class={clsx(
-            "main-image object-contain rounded-md md:max-w-[360px] lg:max-w-full duration-500",
+            "main-image md:sticky top-8 object-contain rounded-md md:max-w-[360px] lg:max-w-full duration-500",
             index > 0 && "hidden"
           )}
           width={500}
