@@ -99,7 +99,7 @@ const description = descriptionProp || translate("description");
           <div>
             {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
           </div>
-          <Anchor href={otherLocaleUrl}>
+          <Anchor lang={isFrench ? "en" : "fr"} href={otherLocaleUrl}>
             {translate("langLink")}
           </Anchor>
           <Anchor
