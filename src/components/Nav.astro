@@ -20,22 +20,17 @@ const translate = useTranslations(Astro.currentLocale!);
 
 <nav aria-label={translate("categories")}>
   <ul
-    class="grid grid-cols-[auto_auto] sm:grid-cols-[auto_auto_auto] md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0"
+    class={clsx(
+      "relative grid grid-cols-[auto_auto] sm:grid-cols-[auto_auto_auto] md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0",
+      "before:absolute before:border-b before:w-8 before:-left-8 before:bottom-0 before:hidden md:before:block",
+      "after:absolute after:border-b after:w-4 after:-right-4 after:bottom-0 after:hidden md:ff7:after:block"
+    )}
   >
     {
       pages.map((page, index) => {
         const isCurrent = currentPage === page;
         return (
-          <li
-            class={clsx(
-              "relative md:p-2 text-center",
-              isCurrent ? "md:border-x md:border-t" : "md:border-b",
-              index === 0 &&
-                "before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[1px] before:hidden md:before:block",
-              index === pages.length - 1 &&
-                "after:absolute after:border-b after:w-4 after:-right-4 after:-bottom-[1px] after:hidden md:ff7:after:block"
-            )}
-          >
+          <li class="relative md:p-2 text-center">
             <Anchor
               href={
                 isCurrent
@@ -47,7 +42,7 @@ const translate = useTranslations(Astro.currentLocale!);
               }
               classname={clsx(
                 "group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-2 items-center justify-center",
-                isCurrent ? "font-bold" : ""
+                isCurrent && "font-bold"
               )}
               aria-current={isCurrent ? "page" : undefined}
             >
@@ -56,6 +51,19 @@ const translate = useTranslations(Astro.currentLocale!);
               </div>
               {translate(page)}
             </Anchor>
+            <div
+              class={clsx(
+                "hidden md:block absolute bottom-0 left-0 w-full",
+                !isCurrent && "border-t"
+              )}
+            />
+            <div
+              transition:name={`${page}-active`}
+              class={clsx(
+                "hidden md:block absolute top-0 left-0 w-full h-full",
+                isCurrent ? "border-t border-x" : "translate-y-full"
+              )}
+            />
           </li>
         );
       })
