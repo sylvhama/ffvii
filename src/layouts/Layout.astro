@@ -29,6 +29,9 @@ const titleMeta = titlePrefix ? `${titlePrefix} | ${title}` : title;
 const description = descriptionProp || translate("description");
 const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
 const canonicalUrl = new URL(otherLocalePathname, Astro.site).href;
+const ogImageUrl = currentUrl.endsWith("/")
+  ? currentUrl + "og.png"
+  : currentUrl + "/og.png";
 ---
 
 <!doctype html>
@@ -38,6 +41,7 @@ const canonicalUrl = new URL(otherLocalePathname, Astro.site).href;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     {isFrench ? <link rel="canonical" href={canonicalUrl} /> : null}
     <title>{titleMeta}</title>
     <meta name="description" content={description} />
@@ -45,13 +49,13 @@ const canonicalUrl = new URL(otherLocalePathname, Astro.site).href;
     <meta property="twitter:url" content={currentUrl} />
     <meta property="twitter:title" content={titleMeta} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="https://ff7.rocks/share.png" />
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:image" content={ogImageUrl} />
+    <meta property="twitter:card" content="summary_large_imag" />
 
     <meta property="og:url" content={currentUrl} />
     <meta property="og:title" content={titleMeta} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://ff7.rocks/share.png" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={Astro.currentLocale} />
     <ClientRouter />
