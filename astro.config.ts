@@ -43,6 +43,7 @@ const render = (title: string, subtitle: string) => ({
           children: subtitle,
           style: {
             fontSize: 48,
+            color: "#20B2AA",
           },
         },
       },
