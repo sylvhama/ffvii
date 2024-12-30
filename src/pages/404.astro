@@ -7,7 +7,7 @@ const translate = useTranslations(Astro.currentLocale!);
 const notFound = translate("notFound");
 ---
 
-<Layout breadcrumbs={[{ name: notFound }]}>
+<Layout titlePrefix={notFound} breadcrumbs={[{ name: notFound }]}>
   <H2>
     {notFound}
   </H2>
