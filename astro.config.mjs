@@ -16,4 +16,5 @@ export default defineConfig({
     "/games": "/",
     "/fr/games": "/fr",
   },
+  site: "https://ff7.rocks",
 });

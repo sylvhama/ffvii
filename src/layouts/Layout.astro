@@ -18,12 +18,17 @@ import "./style.css";
 
 const translate = useTranslations(Astro.currentLocale!);
 const isFrench = Astro.currentLocale === "fr";
-const otherLocaleUrl = getOtherLocalePathname(isFrench, Astro.url.pathname);
+const otherLocalePathname = getOtherLocalePathname(
+  isFrench,
+  Astro.url.pathname
+);
 const { titlePrefix, description: descriptionProp, breadcrumbs } = Astro.props;
 
 const title = translate("title");
 const titleMeta = titlePrefix ? `${titlePrefix} | ${title}` : title;
 const description = descriptionProp || translate("description");
+const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
+const canonicalUrl = new URL(otherLocalePathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -33,27 +38,21 @@ const description = descriptionProp || translate("description");
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    {
-      isFrench ? (
-        <link rel="canonical" href={`https://ff7.rocks${otherLocaleUrl}`} />
-      ) : null
-    }
+    {isFrench ? <link rel="canonical" href={canonicalUrl} /> : null}
     <title>{titleMeta}</title>
     <meta name="description" content={description} />
 
-    <meta name="twitter:image" content="https://ff7.rocks/share.png" />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:title" content={titleMeta} />
-    <meta name="twitter:site" content="@sylvhama" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:url" content={currentUrl} />
+    <meta property="twitter:title" content={titleMeta} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://ff7.rocks/share.png" />
+    <meta property="twitter:card" content="summary" />
 
+    <meta property="og:url" content={currentUrl} />
     <meta property="og:title" content={titleMeta} />
-    <meta property="og:image" content="https://ff7.rocks/share.png" />
-    <meta property="og:image:width" content="1254" />
-    <meta property="og:image:height" content="665" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ff7.rocks" />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://ff7.rocks/share.png" />
+    <meta property="og:type" content="website" />
     <meta property="og:locale" content={Astro.currentLocale} />
     <ClientRouter />
   </head>
@@ -98,7 +97,7 @@ const description = descriptionProp || translate("description");
           <div>
             {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
           </div>
-          <Anchor lang={isFrench ? "en" : "fr"} href={otherLocaleUrl}>
+          <Anchor lang={isFrench ? "en" : "fr"} href={otherLocalePathname}>
             {translate("langLink")}
           </Anchor>
           <Anchor
