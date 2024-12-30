@@ -53,7 +53,7 @@ const translate = useTranslations(Astro.currentLocale!);
 
 <fieldset id="toggle-theme">
   <legend class="sr-only">{translate("pickTheme")}</legend>
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-3 gap-4 font-mono">
     <label
       class="pointer w-full block border-2 border-black has-[:checked]:border-pink rounded-md p-2 bg-black text-white has-[:focus-visible]:ring-2 ring-offset-4 ring-white ring-offset-black"
     >
@@ -64,7 +64,7 @@ const translate = useTranslations(Astro.currentLocale!);
         type="radio"
       />
       <span class="font-bold">{translate("darkHeading")}</span>
-      <span class="text-gray-400">{translate("darkSubHeading")}</span>
+      <span>{translate("darkSubHeading")}</span>
     </label>
     <label
       class="pointer w-full block border-2 border-white has-[:checked]:border-pink rounded-md p-2 bg-realWhite text-black has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white"
@@ -76,7 +76,7 @@ const translate = useTranslations(Astro.currentLocale!);
         type="radio"
       />
       <span class="font-bold">{translate("lightHeading")}</span>
-      <span class="text-gray-500">{translate("lightSubHeading")}</span>
+      <span>{translate("lightSubHeading")}</span>
     </label>
     <label
       class="pointer w-full block border-2 border-realBlack has-[:checked]:border-ff7Pink rounded-md p-2 bg-ff7 text-white has-[:focus-visible]:ring-2 ring-offset-4 ring-white ring-offset-realBlack"
@@ -88,7 +88,7 @@ const translate = useTranslations(Astro.currentLocale!);
         type="radio"
       />
       <span class="font-bold">{translate("ff7Heading")}</span>
-      <span class="text-gray-400">{translate("ff7SubHeading")}</span>
+      <span>{translate("ff7SubHeading")}</span>
     </label>
   </div>
 </fieldset>
