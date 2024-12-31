@@ -13,7 +13,7 @@ A website to showcase my Final Fantasy VII collection.
 
 - favicon: https://ramsesc.gumroad.com/l/finalfantasy
 - Cursor: https://finalfantasy.fandom.com/wiki/Cursor
-- Busted sword: https://www.reddit.com/r/FinalFantasy/comments/98hmdn/minimalist_vector_of_the_buster_sword/
+- Buster sword: https://commons.wikimedia.org/wiki/File:Buster_Sword_1625949.svg
 - icons: https://icon-sets.iconify.design/
 
 - Dracula colors: https://draculatheme.com/
