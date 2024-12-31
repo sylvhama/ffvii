@@ -58,7 +58,7 @@ export const translations = {
       J'ai rassemblé ces objets dans tous les endroits où j'ai vécu : France, Corée du Sud, Japon et Canada.  
       Mon objectif est de partager les souvenirs attachés à chaque pièce, et non de posséder tous les objets possibles.  
       Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux.`,
-    breadcrumb: "fil d'Ariane",
+    breadcrumb: "Fil d'Ariane",
     home: "Accueil",
     github: "GitHub",
     notFound: "Page inexistante",
