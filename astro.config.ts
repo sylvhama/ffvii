@@ -19,7 +19,7 @@ const svg = {
     style: {
       position: "absolute",
       right: 0,
-      bottom: 0,
+      bottom: "-20px",
       transform: "rotate(-30deg)",
     },
     children: [
