@@ -11,7 +11,6 @@ A website to showcase my Final Fantasy VII collection.
 - Breadcrumb: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
 - Nav: https://tympanus.net/Development/LineMenuStyles/#Ceres
 
-- favicon: https://ramsesc.gumroad.com/l/finalfantasy
 - Cursor: https://finalfantasy.fandom.com/wiki/Cursor
 - Buster sword: https://commons.wikimedia.org/wiki/File:Buster_Sword_1625949.svg
 - icons: https://icon-sets.iconify.design/
