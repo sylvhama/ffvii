@@ -1,4 +1,10 @@
 ---
+declare global {
+  interface Window {
+    setFavicon: (background?: string, foreground?: string) => void;
+  }
+}
+
 import { useTranslations } from "@i18n/utils";
 
 const translate = useTranslations(Astro.currentLocale!);
@@ -31,14 +37,17 @@ const translate = useTranslations(Astro.currentLocale!);
             localStorage.theme = "dark";
             document.documentElement.classList.add("dark");
             document.documentElement.classList.remove("ff7");
+            window.setFavicon?.();
           } else {
             document.documentElement.classList.remove("dark");
             if (target.value === "ff7") {
               document.documentElement.classList.add("ff7");
               localStorage.theme = "ff7";
+              window.setFavicon?.("mediumblue");
             } else {
               document.documentElement.classList.remove("ff7");
               localStorage.theme = "light";
+              window.setFavicon?.("white", "black");
             }
           }
         });

@@ -66,8 +66,36 @@ const ogImageUrl = currentUrl.endsWith("/")
   <body
     class="mx-auto max-w-[75rem] bg-realWhite md:p-4 md:pb-0 dark:bg-black dark:text-white ff7:bg-realBlack ff7:text-white"
   >
+    <div id="favicon" class="hidden" aria-hidden="true" hidden>
+      "data:image/svg+xml,<svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        ><rect width="100" height="100" fill="BACKGROUND_COLOR"></rect><text
+          x="8"
+          y="70"
+          font-size="60"
+          font-family="Arial"
+          fill="FOREGROUND_COLOR">Ⅶ</text
+        ></svg
+      >"
+    </div>
     <script is:inline>
       function init() {
+        window.setFavicon = (backgorund = "black", foreground = "white") => {
+          const faviconInner = document
+            .querySelector("#favicon")
+            .innerHTML.trim()
+            .replaceAll('"', "'")
+            .slice(1, -1);
+          const iconLink = document.querySelector('link[rel="icon"]');
+
+          iconLink?.setAttribute(
+            "href",
+            faviconInner
+              ?.replace("BACKGROUND_COLOR", backgorund)
+              .replace("FOREGROUND_COLOR", foreground)
+          );
+        };
         if (
           localStorage.theme === "dark" ||
           (!("theme" in localStorage) &&
@@ -75,10 +103,12 @@ const ogImageUrl = currentUrl.endsWith("/")
         ) {
           document.documentElement.classList.add("dark");
           document.documentElement.classList.remove("ff7");
+          window.setFavicon();
         } else {
           document.documentElement.classList.remove("dark");
           if (localStorage.theme === "ff7") {
             document.documentElement.classList.add("ff7");
+            window.setFavicon("mediumblue");
           }
         }
       }
