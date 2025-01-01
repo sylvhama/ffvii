@@ -98,13 +98,15 @@ const ogImageUrl = currentUrl.endsWith("/")
         </span>
       </h1>
       <div class="pt-4">
-        <div
-          class="pb-8 grid grid-cols-[minmax(0px,_1fr)_auto_auto_auto] items-center gap-4"
-        >
+        <div class="pb-8 flex flex-wrap items-center gap-4">
           <div>
             {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
           </div>
-          <Anchor lang={isFrench ? "en" : "fr"} href={otherLocalePathname}>
+          <Anchor
+            classname="ml-auto"
+            lang={isFrench ? "en" : "fr"}
+            href={otherLocalePathname}
+          >
             {translate("langLink")}
           </Anchor>
           <Anchor
