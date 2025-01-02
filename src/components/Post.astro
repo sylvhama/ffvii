@@ -59,7 +59,7 @@ const translate = useTranslations(Astro.currentLocale!);
     { name: data.title },
   ]}
 >
-  <div class="md:grid md:grid-cols-[auto_1fr] gap-8">
+  <article class="md:grid md:grid-cols-[auto_1fr] gap-8">
     {
       data.images.map((image, index) => (
         <Image
@@ -106,5 +106,5 @@ const translate = useTranslations(Astro.currentLocale!);
         ) : null
       }
     </div>
-  </div>
+  </article>
 </Layout>
