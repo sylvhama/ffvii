@@ -33,7 +33,6 @@ const translate = useTranslations(Astro.currentLocale!);
             classname="relative group block hover:no-underline focus-visible:no-underline"
           >
             <h3
-              transition:name={`${id}-title`}
               class="
               absolute z-10 rounded-md left-0 top-0 opacity-0 overflow-hidden transition-opacity
               duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100
@@ -41,7 +40,7 @@ const translate = useTranslations(Astro.currentLocale!);
               dark:bg-realBlack ff7:bg-realBlack bg-opacity-50 dark:bg-opacity-50 ff7:bg-opacity-50
               font-mono text-base text-realBlack dark:text-realWhite ff7:text-realWhite"
             >
-              {data.title}
+              <span transition:name={`${id}-title`}>{data.title}</span>
             </h3>
 
             <Image
