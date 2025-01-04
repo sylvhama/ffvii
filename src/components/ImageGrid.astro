@@ -5,7 +5,6 @@ import type { CollectionKey } from "astro:content";
 
 import Layout from "@layouts/Layout.astro";
 import Nav from "@components/Nav.astro";
-import H2 from "@components/H2.astro";
 import Anchor from "@components/Anchor.astro";
 import { getLocaleCollection } from "@utils";
 import { useTranslations } from "@i18n/utils";
@@ -31,24 +30,26 @@ const translate = useTranslations(Astro.currentLocale!);
               Astro.currentLocale || "en",
               `${collection}/${slug.replace("fr/", "")}`
             )}
-            classname="block hover:no-underline focus-visible:no-underline"
+            classname="relative group block hover:no-underline focus-visible:no-underline"
           >
-            <div class="relative overflow-hidden">
-              <div class="absolute z-10 rounded-md left-0 top-0 opacity-0 transition-opacity duration-[250ms] hover:opacity-100 focus-visible:opacity-100 w-full h-full text-center flex items-center justify-center p-2 bg-realWhite dark:bg-realBlack ff7:bg-realBlack bg-opacity-50 dark:bg-opacity-50 ff7:bg-opacity-50">
-                <h3
-                  transition:name={`${id}-title`}
-                  class="font-mono text-base text-realBlack dark:text-realWhite ff7:text-realWhite"
-                >
-                  {data.title}
-                </h3>
-              </div>
-              <Image
-                transition:name={`${id}-image`}
-                class="object-contain rounded-md"
-                src={data.images[0]}
-                alt={data.imagesAlt[0]}
-              />
-            </div>
+            <h3
+              transition:name={`${id}-title`}
+              class="
+              absolute z-10 rounded-md left-0 top-0 opacity-0 overflow-hidden transition-opacity
+              duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100
+              w-full h-full text-center flex items-center justify-center p-2 bg-realWhite
+              dark:bg-realBlack ff7:bg-realBlack bg-opacity-50 dark:bg-opacity-50 ff7:bg-opacity-50
+              font-mono text-base text-realBlack dark:text-realWhite ff7:text-realWhite"
+            >
+              {data.title}
+            </h3>
+
+            <Image
+              transition:name={`${id}-image`}
+              class="object-contain rounded-md"
+              src={data.images[0]}
+              alt={data.imagesAlt[0]}
+            />
           </Anchor>
         </li>
       ))
