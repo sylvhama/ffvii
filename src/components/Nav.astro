@@ -22,7 +22,7 @@ const translate = useTranslations(Astro.currentLocale!);
   <ul
     class={clsx(
       "relative grid grid-cols-[auto_auto] sm:grid-cols-[auto_auto_auto] md:grid-cols-[auto_auto_auto_auto_auto_auto] gap-2 md:gap-0",
-      "before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[0px] before:hidden md:before:block",
+      "before:absolute before:border-b before:w-8 before:-left-8 before:-bottom-[0px] before:hidden md:before:block before:border-black dark:before:border-white ff7:before:border-white",
       "after:absolute after:border-b after:w-4 after:-right-4 after:-bottom-[0px] after:hidden md:ff7:after:block"
     )}
   >
@@ -57,7 +57,7 @@ const translate = useTranslations(Astro.currentLocale!);
             <div
               transition:name={`${page}-active-sides`}
               class={clsx(
-                "hidden md:block absolute top-0 left-0 w-full h-full border-t ",
+                "hidden md:block absolute top-0 left-0 w-full h-full border-t border-black dark:border-white ff7:border-white",
                 isCurrent ? "border-x" : "translate-y-full top-[-1px]"
               )}
             />
