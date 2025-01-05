@@ -20,6 +20,9 @@ export default {
       fontFamily: {
         mono: ['"Lucida Console"', "Courier", ...defaultTheme.fontFamily.mono],
       },
+      screens: {
+        xs: "440px",
+      },
     },
   },
   plugins: [
