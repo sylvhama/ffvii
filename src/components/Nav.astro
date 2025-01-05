@@ -43,24 +43,20 @@ const isFrench = Astro.currentLocale === "fr";
                     )
               }
               classname={clsx(
-                "relative z-10 group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-2 items-center justify-center",
+                "relative z-10 group hover:before:hidden focus-visible:before:hidden text-xl uppercase font-mono break-words flex flex-wrap gap-x-2 items-center justify-center",
                 isCurrent && "font-bold"
               )}
               aria-current={isCurrent ? "page" : undefined}
             >
               <div
                 class={clsx(
-                  "pointer group-hover:before:block group-focus-visible:before:block",
+                  "flex items-center justify-center",
                   isFrench && "max-xs:w-full"
                 )}
               >
-                <Icon
-                  class="inline-block"
-                  name={page}
-                  aria-hidden="true"
-                  width="24"
-                  height="24"
-                />
+                <div class="pointer group-hover:before:block group-focus-visible:before:block">
+                  <Icon name={page} aria-hidden="true" width="24" height="24" />
+                </div>
               </div>
               <span transition:name={`${translatedPage}-link`}>
                 {translatedPage}
