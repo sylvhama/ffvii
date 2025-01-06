@@ -9,7 +9,7 @@ const { classname, ...restProps } = Astro.props;
 ---
 
 <h2
-  class={clsx("pb-4 text-2xl font-mono text-balance", classname)}
+  class={clsx("pb-4 text-lg font-mono text-balance", classname)}
   {...restProps}
 >
   <slot />
