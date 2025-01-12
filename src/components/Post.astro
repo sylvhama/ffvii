@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
 import type { CollectionEntry, CollectionKey } from "astro:content";
 
@@ -59,19 +59,23 @@ const translate = useTranslations(Astro.currentLocale!);
     { name: data.title },
   ]}
 >
-  <article class="md:grid md:grid-cols-[auto_1fr] gap-8">
+  <article class="md:grid md:grid-cols-2 gap-8">
     {
       data.images.map((image, index) => (
-        <Image
+        <Picture
           transition:name={`${id}-image`}
-          class={clsx(
-            "main-image md:sticky top-8 object-contain rounded-md md:max-w-[360px] lg:max-w-full duration-500",
-            index > 0 && "hidden"
-          )}
+          class="mx-auto object-contain md:sticky top-8"
+          pictureAttributes={{
+            class: clsx(
+              "main-image rounded-md duration-500 transition-opacity",
+              index > 0 && "hidden"
+            ),
+          }}
           width={500}
           height={500}
           src={image}
           alt={data.imagesAlt[index]}
+          densities={[1.5, 2]}
         />
       ))
     }
@@ -92,12 +96,13 @@ const translate = useTranslations(Astro.currentLocale!);
                     type="radio"
                     checked={index === 0}
                   />
-                  <Image
+                  <Picture
                     class="rounded-md object-contain peer-checked:opacity-50 transition:opacity duration-500"
                     width={130}
                     height={130}
                     src={image}
                     alt={data.imagesAlt[index]}
+                    densities={[1.5, 2]}
                   />
                 </label>
               ))}

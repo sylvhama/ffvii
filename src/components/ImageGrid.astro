@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { CollectionKey } from "astro:content";
 
@@ -43,13 +43,14 @@ const translate = useTranslations(Astro.currentLocale!);
               <span transition:name={`${id}-title`}>{data.title}</span>
             </h3>
 
-            <Image
+            <Picture
               transition:name={`${id}-image`}
               class="object-contain rounded-md"
               src={data.images[0]}
               alt={data.imagesAlt[0]}
               width={300}
               height={300}
+              densities={[1.5, 2]}
             />
           </Anchor>
         </li>
