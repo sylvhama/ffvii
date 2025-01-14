@@ -64,10 +64,10 @@ const translate = useTranslations(Astro.currentLocale!);
       data.images.map((image, index) => (
         <Picture
           transition:name={`${id}-image`}
-          class="mx-auto object-contain md:sticky top-8"
+          class="mx-auto object-contain md:sticky top-8 rounded-md"
           pictureAttributes={{
             class: clsx(
-              "main-image rounded-md duration-500 transition-opacity",
+              "main-image duration-500 transition-opacity",
               index > 0 && "hidden"
             ),
           }}
