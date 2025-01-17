@@ -63,6 +63,9 @@ const ogImageUrl = currentUrl.endsWith("/")
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={Astro.currentLocale} />
+
+    <link rel="preload" href="/cursor.webp" as="image" type="image/webp" />
+
     <ClientRouter />
   </head>
   <body
