@@ -1,17 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { useTranslations } from "@i18n/utils";
-import H2 from "@components/H2.astro";
+import Nav from "@components/Nav.astro";
 
 const translate = useTranslations(Astro.currentLocale!);
 const notFound = translate("notFound");
 ---
 
 <Layout titlePrefix={notFound} breadcrumbs={[{ name: notFound }]}>
-  <H2>
+  <Nav />
+  <h2 class="sr-only">
     {notFound}
-  </H2>
-  <blockquote class="text-xl italic">
+  </h2>
+  <blockquote class="pt-8 text-xl italic">
     <p>
       “{translate("quote")}”
     </p>

@@ -11,7 +11,7 @@ const pages = ["games", "movies", "books", "music", "events", "merch"] as const;
 type Page = (typeof pages)[number];
 
 interface Props {
-  currentPage: Page;
+  currentPage?: Page;
 }
 
 const { currentPage } = Astro.props;
@@ -75,7 +75,3 @@ const isFrench = Astro.currentLocale === "fr";
     }
   </ul>
 </nav>
-
-<h2 class="sr-only">
-  {translate(`${currentPage}Heading` as Page)}
-</h2>
