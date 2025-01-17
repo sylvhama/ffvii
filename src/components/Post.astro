@@ -35,7 +35,30 @@ const translate = useTranslations(Astro.currentLocale!);
           });
           mainImages[indexToShow].classList.remove("hidden");
           mainImages[indexToShow].classList.add("opacity-1");
+          if (window.innerWidth < 768) {
+            mainImages[indexToShow]
+              .querySelector("img")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }
         }
+      });
+
+      const preloadResponsiveImage = (event: Event) => {
+        const target = event.target as HTMLInputElement;
+        const indexToShow = Number(target.value);
+        if (!Number.isNaN(indexToShow) && indexToShow > 0) {
+          const preloadLink = document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "image";
+          preloadLink.imageSrcset =
+            mainImages[indexToShow].querySelector("source")!.srcset;
+          document.head.appendChild(preloadLink);
+        }
+      };
+
+      // we don't try to preload on focus since focus will also trigger change event
+      input.addEventListener("mouseenter", preloadResponsiveImage, {
+        once: true,
       });
     });
   }
@@ -88,9 +111,9 @@ const translate = useTranslations(Astro.currentLocale!);
             <legend class="sr-only">{translate("setPicture")}</legend>
             <div class="flex flex-wrap gap-4">
               {data.images.map((image, index) => (
-                <label class="pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black">
+                <label class="relative pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black">
                   <input
-                    class="sr-only peer"
+                    class="cursor-pointer absolute opacity-0 w-full h-full z-10 peer"
                     name="image"
                     value={index}
                     type="radio"
