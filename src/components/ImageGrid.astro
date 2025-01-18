@@ -89,6 +89,7 @@ const optimizedImages = await Promise.all(
               width={300}
               height={300}
               densities={[1.5, 2]}
+              loading={index > 3 ? "lazy" : "eager"}
             />
           </Anchor>
         </li>

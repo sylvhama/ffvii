@@ -126,6 +126,7 @@ const getPostUrl = (slug: string) =>
           src={image}
           alt={data.imagesAlt[index]}
           densities={[1.5, 2]}
+          loading="eager"
         />
       ))
     }
@@ -157,6 +158,7 @@ const getPostUrl = (slug: string) =>
                     src={image}
                     alt={data.imagesAlt[index]}
                     densities={[1.5, 2]}
+                    loading="lazy"
                   />
                 </label>
               ))}
