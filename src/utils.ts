@@ -1,3 +1,4 @@
+import { getImage } from "astro:assets";
 import { getCollection, type CollectionKey } from "astro:content";
 
 export function getEnglishStaticPaths(collection: CollectionKey) {
@@ -45,5 +46,34 @@ export async function getLocaleCollection(
   return await getCollection(collection, ({ id }) => {
     if (currentLocale === "en") return !id.startsWith("fr/");
     return id.startsWith("fr/");
+  });
+}
+
+type Image = {
+  src: string;
+  width: number;
+  height: number;
+  format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+};
+
+export async function getOptimizedImage({
+  image,
+  width = 500,
+  height = 500,
+  format = "webp",
+  densities = [1.5, 2],
+}: {
+  image: Image;
+  width?: number;
+  height?: number;
+  format?: string;
+  densities?: number[];
+}) {
+  return await getImage({
+    src: image,
+    format,
+    width,
+    height,
+    densities,
   });
 }

@@ -6,7 +6,7 @@ import type { CollectionKey } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Nav from "@components/Nav.astro";
 import Anchor from "@components/Anchor.astro";
-import { getLocaleCollection } from "@utils";
+import { getLocaleCollection, getOptimizedImage } from "@utils";
 import { useTranslations } from "@i18n/utils";
 
 interface Props {
@@ -17,21 +17,58 @@ const { collection } = Astro.props;
 
 const posts = await getLocaleCollection(collection, Astro.currentLocale);
 const translate = useTranslations(Astro.currentLocale!);
+const optimizedImages = await Promise.all(
+  posts.map(({ data: { images } }) => getOptimizedImage({ image: images[0] }))
+);
 ---
+
+<script>
+  const preloadResponsiveImage = (srcset: string) => {
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+    preloadLink.imageSrcset = srcset;
+    document.head.appendChild(preloadLink);
+  };
+
+  const previewImages =
+    document.querySelectorAll<HTMLImageElement>(".preview-image");
+
+  previewImages.forEach((previewImage) => {
+    const onPreload = (event: Event) => {
+      const target = event.target;
+      const dataSrcset = "data-srcset";
+      if (
+        target instanceof HTMLAnchorElement &&
+        target.hasAttribute(dataSrcset)
+      ) {
+        preloadResponsiveImage(target.getAttribute(dataSrcset)!);
+        target.removeAttribute(dataSrcset);
+      }
+    };
+    previewImage.addEventListener("mouseenter", onPreload, {
+      once: true,
+    });
+    previewImage.addEventListener("focus", onPreload, {
+      once: true,
+    });
+  });
+</script>
 
 <Layout titlePrefix={translate(collection)}>
   <Nav currentPage={collection} />
   <h2 class="sr-only">{translate(`${collection}Heading`)}</h2>
   <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
-      posts.map(({ id, data, slug }) => (
+      posts.map(({ id, data, slug }, index) => (
         <li>
           <Anchor
             href={getRelativeLocaleUrl(
               Astro.currentLocale || "en",
               `${collection}/${slug.replace("fr/", "")}`
             )}
-            classname="relative group block hover:no-underline focus-visible:no-underline"
+            classname="preview-image relative group block hover:no-underline focus-visible:no-underline"
+            data-srcset={optimizedImages[index].srcSet.attribute}
           >
             <h3
               class="
