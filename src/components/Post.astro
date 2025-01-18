@@ -1,12 +1,15 @@
 ---
 import clsx from "clsx";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
+import Anchor from "@components/Anchor.astro";
 import { Picture } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
 import type { CollectionEntry, CollectionKey } from "astro:content";
+import { getLocaleCollection } from "@utils";
 
 interface Props extends Pick<CollectionEntry<CollectionKey>, "data" | "id"> {
   collection: Parameters<ReturnType<typeof useTranslations>>[0];
@@ -15,6 +18,29 @@ interface Props extends Pick<CollectionEntry<CollectionKey>, "data" | "id"> {
 const { id, data, collection } = Astro.props;
 
 const translate = useTranslations(Astro.currentLocale!);
+
+const { previousSlug, nextSlug, previousTitle, nextTitle } =
+  await (async function () {
+    const posts = await getLocaleCollection(
+      collection as CollectionKey,
+      Astro.currentLocale
+    );
+    const currentIndex = posts.findIndex((post) => {
+      return id === post.id;
+    });
+    return {
+      previousSlug: posts[currentIndex - 1]?.slug,
+      previousTitle: posts[currentIndex - 1]?.data.title,
+      nextSlug: posts[currentIndex + 1]?.slug,
+      nextTitle: posts[currentIndex + 1]?.data.title,
+    };
+  })();
+
+const getPostUrl = (slug: string) =>
+  getRelativeLocaleUrl(
+    Astro.currentLocale || "en",
+    `${collection}/${slug.replace("fr/", "")}`
+  );
 ---
 
 <script>
@@ -140,4 +166,36 @@ const translate = useTranslations(Astro.currentLocale!);
       }
     </div>
   </article>
+  {
+    previousSlug || nextSlug ? (
+      <div class="pt-8 flex justify-between gap-8">
+        {previousSlug ? (
+          <Anchor
+            classname="grid grid-cols-[auto_auto] gap-1 items-center"
+            href={getPostUrl(previousSlug)}
+          >
+            <Icon name="previous" aria-hidden="true" width="18" height="18" />
+            <span class="block w-full text-ellipsis overflow-hidden whitespace-nowrap">
+              {previousTitle}
+            </span>
+          </Anchor>
+        ) : (
+          <div />
+        )}
+        {nextSlug ? (
+          <Anchor
+            classname="grid grid-cols-[auto_auto] gap-1 items-center"
+            href={getPostUrl(nextSlug)}
+          >
+            <span class="block w-full max-w-max text-ellipsis overflow-hidden whitespace-nowrap">
+              {nextTitle}
+            </span>
+            <Icon name="next" aria-hidden="true" width="18" height="18" />
+          </Anchor>
+        ) : (
+          <div />
+        )}
+      </div>
+    ) : null
+  }
 </Layout>
