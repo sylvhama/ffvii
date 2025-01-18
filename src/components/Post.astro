@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
 import { Picture } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
 import type { CollectionEntry, CollectionKey } from "astro:content";
@@ -68,20 +69,20 @@ const translate = useTranslations(Astro.currentLocale!);
   document.addEventListener("astro:after-swap", init);
 </script>
 
-<Layout
-  titlePrefix={data.title}
-  description={data.description}
-  breadcrumbs={[
-    {
-      name: translate(collection),
-      path: getRelativeLocaleUrl(
-        Astro.currentLocale || "en",
-        collection === "games" ? "/" : collection
-      ),
-    },
-    { name: data.title },
-  ]}
->
+<Layout titlePrefix={data.title} description={data.description}>
+  <Breadcrumb
+    breadcrumbs={[
+      {
+        name: translate(collection),
+        path: getRelativeLocaleUrl(
+          Astro.currentLocale || "en",
+          collection === "games" ? "/" : collection
+        ),
+      },
+      { name: data.title },
+    ]}
+    slot="breadcrumb"
+  />
   <article class="md:grid md:grid-cols-2 gap-8">
     {
       data.images.map((image, index) => (

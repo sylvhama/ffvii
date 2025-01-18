@@ -2,15 +2,12 @@
 interface Props {
   titlePrefix?: string;
   description?: string;
-  breadcrumbs?: { name: string; path?: string }[];
 }
 
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { ClientRouter } from "astro:transitions";
-import { Icon } from "astro-icon/components";
 
 import Anchor from "@components/Anchor.astro";
-import Breadcrumb from "@components/Breadcrumb.astro";
+import Header from "@components/Header.astro";
 import BustedSword from "@components/BustedSword.astro";
 import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
 
@@ -22,7 +19,7 @@ const otherLocalePathname = getOtherLocalePathname(
   isFrench,
   Astro.url.pathname
 );
-const { titlePrefix, description: descriptionProp, breadcrumbs } = Astro.props;
+const { titlePrefix, description: descriptionProp } = Astro.props;
 
 const title = translate("title");
 const titleMeta = titlePrefix ? `${titlePrefix} | ${title}` : title;
@@ -133,42 +130,9 @@ const ogImageUrl = currentUrl.endsWith("/")
         </span>
       </h1>
       <div class="pt-4">
-        <div class="pb-8 flex flex-wrap items-center gap-4">
-          <div>
-            {breadcrumbs ? <Breadcrumb breadcrumbs={breadcrumbs} /> : null}
-          </div>
-          <Anchor
-            classname="ml-auto"
-            lang={isFrench ? "en" : "fr"}
-            href={otherLocalePathname}
-          >
-            {translate("langLink")}
-          </Anchor>
-          <Anchor
-            href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-            classname="hover:no-underline focus-visible:no-underline"
-            aria-current={Astro.url.pathname.includes("/settings")
-              ? "page"
-              : undefined}
-            ><Icon
-              name="settings"
-              title={translate("settings")}
-              aria-label={translate("settings")}
-            />
-          </Anchor>
-          <Anchor
-            href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
-            classname="hover:no-underline focus-visible:no-underline"
-            aria-current={Astro.url.pathname.includes("/about")
-              ? "page"
-              : undefined}
-            ><Icon
-              name="question"
-              title={translate("about")}
-              aria-label={translate("about")}
-            />
-          </Anchor>
-        </div>
+        <Header otherLocalePathname={otherLocalePathname}>
+          <slot name="breadcrumb" />
+        </Header>
 
         <h1
           class="block md:hidden pb-8 text-xl font-bold font-mono text-balance text-center"

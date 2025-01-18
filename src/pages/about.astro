@@ -2,12 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import { useTranslations } from "@i18n/utils";
 import H2 from "@components/H2.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
 
 const translate = useTranslations(Astro.currentLocale!);
 const about = translate("about");
 ---
 
-<Layout titlePrefix={about} breadcrumbs={[{ name: about }]}>
+<Layout titlePrefix={about}>
+  <Breadcrumb breadcrumbs={[{ name: about }]} slot="breadcrumb" />
   <H2>
     {about}
   </H2>

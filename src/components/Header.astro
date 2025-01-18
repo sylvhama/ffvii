@@ -1,0 +1,45 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
+import Anchor from "@components/Anchor.astro";
+import { useTranslations } from "@i18n/utils";
+
+interface Props {
+  otherLocalePathname: string;
+}
+
+const translate = useTranslations(Astro.currentLocale!);
+const isFrench = Astro.currentLocale === "fr";
+const { otherLocalePathname } = Astro.props;
+---
+
+<div class="pb-8 flex flex-wrap items-center gap-4">
+  <div><slot /></div>
+  <Anchor
+    classname="ml-auto"
+    lang={isFrench ? "en" : "fr"}
+    href={otherLocalePathname}
+  >
+    {translate("langLink")}
+  </Anchor>
+  <Anchor
+    href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
+    classname="hover:no-underline focus-visible:no-underline"
+    aria-current={Astro.url.pathname.includes("/settings") ? "page" : undefined}
+    ><Icon
+      name="settings"
+      title={translate("settings")}
+      aria-label={translate("settings")}
+    />
+  </Anchor>
+  <Anchor
+    href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
+    classname="hover:no-underline focus-visible:no-underline"
+    aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
+    ><Icon
+      name="question"
+      title={translate("about")}
+      aria-label={translate("about")}
+    />
+  </Anchor>
+</div>
