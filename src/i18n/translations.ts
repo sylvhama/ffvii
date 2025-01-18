@@ -17,6 +17,7 @@ export const translations = {
       I've gathered these items from everywhere I've lived: France, South Korea, Japan, and Canada. 
       My goal is to share the memories tied to each piece, not to own every collectible.
       It also includes photos from concerts and events I've attended, showcasing some of my most cherished moments.`,
+    aboutImgAlt: "A picture of all my Final Fantasy 7 collection",
     breadcrumb: "Breadcrumb",
     home: "Home",
     github: "GitHub",
@@ -58,6 +59,7 @@ export const translations = {
       J'ai rassemblé ces objets dans tous les endroits où j'ai vécu : France, Corée du Sud, Japon et Canada.  
       Mon objectif est de partager les souvenirs attachés à chaque pièce, et non de posséder tous les objets possibles.  
       Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux.`,
+    aboutImgAlt: "Une photo de toute ma collection Final Fantasy 7",
     breadcrumb: "Fil d'Ariane",
     home: "Accueil",
     github: "GitHub",

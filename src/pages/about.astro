@@ -1,8 +1,10 @@
 ---
+import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import { useTranslations } from "@i18n/utils";
 import H2 from "@components/H2.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
+import collectionPhoto from "@assets/collection.jpg";
 
 const translate = useTranslations(Astro.currentLocale!);
 const about = translate("about");
@@ -13,5 +15,12 @@ const about = translate("about");
   <H2>
     {about}
   </H2>
-  <p>{translate("aboutText")}</p>
+  <p class="pb-4">{translate("aboutText")}</p>
+  <Picture
+    class={"rounded-md mx-auto"}
+    src={collectionPhoto}
+    alt={translate("aboutImgAlt")}
+    densities={[1.5, 2]}
+    width={800}
+  />
 </Layout>
