@@ -162,10 +162,6 @@ export default defineConfig({
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "en",
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: true,
-    },
   },
   redirects: {
     "/games": "/",
