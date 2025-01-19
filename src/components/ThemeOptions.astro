@@ -19,39 +19,43 @@ const translate = useTranslations(Astro.currentLocale!);
   }
 
   function init() {
-    if (document.documentElement.classList.contains("dark")) {
-      check('input[value="dark"]');
-    } else if (document.documentElement.classList.contains("ff7")) {
-      check('input[value="ff7"]');
-    } else {
-      check('input[value="light"]');
-    }
+    try {
+      if (document.documentElement.classList.contains("dark")) {
+        check('input[value="dark"]');
+      } else if (document.documentElement.classList.contains("ff7")) {
+        check('input[value="ff7"]');
+      } else {
+        check('input[value="light"]');
+      }
 
-    const toggleTheme = document.getElementById("toggle-theme");
-    if (toggleTheme) {
-      toggleTheme.querySelectorAll("input").forEach((input) => {
-        input.addEventListener("change", (event) => {
-          document.body.classList.add("duration-300");
-          const target = event.target as HTMLInputElement;
-          if (target.value === "dark") {
-            localStorage.theme = "dark";
-            document.documentElement.classList.add("dark");
-            document.documentElement.classList.remove("ff7");
-            window.setFavicon?.();
-          } else {
-            document.documentElement.classList.remove("dark");
-            if (target.value === "ff7") {
-              document.documentElement.classList.add("ff7");
-              localStorage.theme = "ff7";
-              window.setFavicon?.("mediumblue");
-            } else {
+      const toggleTheme = document.getElementById("toggle-theme");
+      if (toggleTheme) {
+        toggleTheme.querySelectorAll("input").forEach((input) => {
+          input.addEventListener("change", (event) => {
+            document.body.classList.add("duration-300");
+            const target = event.target as HTMLInputElement;
+            if (target.value === "dark") {
+              localStorage.theme = "dark";
+              document.documentElement.classList.add("dark");
               document.documentElement.classList.remove("ff7");
-              localStorage.theme = "light";
-              window.setFavicon?.("white", "black");
+              window.setFavicon?.();
+            } else {
+              document.documentElement.classList.remove("dark");
+              if (target.value === "ff7") {
+                document.documentElement.classList.add("ff7");
+                localStorage.theme = "ff7";
+                window.setFavicon?.("mediumblue");
+              } else {
+                document.documentElement.classList.remove("ff7");
+                localStorage.theme = "light";
+                window.setFavicon?.("white", "black");
+              }
             }
-          }
+          });
         });
-      });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 

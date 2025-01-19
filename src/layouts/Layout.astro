@@ -81,37 +81,55 @@ const ogImageUrl = currentUrl.endsWith("/")
         ></svg
       >"
     </div>
-    <script is:inline>
-      function init() {
-        window.setFavicon = (backgorund = "black", foreground = "white") => {
-          const faviconInner = document
-            .querySelector("#favicon")
-            .innerHTML.trim()
-            .replaceAll('"', "'")
-            .slice(1, -1);
-          const iconLink = document.querySelector('link[rel="icon"]');
-
-          iconLink?.setAttribute(
-            "href",
-            faviconInner
-              ?.replace("BACKGROUND_COLOR", backgorund)
-              .replace("FOREGROUND_COLOR", foreground)
-          );
-        };
+    <script is:inline define:vars={{ otherLocalePathname, isFrench }}>
+      try {
+        const browserLanguage = navigator.language || navigator.languages[0];
+        const isFrenchDesired = browserLanguage.startsWith("fr");
         if (
-          localStorage.theme === "dark" ||
-          (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
+          isFrenchDesired &&
+          !isFrench &&
+          !localStorage.disableFrenchRedirect
         ) {
-          document.documentElement.classList.add("dark");
-          document.documentElement.classList.remove("ff7");
-          window.setFavicon();
-        } else {
-          document.documentElement.classList.remove("dark");
-          if (localStorage.theme === "ff7") {
-            document.documentElement.classList.add("ff7");
-            window.setFavicon("mediumblue");
+          window.location.href = otherLocalePathname;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
+      function init() {
+        try {
+          window.setFavicon = (backgorund = "black", foreground = "white") => {
+            const faviconInner = document
+              .querySelector("#favicon")
+              .innerHTML.trim()
+              .replaceAll('"', "'")
+              .slice(1, -1);
+            const iconLink = document.querySelector('link[rel="icon"]');
+
+            iconLink?.setAttribute(
+              "href",
+              faviconInner
+                ?.replace("BACKGROUND_COLOR", backgorund)
+                .replace("FOREGROUND_COLOR", foreground)
+            );
+          };
+          if (
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ) {
+            document.documentElement.classList.add("dark");
+            document.documentElement.classList.remove("ff7");
+            window.setFavicon();
+          } else {
+            document.documentElement.classList.remove("dark");
+            if (localStorage.theme === "ff7") {
+              document.documentElement.classList.add("ff7");
+              window.setFavicon("mediumblue");
+            }
           }
+        } catch (error) {
+          console.error(error);
         }
       }
 

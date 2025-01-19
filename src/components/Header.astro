@@ -22,6 +22,17 @@ const { otherLocalePathname } = Astro.props;
   >
     {translate("langLink")}
   </Anchor>
+  <script>
+    try {
+      debugger;
+      const englishLink = document.querySelector('a[lang="en"]');
+      englishLink?.addEventListener("click", () => {
+        localStorage.disableFrenchRedirect = true;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  </script>
   <Anchor
     href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
     classname="hover:no-underline focus-visible:no-underline"
