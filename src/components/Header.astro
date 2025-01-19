@@ -24,7 +24,6 @@ const { otherLocalePathname } = Astro.props;
   </Anchor>
   <script>
     try {
-      debugger;
       const englishLink = document.querySelector('a[lang="en"]');
       englishLink?.addEventListener("click", () => {
         localStorage.disableFrenchRedirect = true;
