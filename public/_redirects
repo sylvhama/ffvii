@@ -1,3 +1,0 @@
-# Redirect root to /fr if the browser language is French
-
-/ /fr 302! Language=fr
