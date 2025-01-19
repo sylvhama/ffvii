@@ -114,7 +114,7 @@ const getPostUrl = (slug: string) =>
       data.images.map((image, index) => (
         <Picture
           transition:name={`${id}-image`}
-          class="mx-auto object-contain md:sticky top-8 rounded-md"
+          class="mx-auto object-contain md:sticky top-8 rounded-md ff7:rounded-none"
           pictureAttributes={{
             class: clsx(
               "block main-image duration-500 transition-opacity",
@@ -139,7 +139,7 @@ const getPostUrl = (slug: string) =>
             <legend class="sr-only">{translate("setPicture")}</legend>
             <div class="flex flex-wrap gap-4">
               {data.images.map((image, index) => (
-                <label class="relative pointer rounded-md has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black">
+                <label class="relative pointer rounded-md ff7:rounded-none has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black">
                   <input
                     class="cursor-pointer absolute opacity-0 w-full h-full z-10 peer"
                     name="image"
@@ -148,7 +148,7 @@ const getPostUrl = (slug: string) =>
                     checked={index === 0}
                   />
                   <Picture
-                    class="rounded-md object-contain"
+                    class="rounded-md ff7:rounded-none object-contain"
                     pictureAttributes={{
                       class:
                         "block peer-checked:opacity-50 transition:opacity duration-500",

@@ -65,8 +65,10 @@ const isFrench = Astro.currentLocale === "fr";
             <div
               transition:name={`${page}-active-sides`}
               class={clsx(
-                "hidden md:block absolute top-0 left-0 w-full h-full border-t border-black dark:border-white ff7:border-white",
-                isCurrent ? "border-x" : "translate-y-full top-[-1px]"
+                "hidden md:block absolute top-0 left-0 w-full h-full border-t border-black dark:border-white ff7:border-white rounded-t-md ff7:rounded-t-none",
+                isCurrent
+                  ? "border-x"
+                  : "rounded-t-none translate-y-full top-[-1px]"
               )}
             />
           </li>
