@@ -41,8 +41,42 @@ const getPostUrl = (slug: string) =>
     Astro.currentLocale || "en",
     `${collection}/${slug.replace("fr/", "")}`
   );
+
+const anim = (delay?: string) => ({
+  old: {
+    name: "fade-out",
+    duration: "0.25s",
+    easing: "ease-in",
+  },
+  new: {
+    name: "left-slide",
+    duration: "0.25s",
+    easing: "ease-in-out",
+    delay,
+  },
+});
 ---
 
+<style is:global>
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes left-slide {
+    from {
+      opacity: 0;
+      transform: translateX(200px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
 <script>
   function init() {
     const inputs = document.querySelectorAll<HTMLInputElement>(
@@ -139,7 +173,14 @@ const getPostUrl = (slug: string) =>
             <legend class="sr-only">{translate("setPicture")}</legend>
             <div class="flex flex-wrap gap-4">
               {data.images.map((image, index) => (
-                <label class="relative pointer rounded-md ff7:rounded-none has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black">
+                <label
+                  transition:name={`${id}-image-${index}`}
+                  transition:animate={{
+                    forwards: anim(`${index * 0.08}s`),
+                    backwards: anim(),
+                  }}
+                  class="relative pointer rounded-md ff7:rounded-none has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black"
+                >
                   <input
                     class="cursor-pointer absolute opacity-0 w-full h-full z-10 peer"
                     name="image"
@@ -153,8 +194,8 @@ const getPostUrl = (slug: string) =>
                       class:
                         "block peer-checked:opacity-50 transition:opacity duration-500",
                     }}
-                    width={130}
-                    height={130}
+                    width={115}
+                    height={115}
                     src={image}
                     alt={data.imagesAlt[index]}
                     densities={[1.5, 2]}
