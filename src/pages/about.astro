@@ -12,16 +12,18 @@ const about = translate("about");
 
 <Layout titlePrefix={about}>
   <Breadcrumb breadcrumbs={[{ name: about }]} slot="breadcrumb" />
-  <H2>
-    {about}
-  </H2>
-  <p class="pb-4">{translate("aboutText")}</p>
-  <Picture
-    class="rounded-md ff7:rounded-none mx-auto"
-    src={collectionPhoto}
-    alt={translate("aboutImgAlt")}
-    densities={[1.5, 2]}
-    width={800}
-    loading="eager"
-  />
+  <div class="max-w-[50rem]">
+    <H2>
+      {about}
+    </H2>
+    <p class="pb-4">{translate("aboutText")}</p>
+    <Picture
+      class="rounded-md ff7:rounded-none mx-auto"
+      src={collectionPhoto}
+      alt={translate("aboutImgAlt")}
+      densities={[1.5, 2]}
+      width={800}
+      loading="eager"
+    />
+  </div>
 </Layout>
