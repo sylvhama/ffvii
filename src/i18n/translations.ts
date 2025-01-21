@@ -24,7 +24,7 @@ export const translations = {
     notFound: "Page not found",
     quote:
       "Embrace your dreams. And, whatever happens... protect your honor as SOLDIER!",
-    swordAlt: "Minimalist vector of the Buster Sword from Final Fantasy 7",
+    swordAlt: "Outline of the Buster Sword from Final Fantasy 7",
     categories: "Categories",
     games: "Games",
     movies: "Movies",
@@ -56,7 +56,7 @@ export const translations = {
     ff7SubHeading: "FF7",
     about: "À propos de ma collection",
     aboutText: `En tant que fan de Final Fantasy 7 depuis sa sortie en 1997, ce site présente ma collection dédiée à mon jeu préféré.  
-      J'ai rassemblé ces objets dans tous les endroits où j'ai vécu : France, Corée du Sud, Japon et Canada.  
+      J'ai rassemblé ces objets dans tous les pays où j'ai vécu : France, Corée du Sud, Japon et Canada.  
       Mon objectif est de partager les souvenirs attachés à chaque pièce, et non de posséder tous les objets possibles.  
       Il comprend également des photos de concerts et d'événements auxquels j'ai assisté, mettant en valeur certains de mes moments les plus précieux.`,
     aboutImgAlt: "Une photo de toute ma collection Final Fantasy 7",
@@ -66,14 +66,14 @@ export const translations = {
     notFound: "Page inexistante",
     quote:
       "Vis tes rêves. Et quoi qu'il arrive... protège ton honneur en tant que SOLDAT !",
-    swordAlt: "Vecteur minimaliste de l'Épée Broyeuse de Final Fantasy 7",
+    swordAlt: "Contour de l'Épée Broyeuse de Final Fantasy 7",
     categories: "Catégories",
     games: "Jeux",
     movies: "Films",
     books: "Livres",
     music: "Musique",
     events: "Évènements",
-    merch: "Produits dérivés",
+    merch: "Merch",
     gamesHeading: "Jeux Final Fantasy 7",
     moviesHeading: "Films Final Fantasy 7",
     booksHeading: "Livres Final Fantasy 7",
