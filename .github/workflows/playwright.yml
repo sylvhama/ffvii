@@ -17,8 +17,6 @@ jobs:
         run: npm ci
       - name: Astro Build
         run: npm run build
-      - name: Astro Preview
-        run: npm run preview
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
