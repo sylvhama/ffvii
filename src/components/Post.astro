@@ -179,6 +179,7 @@ const anim = (delay?: string) => ({
                     forwards: anim(`${index * 0.08}s`),
                     backwards: anim(),
                   }}
+                  aria-label={`${translate("setPictureLabel")} ${data.imagesAlt[index]}`}
                   class="relative pointer rounded-md ff7:rounded-none has-[:focus-visible]:ring-2 ring-offset-4 ring-black ring-offset-white dark:ring-white dark:ring-offset-black ff7:ring-white ff7:ring-offset-black"
                 >
                   <input

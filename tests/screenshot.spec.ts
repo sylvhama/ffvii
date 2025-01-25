@@ -1,9 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 const locales = ["", "fr/"] as const;
-const pathnames = ["", "games/final-fantasy-vii-ps1", "about"] as const;
-
-// axe, redirects, change main image screenshot, focus and hover scrrenshot (not full page)
+const pathnames = [
+  "",
+  "games/final-fantasy-vii-ps1",
+  "about",
+  "settings",
+] as const;
 
 test.describe("screenshots", () => {
   test.skip(!process.env.CI);
@@ -27,25 +30,39 @@ test.describe("screenshots", () => {
         });
 
         test("screenshot", async ({ page }) => {
-          await expect(page).toHaveScreenshot();
+          await expect(page).toHaveScreenshot({ fullPage: true });
         });
       });
     }
   }
 
-  test("themes", async ({ page }) => {
+  test("change theme via focus", async ({ page, isMobile }) => {
+    test.skip(isMobile);
     await page.goto("settings");
-
-    await page.getByLabel("Dark Theme").check();
-
+    await page.getByLabel("dark").focus();
+    await page.getByLabel("dark").check();
     await expect(page).toHaveScreenshot();
-
-    await page.getByLabel("Light Theme").check();
-
+    await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
-
-    await page.getByLabel("FF7 Theme").check();
-
+    await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
+  });
+
+  test("hover and focus link", async ({ page, isMobile }) => {
+    test.skip(isMobile);
+    await page.goto("");
+    await page.locator("text=Movies").hover();
+    const nav = await page.locator("nav");
+    await expect(nav).toHaveScreenshot();
+    await page.locator("text=Books").hover();
+    await expect(nav).toHaveScreenshot();
+  });
+
+  test("change main image via focus", async ({ page, isMobile }) => {
+    test.skip(isMobile);
+    await page.goto("games/final-fantasy-vii-ps1/");
+    await page.getByLabel("Pick front").focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(page).toHaveScreenshot({ fullPage: true });
   });
 });
