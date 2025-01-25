@@ -18,3 +18,5 @@ A website to showcase my Final Fantasy VII collection.
 
 - Dracula colors: https://draculatheme.com/
 - FF7 theme: https://codepen.io/XaelGa/full/rqYZNP
+
+- Deploy to Netlify https://www.raulmelo.me/en/blog/deploying-netlify-github-actions-guide
