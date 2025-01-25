@@ -8,4 +8,4 @@ RUN npm ci
 
 RUN npm run build
 
-CMD ["npx", "playwright", "test"]
+CMD ["npx", "playwright", "test", "--no-serve"]
