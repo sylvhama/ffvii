@@ -6,6 +6,8 @@ COPY . .
 
 RUN npm ci
 
+ENV CI=true
+
 RUN npm run build
 
 CMD ["npx", "playwright", "test"]
