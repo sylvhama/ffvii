@@ -13,8 +13,26 @@ jobs:
           node-version: lts/*
       - name: Docker build
         run: docker build -t playwright-tests .
+      - name: Create container
+        run: docker create --name playwright-container playwright-tests
       - name: Run Playwright tests
-        run: docker run --rm playwright-tests
+        run: docker start -a playwright-container
+      - name: Copy dist from container
+        if: success()
+        run: docker cp playwright-container:/app/dist ./dist
+      - name: Copy test results from container
+        if: failure()
+        run: docker cp playwright-container:/app/test-results ./test-results
+      - name: Upload Playwright report as artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: ./test-results
+          retention-days: 1
+      - name: Clean up container
+        if: always()
+        run: docker rm playwright-container
       - name: Install Netlify
         if: success()
         run: npm install netlify-cli -g
