@@ -19,57 +19,46 @@ for (const locale of locales) {
       : "https://ff7.rocks/og.png";
 
     expect(page).toHaveTitle(title);
+    expect(
+      await page.locator('meta[name="description"]').getAttribute("content")
+    ).toBe(description);
 
-    const descriptionContent = await page
-      .locator('meta[name="description"]')
-      .getAttribute("content");
-    expect(descriptionContent).toBe(description);
+    expect(
+      await page.locator('meta[property="twitter:url"]').getAttribute("content")
+    ).toBe(url);
+    expect(
+      await page
+        .locator('meta[property="twitter:title"]')
+        .getAttribute("content")
+    ).toBe(title);
+    expect(
+      await page
+        .locator('meta[property="twitter:description"]')
+        .getAttribute("content")
+    ).toBe(description);
+    expect(
+      await page
+        .locator('meta[property="twitter:image"]')
+        .getAttribute("content")
+    ).toBe(image);
 
-    const twitterUrl = await page
-      .locator('meta[property="twitter:url"]')
-      .getAttribute("content");
-    expect(twitterUrl).toBe(url);
-
-    const twitterTitle = await page
-      .locator('meta[property="twitter:title"]')
-      .getAttribute("content");
-    expect(twitterTitle).toBe(title);
-
-    const twitterDescription = await page
-      .locator('meta[property="twitter:description"]')
-      .getAttribute("content");
-    expect(twitterDescription).toBe(description);
-
-    const twitterImage = await page
-      .locator('meta[property="twitter:image"]')
-      .getAttribute("content");
-    expect(twitterImage).toBe(image);
-
-    // Check OG meta tags
-    const ogUrl = await page
-      .locator('meta[property="og:url"]')
-      .getAttribute("content");
-    expect(ogUrl).toBe(url);
-
-    const ogTitle = await page
-      .locator('meta[property="og:title"]')
-      .getAttribute("content");
-    expect(ogTitle).toBe(title);
-
-    const ogDescription = await page
-      .locator('meta[property="og:description"]')
-      .getAttribute("content");
-    expect(ogDescription).toBe(description);
-
-    const ogImage = await page
-      .locator('meta[property="og:image"]')
-      .getAttribute("content");
-    expect(ogImage).toBe(image);
-
-    const ogType = await page
-      .locator('meta[property="og:type"]')
-      .getAttribute("content");
-    expect(ogType).toBe("website");
+    expect(
+      await page.locator('meta[property="og:url"]').getAttribute("content")
+    ).toBe(url);
+    expect(
+      await page.locator('meta[property="og:title"]').getAttribute("content")
+    ).toBe(title);
+    expect(
+      await page
+        .locator('meta[property="og:description"]')
+        .getAttribute("content")
+    ).toBe(description);
+    expect(
+      await page.locator('meta[property="og:image"]').getAttribute("content")
+    ).toBe(image);
+    expect(
+      await page.locator('meta[property="og:type"]').getAttribute("content")
+    ).toBe("website");
 
     if (isFrench) {
       expect(
