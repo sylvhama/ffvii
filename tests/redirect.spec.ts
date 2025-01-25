@@ -22,13 +22,15 @@ test("French page redirection when browser is French", async ({
   const page = await context.newPage();
   await page.goto(baseURL || "");
 
-  expect(page).toHaveTitle("Jeux | Ma collection Final Fantasy VII");
+  await expect(
+    page.locator("h2", { hasText: "Jeux Final Fantasy 7" })
+  ).toBeVisible();
 
   await page.click('a:has-text("English")');
 
-  await page.waitForURL(baseURL || "");
-
-  expect(page).toHaveTitle("Games | My Final Fantasy VII collection");
+  await expect(
+    page.locator("h2", { hasText: "Final Fantasy 7 Games" })
+  ).toBeVisible();
 
   await context.close();
 });
