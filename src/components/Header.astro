@@ -13,43 +13,47 @@ const isFrench = Astro.currentLocale === "fr";
 const { otherLocalePathname } = Astro.props;
 ---
 
-<div class="pb-8 flex flex-wrap items-center gap-4">
-  <div><slot /></div>
-  <Anchor
-    classname="ml-auto"
-    lang={isFrench ? "en" : "fr"}
-    href={otherLocalePathname}
-  >
-    {translate("langLink")}
-  </Anchor>
-  <script>
-    try {
-      const englishLink = document.querySelector('a[lang="en"]');
-      englishLink?.addEventListener("click", () => {
-        localStorage.disableFrenchRedirect = true;
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  </script>
-  <Anchor
-    href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-    classname="hover:no-underline focus-visible:no-underline"
-    aria-current={Astro.url.pathname.includes("/settings") ? "page" : undefined}
-    ><Icon
-      name="settings"
-      title={translate("settings")}
-      aria-label={translate("settings")}
-    />
-  </Anchor>
-  <Anchor
-    href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
-    classname="hover:no-underline focus-visible:no-underline"
-    aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
-    ><Icon
-      name="question"
-      title={translate("about")}
-      aria-label={translate("about")}
-    />
-  </Anchor>
+<script>
+  try {
+    const englishLink = document.querySelector('a[lang="en"]');
+    englishLink?.addEventListener("click", () => {
+      localStorage.disableFrenchRedirect = true;
+    });
+  } catch (error) {
+    console.error(error);
+  }
+</script>
+<div class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4">
+  <slot />
+  <div class="flex flex-wrap items-center gap-4">
+    <Anchor
+      classname="ml-auto"
+      lang={isFrench ? "en" : "fr"}
+      href={otherLocalePathname}
+    >
+      {translate("langLink")}
+    </Anchor>
+    <Anchor
+      href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
+      classname="hover:no-underline focus-visible:no-underline"
+      aria-current={Astro.url.pathname.includes("/settings")
+        ? "page"
+        : undefined}
+      ><Icon
+        name="settings"
+        title={translate("settings")}
+        aria-label={translate("settings")}
+      />
+    </Anchor>
+    <Anchor
+      href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
+      classname="hover:no-underline focus-visible:no-underline"
+      aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
+      ><Icon
+        name="question"
+        title={translate("about")}
+        aria-label={translate("about")}
+      />
+    </Anchor>
+  </div>
 </div>

@@ -7,12 +7,14 @@ test("aria snapshots", async ({ page, isMobile }) => {
       ? `
     - main:
       - link "About my collection"
-      - heading "My Final Fantasy VII collection" [level=1]
+      - heading [level=1]:
+        - link "My Final Fantasy VII collection"
       - navigation "Categories"
       `
       : `
     - main:
-      - heading "My Final Fantasy VII collection" [level=1]
+      - heading [level=1]:
+        - link "My Final Fantasy VII collection"
       - link "Français"
       - link "Settings":
         - img "Settings"
