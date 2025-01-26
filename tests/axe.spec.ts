@@ -6,6 +6,7 @@ const pathnames = [
   "games/final-fantasy-vii-ps1",
   "about",
   "settings",
+  "404",
 ] as const;
 
 test.describe("axe a11y scan", () => {
