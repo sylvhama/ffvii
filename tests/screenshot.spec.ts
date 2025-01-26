@@ -52,10 +52,10 @@ test.describe("screenshots", () => {
   test("hover and focus link", async ({ page, isMobile }) => {
     test.skip(isMobile);
     await page.goto("");
-    await page.locator("text=Movies").hover();
-    const nav = await page.locator("nav");
+    await page.getByRole("link", { name: "Movies" }).hover();
+    const nav = page.locator("nav");
     await expect(nav).toHaveScreenshot();
-    await page.locator("text=Books").hover();
+    await page.getByRole("link", { name: "Books" }).hover();
     await expect(nav).toHaveScreenshot();
   });
 

@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const locales = ["", "fr/"] as const;
-
-for (const locale of locales) {
+for (const locale of ["", "fr/"] as const) {
   test(`${locale} meta tags`, async ({ page }) => {
     await page.goto(locale);
     const isFrench = locale === "fr/";
@@ -60,6 +58,12 @@ for (const locale of locales) {
       await page.locator('meta[property="og:type"]').getAttribute("content")
     ).toBe("website");
 
+    expect(
+      await page
+        .locator('link[rel="preload"][as="image"][type="image/webp"]')
+        .getAttribute("href")
+    ).toBe("/cursor.webp");
+
     if (isFrench) {
       expect(
         await page.locator('link[rel="canonical"]').getAttribute("href")
@@ -67,3 +71,43 @@ for (const locale of locales) {
     }
   });
 }
+
+for (const action of ["focus", "hover"] as const) {
+  test(`preload post image on ${action} once`, async ({ page }) => {
+    await page.goto("");
+
+    expect(
+      page.locator('link[rel="preload"][as="image"][imagesrcset]')
+    ).toHaveCount(0);
+
+    const link = page.locator('a[href="/games/final-fantasy-vii-ps1/"]');
+    const srcset = await link.getAttribute("data-srcset");
+    await link[action]();
+    await page.getByText("Français")[action]();
+    await link[action]();
+
+    expect(
+      page.locator(`link[rel="preload"][as="image"][imagesrcset="${srcset}"]`)
+    ).toHaveCount(1);
+
+    expect(await link.getAttribute("data-srcset")).toBeNull();
+  });
+}
+
+test(`preload second image on hover once`, async ({ page, isMobile }) => {
+  test.skip(isMobile);
+  await page.goto("games/final-fantasy-vii-ps1");
+
+  expect(
+    page.locator('link[rel="preload"][as="image"][imagesrcset]')
+  ).toHaveCount(0);
+
+  const image = page.getByLabel("Pick back");
+  await image.hover();
+  await page.getByText("Français").hover();
+  await image.hover();
+
+  expect(
+    page.locator('link[rel="preload"][as="image"][imagesrcset]')
+  ).toHaveCount(1);
+});

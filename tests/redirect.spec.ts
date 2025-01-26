@@ -23,13 +23,13 @@ test("French page redirection when browser is French", async ({
   await page.goto(baseURL || "");
 
   await expect(
-    page.locator("h2", { hasText: "Jeux Final Fantasy 7" })
+    page.getByRole("heading", { name: "Jeux Final Fantasy 7", level: 2 })
   ).toBeVisible();
 
   await page.click('a:has-text("English")');
 
   await expect(
-    page.locator("h2", { hasText: "Final Fantasy 7 Games" })
+    page.getByRole("heading", { name: "Final Fantasy 7 games", level: 2 })
   ).toBeVisible();
 
   await context.close();
