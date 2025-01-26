@@ -102,12 +102,15 @@ test(`preload second image on hover once`, async ({ page, isMobile }) => {
     page.locator('link[rel="preload"][as="image"][imagesrcset]')
   ).toHaveCount(0);
 
-  const image = page.getByLabel("Pick back");
-  await image.hover();
+  const input = page.getByLabel("Pick back").locator("input");
+  await input.hover();
   await page.getByText("Français").hover();
-  await image.hover();
+  await input.hover();
 
   expect(
     page.locator('link[rel="preload"][as="image"][imagesrcset]')
   ).toHaveCount(1);
+
+  // Test will destroy the page before the above assertion has finished
+  await input.hover();
 });

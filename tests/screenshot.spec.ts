@@ -49,7 +49,7 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test("hover and focus link", async ({ page, isMobile }) => {
+  test("hover and focus nav link", async ({ page, isMobile }) => {
     test.skip(isMobile);
     await page.goto("");
     await page.getByRole("link", { name: "Movies" }).hover();
@@ -57,6 +57,17 @@ test.describe("screenshots", () => {
     await expect(nav).toHaveScreenshot();
     await page.getByRole("link", { name: "Books" }).hover();
     await expect(nav).toHaveScreenshot();
+  });
+
+  test("hover and focus image grid link", async ({ page, isMobile }) => {
+    test.skip(isMobile);
+    await page.goto("");
+    const link = page.getByRole("link", { name: "Final Fantasy VII (PS1)" });
+    await link.hover();
+    await expect(link).toHaveScreenshot();
+    await page.getByText("Français").hover();
+    await link.focus();
+    await expect(link).toHaveScreenshot();
   });
 
   test("change main image via focus", async ({ page, isMobile }) => {
