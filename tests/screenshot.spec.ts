@@ -77,4 +77,18 @@ test.describe("screenshots", () => {
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot({ fullPage: true });
   });
+
+  test("h1 focus", async ({ page }) => {
+    await page.goto("");
+    await page
+      .getByRole("link", {
+        name: "My Final Fantasy VII collection",
+      })
+      .focus();
+    await expect(
+      page.getByRole("heading", {
+        name: "My Final Fantasy VII collection",
+      })
+    ).toHaveScreenshot();
+  });
 });

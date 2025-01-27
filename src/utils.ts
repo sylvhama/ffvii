@@ -77,3 +77,10 @@ export async function getOptimizedImage({
     densities,
   });
 }
+
+export const focusRing = `
+ rounded-md  
+ outline-offset-4 dark:outline-offset-4 ff7:outline-offset-4 
+ outline-black dark:outline-white ff7:outline-white 
+ focus-visible:outline-2 focus-visible:dark:outline-2 
+ focus-visible:ff7:outline-2`;
