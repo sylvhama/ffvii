@@ -78,17 +78,29 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot({ fullPage: true });
   });
 
-  test("h1 focus", async ({ page }) => {
-    await page.goto("");
-    await page
-      .getByRole("link", {
-        name: "My Final Fantasy VII collection",
-      })
-      .focus();
-    await expect(
-      page.getByRole("heading", {
-        name: "My Final Fantasy VII collection",
-      })
-    ).toHaveScreenshot();
+  test("focus ring and theme local storage", async ({ page }) => {
+    const reloadFocusAndScreenshot = async () => {
+      await page.reload();
+      await page
+        .getByRole("link", {
+          name: "My Final Fantasy VII collection",
+        })
+        .focus();
+      await expect(
+        page.getByRole("heading", {
+          name: "My Final Fantasy VII collection",
+        })
+      ).toHaveScreenshot();
+    };
+
+    await page.goto("settings");
+    await page.getByLabel("Dark Theme").check();
+    await reloadFocusAndScreenshot();
+
+    await page.getByLabel("Light Theme").check();
+    await reloadFocusAndScreenshot();
+
+    await page.getByLabel("FF7 Theme").check();
+    await reloadFocusAndScreenshot();
   });
 });

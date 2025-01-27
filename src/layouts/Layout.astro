@@ -4,14 +4,12 @@ interface Props {
   description?: string;
 }
 
-import clsx from "clsx";
 import { ClientRouter } from "astro:transitions";
 
 import Anchor from "@components/Anchor.astro";
 import Header from "@components/Header.astro";
 import BustedSword from "@components/BustedSword.astro";
 import { useTranslations, getOtherLocalePathname } from "@i18n/utils";
-import { focusRing } from "@utils";
 
 import "./style.css";
 
@@ -150,7 +148,7 @@ const ogImageUrl = currentUrl.endsWith("/")
           aria-current={["", "/", "/fr", "/fr/"].includes(Astro.url.pathname)
             ? "page"
             : undefined}
-          class={clsx("sticky top-8", focusRing)}
+          class={"sticky top-8 rounded-md focus-ring"}
         >
           {title}
         </a>
@@ -168,7 +166,7 @@ const ogImageUrl = currentUrl.endsWith("/")
             aria-current={["", "/", "/fr", "/fr/"].includes(Astro.url.pathname)
               ? "page"
               : undefined}
-            class={focusRing}
+            class="rounded-md focus-ring"
           >
             {title}
           </a>

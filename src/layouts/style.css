@@ -24,6 +24,12 @@
     );
     background-repeat: no-repeat;
   }
+
+  .focus-ring:focus-visible,
+  .focus-ring:has(:focus-visible) {
+    outline-offset: 4px;
+    outline: 2px solid currentColor;
+  }
 }
 
 .vertical-text {
