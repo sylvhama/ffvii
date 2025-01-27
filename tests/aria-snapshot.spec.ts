@@ -7,13 +7,13 @@ test("aria snapshots", async ({ page, isMobile }) => {
       ? `
     - main:
       - link "About my collection"
-      - heading [level=1]:
+      - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
       - navigation "Categories"
       `
       : `
     - main:
-      - heading [level=1]:
+      - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
       - link "Français"
       - link "Settings":
@@ -37,9 +37,8 @@ test("aria snapshots", async ({ page, isMobile }) => {
       - heading "Final Fantasy 7 games" [level=2]
       - list:
         - listitem:
-          - link "Final Fantasy VII (PS1) front":
+          - link "Final Fantasy VII (PS1)":
             - heading "Final Fantasy VII (PS1)" [level=3]
-            - img "front"
       - img "Outline of the Buster Sword from Final Fantasy 7"
       - separator
       - paragraph: Crafted by
@@ -65,9 +64,7 @@ test("aria snapshots", async ({ page, isMobile }) => {
       - img "Une photo de toute ma collection Final Fantasy 7"
     `);
   await page.getByRole("link", { name: "Accueil" }).click();
-  await page
-    .getByRole("link", { name: "Final Fantasy VII (PS1) recto" })
-    .click();
+  await page.getByRole("link", { name: "Final Fantasy VII (PS1)" }).click();
   await page.getByRole("link", { name: "English" }).click();
   await expect(page.locator("body")).toMatchAriaSnapshot(`
     - main:
