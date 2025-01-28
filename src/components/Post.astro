@@ -96,10 +96,10 @@ const anim = (delay?: string) => ({
           });
           mainImages[indexToShow].classList.remove("hidden");
           mainImages[indexToShow].classList.add("opacity-1");
-          if (window.innerWidth < 768) {
-            mainImages[indexToShow]
-              .querySelector("img")
-              ?.scrollIntoView({ behavior: "smooth" });
+          const img = mainImages[indexToShow].querySelector("img");
+
+          if (img && img.getBoundingClientRect().top < 0) {
+            img.scrollIntoView({ behavior: "smooth" });
           }
         }
       });

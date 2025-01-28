@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-test("scroll to main image on small screen", async ({ page, isMobile }) => {
+test("scroll to main image when not in viewport", async ({
+  page,
+  isMobile,
+}) => {
   test.skip(isMobile);
   await page.setViewportSize({ width: 400, height: 400 });
   await page.goto("games/final-fantasy-vii-ps1/");
