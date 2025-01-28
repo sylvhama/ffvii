@@ -16,7 +16,7 @@ for (const locale of ["", "fr/"] as const) {
       ? "https://ff7.rocks/fr/og.png"
       : "https://ff7.rocks/og.png";
 
-    expect(page).toHaveTitle(title);
+    await expect(page).toHaveTitle(title);
     expect(
       await page.locator('meta[name="description"]').getAttribute("content")
     ).toBe(description);
@@ -76,7 +76,7 @@ for (const action of ["focus", "hover"] as const) {
   test(`preload post image on ${action} once`, async ({ page }) => {
     await page.goto("");
 
-    expect(
+    await expect(
       page.locator('link[rel="preload"][as="image"][imagesrcset]')
     ).toHaveCount(0);
 
@@ -86,7 +86,7 @@ for (const action of ["focus", "hover"] as const) {
     await page.getByText("Français")[action]();
     await link[action]();
 
-    expect(
+    await expect(
       page.locator(`link[rel="preload"][as="image"][imagesrcset="${srcset}"]`)
     ).toHaveCount(1);
 
@@ -98,7 +98,7 @@ test(`preload second image on hover once`, async ({ page, isMobile }) => {
   test.skip(isMobile);
   await page.goto("games/final-fantasy-vii-ps1");
 
-  expect(
+  await expect(
     page.locator('link[rel="preload"][as="image"][imagesrcset]')
   ).toHaveCount(0);
 
@@ -107,10 +107,7 @@ test(`preload second image on hover once`, async ({ page, isMobile }) => {
   await page.getByText("Français").hover();
   await input.hover();
 
-  expect(
+  await expect(
     page.locator('link[rel="preload"][as="image"][imagesrcset]')
   ).toHaveCount(1);
-
-  // Test will destroy the page before the above assertion has finished
-  await input.hover();
 });
