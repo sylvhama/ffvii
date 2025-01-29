@@ -121,6 +121,9 @@ const anim = (delay?: string) => ({
       input.addEventListener("mouseenter", preloadResponsiveImage, {
         once: true,
       });
+      input.addEventListener("touchstart", preloadResponsiveImage, {
+        once: true,
+      });
     });
   }
 

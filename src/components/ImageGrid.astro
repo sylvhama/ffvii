@@ -52,6 +52,9 @@ const optimizedImages = await Promise.all(
     previewImage.addEventListener("focus", onPreload, {
       once: true,
     });
+    previewImage.addEventListener("touchstart", onPreload, {
+      once: true,
+    });
   });
 </script>
 
