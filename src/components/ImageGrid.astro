@@ -54,6 +54,7 @@ const optimizedImages = await Promise.all(
     });
     previewImage.addEventListener("touchstart", onPreload, {
       once: true,
+      passive: true,
     });
   });
 </script>

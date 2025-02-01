@@ -123,6 +123,7 @@ const anim = (delay?: string) => ({
       });
       input.addEventListener("touchstart", preloadResponsiveImage, {
         once: true,
+        passive: true,
       });
     });
   }
