@@ -141,8 +141,6 @@ const openGraphImages = (): AstroIntegration => ({
             },
           });
 
-          console.log(`${dir.pathname}${pathname ? pathname + "/" : ""}og.png`);
-
           await fs.writeFile(
             `${dir.pathname}${pathname ? pathname + "/" : ""}og.png`,
             resvg.render().asPng()
