@@ -71,6 +71,8 @@ const ogImageUrl = currentUrl.endsWith("/")
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={Astro.currentLocale} />
 
+    <meta name="theme-color" content="" />
+
     <link rel="preload" href="/cursor.webp" as="image" type="image/webp" />
 
     <ClientRouter />
@@ -123,6 +125,10 @@ const ogImageUrl = currentUrl.endsWith("/")
                 .replace("FOREGROUND_COLOR", foreground)
             );
           };
+          const themeColorTag = document.querySelector(
+            'meta[name="theme-color"]'
+          );
+          const computedStyle = getComputedStyle(document.documentElement);
           if (
             localStorage.theme === "dark" ||
             (!("theme" in localStorage) &&
@@ -131,11 +137,21 @@ const ogImageUrl = currentUrl.endsWith("/")
             document.documentElement.classList.add("dark");
             document.documentElement.classList.remove("ff7");
             window.setFavicon();
+            themeColorTag.content = computedStyle
+              .getPropertyValue("--color-black")
+              .trim();
           } else {
             document.documentElement.classList.remove("dark");
             if (localStorage.theme === "ff7") {
               document.documentElement.classList.add("ff7");
               window.setFavicon("mediumblue");
+              themeColorTag.content = computedStyle
+                .getPropertyValue("--color-real-black")
+                .trim();
+            } else {
+              themeColorTag.content = computedStyle
+                .getPropertyValue("--color-white")
+                .trim();
             }
           }
         } catch (error) {

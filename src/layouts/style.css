@@ -2,6 +2,18 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-real-white: #ffffff;
+  --color-real-black: #000000;
+  --color-white: #f8f8f2;
+  --color-black: #1d1e26;
+  --color-purple: #7357ff;
+  --color-pink: #ff80bf;
+  --color-blue: #80ffea;
+  --color-cyan: #20b2aa;
+  --color-ff7-pink: #ffaaaa;
+}
+
 @utility bg-ff7 {
   background-image: radial-gradient(
     circle at -180px 0px,

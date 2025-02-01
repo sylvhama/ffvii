@@ -29,6 +29,10 @@ const translate = useTranslations(Astro.currentLocale!);
       }
 
       const toggleTheme = document.getElementById("toggle-theme");
+      const themeColorTag = document.querySelector<HTMLMetaElement>(
+        'meta[name="theme-color"]'
+      );
+      const computedStyle = getComputedStyle(document.documentElement);
       if (toggleTheme) {
         toggleTheme.querySelectorAll("input").forEach((input) => {
           input.addEventListener("change", (event) => {
@@ -38,6 +42,9 @@ const translate = useTranslations(Astro.currentLocale!);
               localStorage.theme = "dark";
               document.documentElement.classList.add("dark");
               document.documentElement.classList.remove("ff7");
+              themeColorTag!.content = computedStyle
+                .getPropertyValue("--color-black")
+                .trim();
               window.setFavicon?.();
             } else {
               document.documentElement.classList.remove("dark");
@@ -45,10 +52,16 @@ const translate = useTranslations(Astro.currentLocale!);
                 document.documentElement.classList.add("ff7");
                 localStorage.theme = "ff7";
                 window.setFavicon?.("mediumblue");
+                themeColorTag!.content = computedStyle
+                  .getPropertyValue("--color-real-black")
+                  .trim();
               } else {
                 document.documentElement.classList.remove("ff7");
                 localStorage.theme = "light";
                 window.setFavicon?.("white", "black");
+                themeColorTag!.content = computedStyle
+                  .getPropertyValue("--color-white")
+                  .trim();
               }
             }
           });
@@ -68,7 +81,7 @@ const translate = useTranslations(Astro.currentLocale!);
   <legend class="sr-only">{translate("pickTheme")}</legend>
   <div class="grid grid-cols-3 gap-4">
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-black has-checked:border-pink rounded-md p-2 bg-black text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-black has-checked:border-pink rounded-md p-2 bg-black text-white focus-ring"
     >
       <input
         class="outline-hidden accent-pink"
@@ -80,7 +93,7 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("darkSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-white has-checked:border-pink rounded-md p-2 bg-real-white text-black focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-white has-checked:border-pink rounded-md p-2 bg-real-white text-black focus-ring"
     >
       <input
         class="outline-hidden accent-pink"
@@ -92,10 +105,10 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("lightSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-real-black has-checked:border-ff7Pink rounded-md p-2 bg-ff7 text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-real-black has-checked:border-ff7-pink rounded-md p-2 bg-ff7 text-white focus-ring"
     >
       <input
-        class="outline-hidden accent-ff7Pink"
+        class="outline-hidden accent-ff7-pink"
         name="theme"
         value="ff7"
         type="radio"
