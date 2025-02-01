@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
-const locales = ["", "fr/"] as const;
+const locales = ["", "fr"] as const;
 const pathnames = [
   "",
-  "games/final-fantasy-vii-ps1",
-  "about",
-  "settings",
-  "404",
+  "/games/final-fantasy-vii-ps1",
+  "/about",
+  "/settings",
+  "/404",
 ] as const;
 
 test.describe("screenshots", () => {
@@ -17,7 +17,7 @@ test.describe("screenshots", () => {
       const url = locale + pathname;
       test.describe(url, () => {
         test.beforeEach(async ({ page }) => {
-          if (locale === "fr/") {
+          if (locale === "fr") {
             await page.goto("settings");
             await page.getByLabel("Dark Theme").check();
             await page.goto(url);
@@ -72,7 +72,7 @@ test.describe("screenshots", () => {
 
   test("change main image via focus", async ({ page, isMobile }) => {
     test.skip(isMobile);
-    await page.goto("games/final-fantasy-vii-ps1/");
+    await page.goto("games/final-fantasy-vii-ps1");
     await page.getByLabel("Pick front").focus();
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot({ fullPage: true });

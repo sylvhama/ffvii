@@ -1,34 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config '../../tailwind.config.mjs';
 
-.pointer {
-  @apply cursor-pointer relative outline-none;
+@import "tailwindcss";
+
+@utility bg-ff7 {
+  background-image: radial-gradient(
+    circle at -180px 0px,
+    #0053ad 300px,
+    #001b85 500px,
+    #000223
+  );
+  background-repeat: no-repeat;
 }
-.pointer::before {
-  @apply hidden absolute scale-50 left-[-36px] top-1/2 mt-[-12px];
-  content: url("/cursor.webp") !important;
-}
-.pointer:hover::before,
-.pointer:focus-visible::before {
-  @apply block;
+
+@utility focus-ring {
+  &:focus-visible {
+    outline-offset: 4px;
+    outline: 2px solid currentColor;
+  }
+
+  &:has(:focus-visible) {
+    outline-offset: 4px;
+    outline: 2px solid currentColor;
+  }
 }
 
 @layer utilities {
-  .bg-ff7 {
-    background-image: radial-gradient(
-      circle at -180px 0px,
-      #0053ad 300px,
-      #001b85 500px,
-      #000223
-    );
-    background-repeat: no-repeat;
+  .pointer {
+    @apply cursor-pointer relative outline-hidden;
   }
-
-  .focus-ring:focus-visible,
-  .focus-ring:has(:focus-visible) {
-    outline-offset: 4px;
-    outline: 2px solid currentColor;
+  .pointer::before {
+    @apply hidden absolute scale-50 left-[-36px] top-1/2 mt-[-12px];
+    content: url("/cursor.webp") !important;
+  }
+  .pointer:hover::before,
+  .pointer:focus-visible::before {
+    @apply block;
   }
 }
 

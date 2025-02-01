@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from "@utils";
 import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
@@ -92,10 +92,10 @@ const anim = (delay?: string) => ({
           mainImages.forEach((image) => {
             image.classList.add("starting:opacity-0");
             image.classList.add("hidden");
-            image.classList.remove("opacity-1");
+            image.classList.remove("opacity-100");
           });
           mainImages[indexToShow].classList.remove("hidden");
-          mainImages[indexToShow].classList.add("opacity-1");
+          mainImages[indexToShow].classList.add("opacity-100");
           const img = mainImages[indexToShow].querySelector("img");
 
           if (img && img.getBoundingClientRect().top < 0) {

@@ -68,10 +68,10 @@ const translate = useTranslations(Astro.currentLocale!);
   <legend class="sr-only">{translate("pickTheme")}</legend>
   <div class="grid grid-cols-3 gap-4">
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-black has-[:checked]:border-pink rounded-md p-2 bg-black text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-black has-checked:border-pink rounded-md p-2 bg-black text-white focus-ring"
     >
       <input
-        class="outline-none accent-pink"
+        class="outline-hidden accent-pink"
         name="theme"
         value="dark"
         type="radio"
@@ -80,10 +80,10 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("darkSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-white has-[:checked]:border-pink rounded-md p-2 bg-realWhite text-black focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-white has-checked:border-pink rounded-md p-2 bg-real-white text-black focus-ring"
     >
       <input
-        class="outline-none accent-pink"
+        class="outline-hidden accent-pink"
         name="theme"
         value="light"
         type="radio"
@@ -92,10 +92,10 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("lightSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-realBlack has-[:checked]:border-ff7Pink rounded-md p-2 bg-ff7 text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full block border-2 border-real-black has-checked:border-ff7Pink rounded-md p-2 bg-ff7 text-white focus-ring"
     >
       <input
-        class="outline-none accent-ff7Pink"
+        class="outline-hidden accent-ff7Pink"
         name="theme"
         value="ff7"
         type="radio"

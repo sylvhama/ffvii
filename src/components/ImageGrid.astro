@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from "@utils";
 import type { CollectionKey } from "astro:content";
 
 import Layout from "@layouts/Layout.astro";
@@ -77,9 +77,8 @@ const optimizedImages = await Promise.all(
               class="
               absolute z-10 rounded-md ff7:rounded-none left-0 top-0 opacity-0 overflow-hidden transition-opacity
               duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100
-              w-full h-full text-center flex items-center justify-center p-2 bg-realWhite
-              dark:bg-realBlack ff7:bg-realBlack bg-opacity-50 dark:bg-opacity-50 ff7:bg-opacity-50
-              font-mono text-base text-balance text-realBlack dark:text-realWhite ff7:text-realWhite"
+              w-full h-full text-center flex items-center justify-center p-2 bg-real-white/50 dark:bg-real-black/50 ff7:bg-real-black/50 
+              font-mono text-base text-balance text-real-black dark:text-real-white ff7:text-real-white"
             >
               <span transition:name={`${id}-title`}>{data.title}</span>
             </h3>

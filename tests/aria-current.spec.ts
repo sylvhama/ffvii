@@ -36,7 +36,7 @@ test("aria-current categories", async ({ page, baseURL }) => {
   );
 
   await page.getByRole("link", { name: "movies" }).click();
-  await page.waitForURL(baseURL + "/movies/");
+  await page.waitForURL(baseURL + "/movies");
 
   await expect(
     page.locator("a[aria-current]").locator("visible=true")
@@ -47,7 +47,7 @@ test("aria-current categories", async ({ page, baseURL }) => {
   );
 
   await page.getByRole("link", { name: "Settings" }).click();
-  await page.waitForURL(baseURL + "/settings/");
+  await page.waitForURL(baseURL + "/settings");
 
   await expect(
     page.locator("a[aria-current]").locator("visible=true")

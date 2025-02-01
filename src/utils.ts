@@ -1,5 +1,6 @@
 import { getImage } from "astro:assets";
 import { getCollection, type CollectionKey } from "astro:content";
+import { getRelativeLocaleUrl as astroGetRelativeLocaleUrl } from "astro:i18n";
 
 export function getEnglishStaticPaths(collection: CollectionKey) {
   return async () => {
@@ -76,4 +77,11 @@ export async function getOptimizedImage({
     height,
     densities,
   });
+}
+
+export function getRelativeLocaleUrl(locale: string, path: string) {
+  const relativeUrl = astroGetRelativeLocaleUrl(locale, path);
+  return relativeUrl.length > 1 && relativeUrl.endsWith("/")
+    ? relativeUrl.slice(0, -1)
+    : relativeUrl;
 }

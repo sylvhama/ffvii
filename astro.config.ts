@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import satori from "satori";
 import type { AstroIntegration } from "astro";
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import fs from "node:fs/promises";
 import { Resvg } from "@resvg/resvg-js";
@@ -104,11 +104,11 @@ const openGraphImages = (): AstroIntegration => ({
             continue;
           }
 
-          const locale = pathname.includes("fr/") ? "fr" : "en";
-          const cleanedPaths = pathname
-            .replace("fr/", "")
-            .slice(0, -1)
-            .split("/");
+          const locale =
+            pathname.startsWith("fr/") || pathname === "fr" ? "fr" : "en";
+          const cleanedPaths =
+            pathname === "fr" ? [""] : pathname.replace("fr/", "").split("/");
+
           const lastPath =
             cleanedPaths[cleanedPaths.length - 1].replaceAll("-", " ") ||
             "games";
@@ -141,8 +141,10 @@ const openGraphImages = (): AstroIntegration => ({
             },
           });
 
+          console.log(`${dir.pathname}${pathname ? pathname + "/" : ""}og.png`);
+
           await fs.writeFile(
-            `${dir.pathname}${pathname}og.png`,
+            `${dir.pathname}${pathname ? pathname + "/" : ""}og.png`,
             resvg.render().asPng()
           );
         }
@@ -158,7 +160,8 @@ const openGraphImages = (): AstroIntegration => ({
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), openGraphImages(), sitemap()],
+  integrations: [icon(), openGraphImages(), sitemap()],
+  vite: { plugins: [tailwindcss()] },
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "en",
@@ -168,4 +171,5 @@ export default defineConfig({
     "/fr/games": "/fr",
   },
   site: "https://ff7.rocks",
+  trailingSlash: "never",
 });

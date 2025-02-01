@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-for (const locale of ["", "fr/"] as const) {
+for (const locale of ["", "fr"] as const) {
   test(`${locale} meta tags`, async ({ page }) => {
     await page.goto(locale);
-    const isFrench = locale === "fr/";
+    const isFrench = locale === "fr";
 
     const title = isFrench
       ? "Jeux | Ma collection Final Fantasy VII"
@@ -11,7 +11,7 @@ for (const locale of ["", "fr/"] as const) {
     const description = isFrench
       ? "Une galerie de tous mes objets en rapport avec Final Fantasy 7"
       : "A gallery of all my Final Fantasy 7 collectibles";
-    const url = isFrench ? "https://ff7.rocks/fr/" : "https://ff7.rocks/";
+    const url = isFrench ? "https://ff7.rocks/fr" : "https://ff7.rocks/";
     const image = isFrench
       ? "https://ff7.rocks/fr/og.png"
       : "https://ff7.rocks/og.png";
@@ -80,7 +80,7 @@ for (const action of ["focus", "hover"] as const) {
       page.locator('link[rel="preload"][as="image"][imagesrcset]')
     ).toHaveCount(0);
 
-    const link = page.locator('a[href="/games/final-fantasy-vii-ps1/"]');
+    const link = page.locator('a[href="/games/final-fantasy-vii-ps1"]');
     const srcset = await link.getAttribute("data-srcset");
     await link[action]();
     await page.getByText("Français")[action]();
