@@ -64,11 +64,19 @@ for (const locale of ["", "fr"] as const) {
         .getAttribute("href")
     ).toBe("/cursor.webp");
 
-    if (isFrench) {
-      expect(
-        await page.locator('link[rel="canonical"]').getAttribute("href")
-      ).toBe("https://ff7.rocks/");
-    }
+    expect(
+      await page.locator('link[rel="canonical"]').getAttribute("href")
+    ).toBe(url);
+    expect(
+      await page
+        .locator('link[rel="alternate"][hreflang="fr"]')
+        .getAttribute("href")
+    ).toBe("https://ff7.rocks/fr");
+    expect(
+      await page
+        .locator('link[rel="alternate"][hreflang="en"]')
+        .getAttribute("href")
+    ).toBe("https://ff7.rocks/");
   });
 }
 

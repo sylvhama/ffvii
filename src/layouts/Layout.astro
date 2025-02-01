@@ -24,8 +24,8 @@ const { titlePrefix, description: descriptionProp } = Astro.props;
 const title = translate("title");
 const titleMeta = titlePrefix ? `${titlePrefix} | ${title}` : title;
 const description = descriptionProp || translate("description");
+const otherLocaleUrl = new URL(otherLocalePathname, Astro.site).href;
 const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
-const canonicalUrl = new URL(otherLocalePathname, Astro.site).href;
 const ogImageUrl = currentUrl.endsWith("/")
   ? currentUrl + "og.png"
   : currentUrl + "/og.png";
@@ -44,7 +44,17 @@ const ogImageUrl = currentUrl.endsWith("/")
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {isFrench ? <link rel="canonical" href={canonicalUrl} /> : null}
+    <link rel="canonical" href={currentUrl} />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={isFrench ? otherLocaleUrl : currentUrl}
+    />
+    <link
+      rel="alternate"
+      hreflang="fr"
+      href={isFrench ? currentUrl : otherLocaleUrl}
+    />
     <title>{titleMeta}</title>
     <meta name="description" content={description} />
 
