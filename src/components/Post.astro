@@ -1,13 +1,12 @@
 ---
 import clsx from "clsx";
-import { getRelativeLocaleUrl } from "@utils";
 import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import H2 from "@components/H2.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Anchor from "@components/Anchor.astro";
 import { Picture } from "astro:assets";
-import { useTranslations } from "@i18n/utils";
+import { useTranslations, getRelativeLocaleUrl } from "@i18n/utils";
 import type { CollectionEntry, CollectionKey } from "astro:content";
 import { getLocaleCollection } from "@utils";
 

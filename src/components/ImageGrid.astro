@@ -1,13 +1,12 @@
 ---
 import { Picture } from "astro:assets";
-import { getRelativeLocaleUrl } from "@utils";
 import type { CollectionKey } from "astro:content";
 
 import Layout from "@layouts/Layout.astro";
 import Nav from "@components/Nav.astro";
 import Anchor from "@components/Anchor.astro";
 import { getLocaleCollection, getOptimizedImage } from "@utils";
-import { useTranslations } from "@i18n/utils";
+import { useTranslations, getRelativeLocaleUrl } from "@i18n/utils";
 
 interface Props {
   collection: CollectionKey;

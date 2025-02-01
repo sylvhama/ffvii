@@ -1,3 +1,4 @@
+import { getRelativeLocaleUrl as astroGetRelativeLocaleUrl } from "astro:i18n";
 import { translations } from "./translations";
 
 export function useTranslations(lang: string) {
@@ -20,4 +21,11 @@ export function getOtherLocalePathname(isFrench: boolean, pathname: string) {
   }
 
   return pathname.replace("fr/", "").replace("/fr", "/");
+}
+
+export function getRelativeLocaleUrl(locale: string, path: string) {
+  const relativeUrl = astroGetRelativeLocaleUrl(locale, path);
+  return relativeUrl.length > 1 && relativeUrl.endsWith("/")
+    ? relativeUrl.slice(0, -1)
+    : relativeUrl;
 }

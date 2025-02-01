@@ -1,7 +1,6 @@
 ---
-import { useTranslations } from "@i18n/utils";
+import { useTranslations, getRelativeLocaleUrl } from "@i18n/utils";
 import Anchor from "./Anchor.astro";
-import { getRelativeLocaleUrl } from "@utils";
 
 interface Props {
   breadcrumbs: { name: string; path?: string }[];
