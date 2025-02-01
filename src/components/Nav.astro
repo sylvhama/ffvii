@@ -42,7 +42,7 @@ const isFrench = Astro.currentLocale === "fr";
                     )
               }
               classname={clsx(
-                "relative z-10 group hover:before:hidden! focus-visible:before:hidden! text-xl uppercase font-mono break-words flex flex-wrap gap-x-2 items-center justify-center",
+                "relative z-10 group before:hidden! text-xl uppercase font-mono break-words flex flex-wrap gap-x-2 items-center justify-center",
                 isCurrent && "font-bold"
               )}
               aria-current={isCurrent ? "page" : undefined}
