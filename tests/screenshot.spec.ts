@@ -43,10 +43,22 @@ test.describe("screenshots", () => {
     await page.getByLabel("dark").focus();
     await page.getByLabel("dark").check();
     await expect(page).toHaveScreenshot();
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+      "content",
+      "#1d1e26"
+    );
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+      "content",
+      "#f8f8f2"
+    );
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+      "content",
+      "#000000"
+    );
   });
 
   test("hover and focus nav link", async ({ page, isMobile }) => {

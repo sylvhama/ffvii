@@ -7,4 +7,8 @@ test("system prefers light", async ({ page }) => {
   await expect(
     page.locator('input[name="theme"][value="light"]')
   ).toBeChecked();
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    "#f8f8f2"
+  );
 });
