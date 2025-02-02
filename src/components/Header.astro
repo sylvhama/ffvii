@@ -22,8 +22,10 @@ const { otherLocalePathname } = Astro.props;
     console.error(error);
   }
 </script>
-<div class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4">
-  <div class="max-sm:order-2 empty:hidden"><slot /></div>
+<div
+  class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4 has-[.header-slot:empty]:gap-0"
+>
+  <div class="header-slot max-sm:order-2 empty:hidden"><slot /></div>
   <div class="flex flex-wrap items-center max-sm:order-1">
     <Anchor
       classname="ml-auto mr-2"
