@@ -23,10 +23,10 @@ const { otherLocalePathname } = Astro.props;
   }
 </script>
 <div class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4">
-  <slot />
-  <div class="flex flex-wrap items-center gap-4">
+  <div class="max-sm:order-2 empty:hidden"><slot /></div>
+  <div class="flex flex-wrap items-center max-sm:order-1">
     <Anchor
-      classname="ml-auto"
+      classname="ml-auto mr-2"
       lang={isFrench ? "en" : "fr"}
       href={otherLocalePathname}
     >
@@ -34,7 +34,7 @@ const { otherLocalePathname } = Astro.props;
     </Anchor>
     <Anchor
       href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-      classname="hover:no-underline focus-visible:no-underline"
+      classname="px-2 hover:no-underline focus-visible:no-underline"
       aria-current={Astro.url.pathname.includes("/settings")
         ? "page"
         : undefined}
@@ -46,7 +46,7 @@ const { otherLocalePathname } = Astro.props;
     </Anchor>
     <Anchor
       href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
-      classname="hover:no-underline focus-visible:no-underline"
+      classname="relative pl-2 hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
       aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
       ><Icon
         name="question"

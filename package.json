@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test",
-    "update-snapshots": "bash ./update-playwright-snapshots.sh"
+    "update-snapshots": "bash ./docker-playwright-test.sh --update-snapshots",
+    "docker-test": "bash ./docker-playwright-test.sh"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

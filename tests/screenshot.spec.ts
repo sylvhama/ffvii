@@ -57,7 +57,7 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot();
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
       "content",
-      "#000000"
+      "#000"
     );
   });
 

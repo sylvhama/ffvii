@@ -180,9 +180,9 @@ const ogImageUrl = currentUrl.endsWith("/")
         </a>
       </h1>
       <div class="pt-4">
-        <Header otherLocalePathname={otherLocalePathname}>
-          <slot name="breadcrumb" />
-        </Header>
+        <Header otherLocalePathname={otherLocalePathname}
+          ><slot name="breadcrumb" /></Header
+        >
 
         <h1
           class="block md:hidden pb-8 text-xl font-bold font-mono text-balance text-center"
