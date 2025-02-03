@@ -14,7 +14,7 @@ const currentBreadcrumb = previousBreadcrumbs.pop();
 
 if (previousBreadcrumbs.length === 0) {
   previousBreadcrumbs.push({
-    path: getRelativeLocaleUrl("fr", ""),
+    path: getRelativeLocaleUrl(Astro.currentLocale || "en", ""),
     name: translate("home"),
   });
 }
