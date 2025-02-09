@@ -89,8 +89,7 @@ const anim = (delay?: string) => ({
         const indexToShow = Number(target.value);
         if (!Number.isNaN(indexToShow)) {
           mainImages.forEach((image) => {
-            image.classList.add("starting:opacity-0");
-            image.classList.add("hidden");
+            image.classList.add("starting:opacity-0", "hidden");
             image.classList.remove("opacity-100");
           });
           mainImages[indexToShow].classList.remove("hidden");

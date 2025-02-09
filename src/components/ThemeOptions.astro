@@ -40,16 +40,16 @@ const translate = useTranslations(Astro.currentLocale!);
             const target = event.target as HTMLInputElement;
             if (target.value === "dark") {
               localStorage.theme = "dark";
-              document.documentElement.classList.add("dark");
+              document.documentElement.classList.add("dark", "scheme-dark");
               document.documentElement.classList.remove("ff7");
               themeColorTag!.content = computedStyle
                 .getPropertyValue("--color-black")
                 .trim();
               window.setFavicon?.();
             } else {
-              document.documentElement.classList.remove("dark");
+              document.documentElement.classList.remove("dark", "scheme-dark");
               if (target.value === "ff7") {
-                document.documentElement.classList.add("ff7");
+                document.documentElement.classList.add("ff7", "scheme-dark");
                 localStorage.theme = "ff7";
                 window.setFavicon?.("mediumblue");
                 themeColorTag!.content = computedStyle
@@ -81,7 +81,7 @@ const translate = useTranslations(Astro.currentLocale!);
   <legend class="sr-only">{translate("pickTheme")}</legend>
   <div class="grid grid-cols-3 gap-4">
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-black has-checked:border-pink rounded-md p-2 bg-black text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-black has-checked:border-pink rounded-md p-2 bg-black text-white focus-ring scheme-dark"
     >
       <input
         class="outline-hidden accent-pink"
@@ -93,7 +93,7 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("darkSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-white has-checked:border-pink rounded-md p-2 bg-real-white text-black focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-white has-checked:border-pink rounded-md p-2 bg-real-white text-black focus-ring scheme-light"
     >
       <input
         class="outline-hidden accent-pink"
@@ -105,7 +105,7 @@ const translate = useTranslations(Astro.currentLocale!);
       <span>{translate("lightSubHeading")}</span>
     </label>
     <label
-      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-real-black has-checked:border-ff7-pink rounded-md p-2 bg-ff7 text-white focus-ring"
+      class="pointer flex items-center flex-wrap gap-2 w-full border-2 border-real-black has-checked:border-ff7-pink rounded-md p-2 bg-ff7 text-white focus-ring scheme-light"
     >
       <input
         class="outline-hidden accent-ff7-pink"

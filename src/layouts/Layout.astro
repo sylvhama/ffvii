@@ -134,16 +134,16 @@ const ogImageUrl = currentUrl.endsWith("/")
             (!("theme" in localStorage) &&
               window.matchMedia("(prefers-color-scheme: dark)").matches)
           ) {
-            document.documentElement.classList.add("dark");
+            document.documentElement.classList.add("scheme-dark", "dark");
             document.documentElement.classList.remove("ff7");
             window.setFavicon();
             themeColorTag.content = computedStyle
               .getPropertyValue("--color-black")
               .trim();
           } else {
-            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.remove("scheme-dark", "dark");
             if (localStorage.theme === "ff7") {
-              document.documentElement.classList.add("ff7");
+              document.documentElement.classList.add("scheme-dark", "ff7");
               window.setFavicon("mediumblue");
               themeColorTag.content = computedStyle
                 .getPropertyValue("--color-real-black")
