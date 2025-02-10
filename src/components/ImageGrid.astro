@@ -70,22 +70,13 @@ const optimizedImages = await Promise.all(
               Astro.currentLocale || "en",
               `${collection}/${slug.replace("fr/", "")}`
             )}
-            classname="preview-image relative group block hover:no-underline focus-visible:no-underline"
+            classname="preview-image group grid !no-underline"
             data-srcset={optimizedImages[index].srcSet.attribute}
           >
-            <h3
-              class="
-              absolute z-10 rounded-md ff7:rounded-none left-0 top-0 opacity-0 overflow-hidden transition-opacity
-              duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100
-              w-full h-full text-center flex items-center justify-center p-2 bg-real-white/50 dark:bg-real-black/50 ff7:bg-real-black/50 
-              font-mono text-base text-balance text-real-black dark:text-real-white ff7:text-real-white"
-            >
-              <span transition:name={`${id}-title`}>{data.title}</span>
-            </h3>
-
             <Picture
               transition:name={`${id}-image`}
               pictureAttributes={{
+                class: "col-start-1 row-start-1",
                 "aria-hidden": true,
               }}
               class="mx-auto object-contain rounded-md ff7:rounded-none"
@@ -96,6 +87,16 @@ const optimizedImages = await Promise.all(
               densities={[1.5, 2]}
               loading={index > 3 ? "lazy" : "eager"}
             />
+
+            <h3
+              class="
+              relative col-start-1 row-start-1 rounded-md ff7:rounded-none opacity-0 overflow-hidden transition-opacity
+              duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100 
+              text-center flex items-center justify-center p-2 bg-real-white/50 dark:bg-real-black/50 ff7:bg-real-black/50 
+              font-mono text-base text-balance text-real-black dark:text-real-white ff7:text-real-white"
+            >
+              <span transition:name={`${id}-title`}>{data.title}</span>
+            </h3>
           </Anchor>
         </li>
       ))
