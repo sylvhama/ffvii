@@ -41,6 +41,8 @@ const { otherLocalePathname } = Astro.props;
         ? "page"
         : undefined}
       ><Icon
+        width="1rem"
+        height="1rem"
         name="settings"
         title={translate("settings")}
         aria-label={translate("settings")}
@@ -51,6 +53,8 @@ const { otherLocalePathname } = Astro.props;
       classname="relative pl-2 hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
       aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
       ><Icon
+        width="1rem"
+        height="1rem"
         name="question"
         title={translate("about")}
         aria-label={translate("about")}

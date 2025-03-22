@@ -54,7 +54,12 @@ const isFrench = Astro.currentLocale === "fr";
                 )}
               >
                 <div class="pointer group-hover:before:block group-focus-visible:before:block">
-                  <Icon name={page} aria-hidden="true" width="24" height="24" />
+                  <Icon
+                    name={page}
+                    aria-hidden="true"
+                    width="1.5rem"
+                    height="1.5rem"
+                  />
                 </div>
               </div>
               <span transition:name={`${translatedPage}-link`}>

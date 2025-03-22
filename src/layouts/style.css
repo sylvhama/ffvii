@@ -41,7 +41,7 @@
     @apply cursor-pointer relative outline-hidden;
   }
   .pointer::before {
-    @apply hidden absolute scale-50 left-[-36px] top-1/2 mt-[-12px];
+    @apply hidden absolute scale-50 left-[-36px] top-1/2 mt-[-0.75rem];
     content: url("/cursor.webp") !important;
   }
   .pointer:hover::before,

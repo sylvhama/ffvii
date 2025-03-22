@@ -220,7 +220,12 @@ const anim = (delay?: string) => ({
             classname="grid grid-cols-[auto_auto] gap-1 items-center"
             href={getPostUrl(previousSlug)}
           >
-            <Icon name="previous" aria-hidden="true" width="18" height="18" />
+            <Icon
+              name="previous"
+              aria-hidden="true"
+              width="1.125rem"
+              height="1.125rem"
+            />
             <span class="block w-full text-ellipsis overflow-hidden whitespace-nowrap">
               {previousTitle}
             </span>
@@ -236,7 +241,12 @@ const anim = (delay?: string) => ({
             <span class="block w-full max-w-max text-ellipsis overflow-hidden whitespace-nowrap">
               {nextTitle}
             </span>
-            <Icon name="next" aria-hidden="true" width="18" height="18" />
+            <Icon
+              name="next"
+              aria-hidden="true"
+              width="1.125rem"
+              height="1.125rem"
+            />
           </Anchor>
         ) : (
           <div />
