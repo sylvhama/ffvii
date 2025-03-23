@@ -79,7 +79,7 @@ const optimizedImages = await Promise.all(
                 class: "col-start-1 row-start-1",
                 "aria-hidden": true,
               }}
-              class="mx-auto object-contain rounded-md ff7:rounded-none"
+              class="mx-auto object-contain rounded-md ff7:rounded-none w-full"
               src={data.images[0]}
               alt={data.imagesAlt[0]}
               width={250.75}
@@ -90,7 +90,7 @@ const optimizedImages = await Promise.all(
 
             <h3
               class="
-              relative col-start-1 row-start-1 rounded-md ff7:rounded-none opacity-0 overflow-hidden transition-opacity
+              relative aspect-square col-start-1 row-start-1 rounded-md ff7:rounded-none opacity-0 overflow-hidden transition-opacity
               duration-[250ms] hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100 
               text-center flex items-center justify-center p-2 bg-real-white/50 dark:bg-real-black/50 ff7:bg-real-black/50 
               font-mono text-base text-balance text-real-black dark:text-real-white ff7:text-real-white"
