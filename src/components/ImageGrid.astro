@@ -59,7 +59,7 @@ const optimizedImages = await Promise.all(
 </script>
 
 <Layout titlePrefix={translate(collection)}>
-  <Nav currentPage={collection} />
+  <Nav slot="nav" currentPage={collection} />
   <h2 class="sr-only">{translate(`${collection}Heading`)}</h2>
   <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {

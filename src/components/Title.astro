@@ -1,0 +1,22 @@
+---
+import clsx from "clsx";
+
+interface Props {
+  isFrench: boolean;
+  classname?: string;
+}
+
+const { classname, isFrench } = Astro.props;
+---
+
+<h1 class={clsx("text-xl font-bold font-mono", classname)}>
+  <a
+    href={isFrench ? "/fr" : "/"}
+    aria-current={["", "/", "/fr", "/fr/"].includes(Astro.url.pathname)
+      ? "page"
+      : undefined}
+    class={"sticky top-8 rounded-md focus-ring"}
+  >
+    <slot />
+  </a>
+</h1>

@@ -90,7 +90,7 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot({ fullPage: true });
   });
 
-  test("focus ring and theme local storage", async ({ page }) => {
+  test("focus ring and theme local storage", async ({ page, isMobile }) => {
     const reloadFocusAndScreenshot = async () => {
       await page.reload();
       await page
@@ -98,11 +98,15 @@ test.describe("screenshots", () => {
           name: "My Final Fantasy VII collection",
         })
         .focus();
-      await expect(
-        page.getByRole("heading", {
-          name: "My Final Fantasy VII collection",
-        })
-      ).toHaveScreenshot();
+      if (isMobile) {
+        await expect(
+          page.getByRole("heading", {
+            name: "My Final Fantasy VII collection",
+          })
+        ).toHaveScreenshot();
+      } else {
+        await expect(page.getByRole("complementary")).toHaveScreenshot();
+      }
     };
 
     await page.goto("settings");

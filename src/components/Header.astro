@@ -1,15 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
+import Title from "@components/Title.astro";
 import Anchor from "@components/Anchor.astro";
 import { useTranslations, getRelativeLocaleUrl } from "@i18n/utils";
 
 interface Props {
   otherLocalePathname: string;
+  title: string;
 }
 
 const translate = useTranslations(Astro.currentLocale!);
 const isFrench = Astro.currentLocale === "fr";
-const { otherLocalePathname } = Astro.props;
+const { otherLocalePathname, title } = Astro.props;
 ---
 
 <script>
@@ -22,43 +24,54 @@ const { otherLocalePathname } = Astro.props;
     console.error(error);
   }
 </script>
-<div
-  class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4 has-[.header-slot:empty]:gap-0"
->
-  <div class="header-slot max-sm:order-2 empty:hidden"><slot /></div>
-  <div class="flex flex-wrap items-center max-sm:order-1">
-    <Anchor
-      classname="ml-auto mr-2"
-      lang={isFrench ? "en" : "fr"}
-      href={otherLocalePathname}
-    >
-      {translate("langLink")}
-    </Anchor>
-    <Anchor
-      href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-      classname="px-2 hover:no-underline focus-visible:no-underline"
-      aria-current={Astro.url.pathname.includes("/settings")
-        ? "page"
-        : undefined}
-      ><Icon
-        width="1rem"
-        height="1rem"
-        name="settings"
-        title={translate("settings")}
-        aria-label={translate("settings")}
-      />
-    </Anchor>
-    <Anchor
-      href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
-      classname="relative pl-2 hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
-      aria-current={Astro.url.pathname.includes("/about") ? "page" : undefined}
-      ><Icon
-        width="1rem"
-        height="1rem"
-        name="question"
-        title={translate("about")}
-        aria-label={translate("about")}
-      />
-    </Anchor>
+<header>
+  <div
+    class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4 has-[.header-slot:empty]:gap-0"
+  >
+    <div class="header-slot max-sm:order-2 empty:hidden"><slot /></div>
+    <div class="flex flex-wrap items-center max-sm:order-1">
+      <Anchor
+        classname="ml-auto mr-2"
+        lang={isFrench ? "en" : "fr"}
+        href={otherLocalePathname}
+      >
+        {translate("langLink")}
+      </Anchor>
+      <Anchor
+        href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
+        classname="px-2 hover:no-underline focus-visible:no-underline"
+        aria-current={Astro.url.pathname.includes("/settings")
+          ? "page"
+          : undefined}
+        ><Icon
+          width="1rem"
+          height="1rem"
+          name="settings"
+          title={translate("settings")}
+          aria-label={translate("settings")}
+        />
+      </Anchor>
+      <Anchor
+        href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
+        classname="relative pl-2 hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
+        aria-current={Astro.url.pathname.includes("/about")
+          ? "page"
+          : undefined}
+        ><Icon
+          width="1rem"
+          height="1rem"
+          name="question"
+          title={translate("about")}
+          aria-label={translate("about")}
+        />
+      </Anchor>
+    </div>
   </div>
-</div>
+
+  <Title
+    classname="block md:hidden pb-8 text-balance text-center"
+    isFrench={isFrench}
+  >
+    {title}
+  </Title>
+</header>

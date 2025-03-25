@@ -5,42 +5,46 @@ test("aria snapshots", async ({ page, isMobile }) => {
   await expect(page.locator("body")).toMatchAriaSnapshot(
     isMobile
       ? `
-    - main:
+    - banner:
       - link "About my collection"
       - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
-      - navigation "Categories"
+    - navigation "Categories"
+    - main
       `
       : `
-    - main:
+    - complementary:
       - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
+    - banner:
       - link "Français"
       - link "Settings":
         - img "Settings"
       - link "About my collection":
         - img "About my collection"
-      - navigation "Categories":
-        - list:
-          - listitem:
-            - link "Games"
-          - listitem:
-            - link "Movies"
-          - listitem:
-            - link "Books"
-          - listitem:
-            - link "Music"
-          - listitem:
-            - link "Events"
-          - listitem:
-            - link "Merch"
+    - navigation "Categories":
+      - list:
+        - listitem:
+          - link "Games"
+        - listitem:
+          - link "Movies"
+        - listitem:
+          - link "Books"
+        - listitem:
+          - link "Music"
+        - listitem:
+          - link "Events"
+        - listitem:
+          - link "Merch"
+    - main:
       - heading "Final Fantasy 7 games" [level=2]
       - list:
         - listitem:
           - link "Final Fantasy VII (PS1)":
             - heading "Final Fantasy VII (PS1)" [level=3]
-      - img "Outline of the Buster Sword from Final Fantasy 7"
-      - separator
+    - img "Outline of the Buster Sword from Final Fantasy 7"
+    - separator
+    - contentinfo:
       - paragraph: Crafted by
       - link "Sylvain Hamann"
       - link "GitHub"
