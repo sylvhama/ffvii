@@ -81,7 +81,7 @@ const ogImageUrl = currentUrl.endsWith("/")
   <body
     class="mx-auto max-w-[75rem] bg-real-white md:p-4 md:pb-0 dark:bg-black dark:text-white ff7:bg-real-black ff7:text-white"
   >
-    <div id="favicon" class="hidden" aria-hidden="true" hidden>
+    <template id="favicon">
       "data:image/svg+xml,<svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -93,7 +93,7 @@ const ogImageUrl = currentUrl.endsWith("/")
           fill="FOREGROUND_COLOR">Ⅶ</text
         ></svg
       >"
-    </div>
+    </template>
     <script is:inline define:vars={{ otherLocalePathname, isFrench }}>
       try {
         const browserLanguage = navigator.language || navigator.languages[0];
