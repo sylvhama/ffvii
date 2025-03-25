@@ -6,6 +6,7 @@ interface Props {
 
 import { ClientRouter } from "astro:transitions";
 
+import Skip from "@components/Skip.astro";
 import Title from "@components/Title.astro";
 import Anchor from "@components/Anchor.astro";
 import Header from "@components/Header.astro";
@@ -79,7 +80,7 @@ const ogImageUrl = currentUrl.endsWith("/")
     <ClientRouter fallback="none" />
   </head>
   <body
-    class="mx-auto max-w-[75rem] bg-real-white md:p-4 md:pb-0 dark:bg-black dark:text-white ff7:bg-real-black ff7:text-white"
+    class="relative mx-auto max-w-[75rem] bg-real-white md:p-4 md:pb-0 dark:bg-black dark:text-white ff7:bg-real-black ff7:text-white"
   >
     <template id="favicon">
       "data:image/svg+xml,<svg
@@ -167,12 +168,15 @@ const ogImageUrl = currentUrl.endsWith("/")
     <div
       class="md:grid grid-cols-[auto_1fr] gap-8 ff7:bg-ff7 px-4 ff7:rounded-md border-4 border-transparent ff7:border-real-white"
     >
-      <aside
-        class="px-4 pr-4 hidden md:block vertical-text border-r border-black dark:border-white ff7:border-white relative before:absolute before:border-r before:border-black dark:before:border-white ff7:before:border-white before:h-6 before:-top-6 before:-right-[1px] before:hidden md:before:block ff7:before:hidden"
-      >
-        <Title isFrench={isFrench}>
-          {title}
-        </Title>
+      <aside>
+        <Skip />
+        <div
+          class="hidden md:block h-full border-r border-black dark:border-white ff7:border-white relative before:absolute before:border-r before:border-black dark:before:border-white ff7:before:border-white before:h-6 before:-top-6 before:-right-[1px] before:hidden md:before:block ff7:before:hidden"
+        >
+          <Title classname="px-4 pr-4 vertical-text" isFrench={isFrench}>
+            {title}
+          </Title>
+        </div>
       </aside>
       <div class="pt-4">
         <Header otherLocalePathname={otherLocalePathname} title={title}

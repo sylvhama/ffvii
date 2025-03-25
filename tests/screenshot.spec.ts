@@ -119,4 +119,14 @@ test.describe("screenshots", () => {
     await page.getByLabel("FF7 Theme").check();
     await reloadFocusAndScreenshot();
   });
+
+  test("skip to main content", async ({ page, isMobile }) => {
+    await page.goto("");
+    await page.keyboard.press("Tab");
+    expect(page.url().endsWith("#main-content")).toBe(false);
+    await expect(page).toHaveScreenshot();
+    await page.keyboard.press("Enter");
+    expect(page.url().endsWith("#main-content")).toBe(true);
+    await expect(page.getByRole("main")).toHaveAttribute("id", "main-content");
+  });
 });

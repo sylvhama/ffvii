@@ -11,6 +11,7 @@ A website to showcase my Final Fantasy VII collection.
 - Theme picker: https://ui.shadcn.com/examples/forms/appearance
 - Breadcrumb: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
 - Nav: https://tympanus.net/Development/LineMenuStyles/#Ceres
+- Skip to main content: https://webaim.org/techniques/skipnav/
 
 - Cursor: https://finalfantasy.fandom.com/wiki/Cursor
 - Buster sword: https://commons.wikimedia.org/wiki/File:Buster_Sword_1625949.svg

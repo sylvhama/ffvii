@@ -14,6 +14,7 @@ test("aria snapshots", async ({ page, isMobile }) => {
       `
       : `
     - complementary:
+      - link "Skip to main content"
       - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
     - banner:

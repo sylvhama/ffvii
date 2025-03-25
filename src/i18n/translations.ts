@@ -1,5 +1,6 @@
 export const translations = {
   en: {
+    skip: "Skip to main content",
     title: "My Final Fantasy VII collection",
     description: "A gallery of all my Final Fantasy 7 collectibles",
     langLink: "Français",
@@ -42,6 +43,7 @@ export const translations = {
     setPictureLabel: "Pick ",
   },
   fr: {
+    skip: "Passer au contenu principal",
     title: "Ma collection Final Fantasy VII",
     description:
       "Une galerie de tous mes objets en rapport avec Final Fantasy 7",
