@@ -5,7 +5,7 @@ const translate = useTranslations(Astro.currentLocale!);
 ---
 
 <div
-  class="fixed w-max p-2 pl-7.5 top-0 left-0 z-100 bg-pink ff7:bg-ff7-pink text-black rounded-br-md ff7:rounded-none transform translate-y-[-100%] focus-within:translate-y-0 transition-transform duration-250"
+  class="fixed w-max p-2 pl-7.5 top-0 left-0 z-100 bg-pink ff7:bg-ff7-pink text-black rounded-br-md ff7:rounded-none opacity-0 translate-y-[-100%] focus-within:translate-y-0 focus-within:opacity-100 transition motion-reduce:transition-none duration-250"
 >
   <a class="pointer outline-0 underline" href="#main-content">
     {translate("skip")}
