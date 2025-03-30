@@ -39,7 +39,7 @@ const { otherLocalePathname, title } = Astro.props;
       </Anchor>
       <Anchor
         href={getRelativeLocaleUrl(Astro.currentLocale || "en", "settings")}
-        classname="px-2 hover:no-underline focus-visible:no-underline"
+        classname="px-2 before:!left-[-28px] hover:no-underline focus-visible:no-underline"
         aria-current={Astro.url.pathname.includes("/settings")
           ? "page"
           : undefined}
@@ -53,7 +53,7 @@ const { otherLocalePathname, title } = Astro.props;
       </Anchor>
       <Anchor
         href={getRelativeLocaleUrl(Astro.currentLocale || "en", "about")}
-        classname="relative pl-2 hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
+        classname="relative pl-2 before:!left-[-28px] hover:no-underline focus-visible:no-underline after:absolute after:w-4 after:h-full after:start-6 after:top-0"
         aria-current={Astro.url.pathname.includes("/about")
           ? "page"
           : undefined}
