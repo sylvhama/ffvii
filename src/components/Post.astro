@@ -87,9 +87,15 @@ const anim = (delay?: string) => ({
       input.addEventListener("change", (event) => {
         const target = event.target as HTMLInputElement;
         const indexToShow = Number(target.value);
+        const isReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
         if (!Number.isNaN(indexToShow)) {
           mainImages.forEach((image) => {
-            image.classList.add("starting:opacity-0", "hidden");
+            image.classList.add(
+              isReducedMotion ? "opacity-0" : "starting:opacity-0",
+              "hidden"
+            );
             image.classList.remove("opacity-100");
           });
           mainImages[indexToShow].classList.remove("hidden");
@@ -97,7 +103,9 @@ const anim = (delay?: string) => ({
           const img = mainImages[indexToShow].querySelector("img");
 
           if (img && img.getBoundingClientRect().top < 0) {
-            img.scrollIntoView({ behavior: "smooth" });
+            img.scrollIntoView({
+              behavior: isReducedMotion ? "instant" : "smooth",
+            });
           }
         }
       });
@@ -153,7 +161,7 @@ const anim = (delay?: string) => ({
           class="mx-auto object-contain md:sticky top-8 rounded-md ff7:rounded-none"
           pictureAttributes={{
             class: clsx(
-              "block main-image duration-500 transition-opacity",
+              "block main-image duration-500 transition-opacity motion-reduce:transition-none",
               index > 0 && "hidden"
             ),
           }}
@@ -195,7 +203,7 @@ const anim = (delay?: string) => ({
                     class="rounded-md ff7:rounded-none object-contain"
                     pictureAttributes={{
                       class:
-                        "block peer-checked:opacity-50 transition:opacity duration-500",
+                        "block peer-checked:opacity-50 transition:opacity motion-reduce:transition-none duration-500",
                     }}
                     width={115}
                     height={115}
