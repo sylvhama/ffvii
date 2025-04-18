@@ -9,8 +9,18 @@ const pathnames = [
   "/404",
 ] as const;
 
+declare global {
+  interface Window {
+    isPlaywright?: boolean;
+  }
+}
+
 test.describe("screenshots", () => {
   test.skip(!process.env.CI);
+
+  test.beforeEach(async ({ context }) => {
+    await context.addInitScript(() => (window.isPlaywright = true));
+  });
 
   for (const locale of locales) {
     for (const pathname of pathnames) {
