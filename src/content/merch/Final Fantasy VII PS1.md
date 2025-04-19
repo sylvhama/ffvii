@@ -1,4 +1,5 @@
 ---
+sortOrder: 1
 title: Final Fantasy VII (PS1)
 description: My very first FF7 game on PS1
 images: ["./front.jpg", "./back.jpg"]

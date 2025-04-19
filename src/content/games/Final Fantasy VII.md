@@ -1,6 +1,7 @@
 ---
-title: Final Fantasy VII (PS1)
-description: My very first FF7 game on PS1
+sortOrder: 1
+title: Final Fantasy VII
+description: My very first FF7 game on PlayStation
 images: ["./front.jpg", "./back.jpg"]
 imagesAlt: ["front", "back"]
 ---

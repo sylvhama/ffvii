@@ -43,10 +43,12 @@ export async function getLocaleCollection(
   collection: CollectionKey,
   currentLocale: string = "en"
 ) {
-  return await getCollection(collection, ({ id }) => {
-    if (currentLocale === "en") return !id.startsWith("fr/");
-    return id.startsWith("fr/");
-  });
+  return (
+    await getCollection(collection, ({ id }) => {
+      if (currentLocale === "en") return !id.startsWith("fr/");
+      return id.startsWith("fr/");
+    })
+  ).sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 }
 
 type Image = {
