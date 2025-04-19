@@ -222,10 +222,10 @@ const anim = (delay?: string) => ({
   </article>
   {
     previousSlug || nextSlug ? (
-      <div class="pt-8 flex justify-between gap-8">
+      <div class="pt-8 grid grid-cols-2 gap-8">
         {previousSlug ? (
           <Anchor
-            classname="grid grid-cols-[auto_auto] gap-1 items-center"
+            classname="grid grid-cols-[auto_auto] gap-1 items-center justify-start"
             href={getPostUrl(previousSlug)}
           >
             <Icon
@@ -243,7 +243,7 @@ const anim = (delay?: string) => ({
         )}
         {nextSlug ? (
           <Anchor
-            classname="grid grid-cols-[auto_auto] gap-1 items-center"
+            classname="grid grid-cols-[auto_auto] gap-1 items-center max-w-max ml-auto"
             href={getPostUrl(nextSlug)}
           >
             <span class="block w-full max-w-max text-ellipsis overflow-hidden whitespace-nowrap">
