@@ -41,8 +41,8 @@ test("aria snapshots", async ({ page, isMobile }) => {
       - heading "Final Fantasy 7 games" [level=2]
       - list:
         - listitem:
-          - link "Final Fantasy VII (PS1)":
-            - heading "Final Fantasy VII (PS1)" [level=3]
+          - link "Final Fantasy VII":
+            - heading "Final Fantasy VII" [level=3]
     - img "Outline of the Buster Sword from Final Fantasy 7"
     - separator
     - contentinfo:
@@ -69,13 +69,15 @@ test("aria snapshots", async ({ page, isMobile }) => {
       - img "Une photo de toute ma collection Final Fantasy 7"
     `);
   await page.getByRole("link", { name: "Accueil" }).click();
-  await page.getByRole("link", { name: "Final Fantasy VII (PS1)" }).click();
+  await page
+    .getByRole("link", { name: "Final Fantasy VII", exact: true })
+    .click();
   await page.getByRole("link", { name: "English" }).click();
   await expect(page.locator("body")).toMatchAriaSnapshot(`
     - main:
       - article:
         - img "front"
-        - heading "Final Fantasy VII (PS1)" [level=2]
+        - heading "Final Fantasy VII" [level=2]
         - paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et facilisis lectus, ut porttitor arcu. Duis tortor arcu, bibendum non orci ac, mollis convallis arcu. Mauris ultricies lacus eu nulla fermentum, consequat blandit lacus efficitur. Suspendisse sit amet lectus volutpat eros condimentum finibus eu eu velit. Ut et mollis tortor, ut viverra odio. Quisque congue tempus lorem. Curabitur sollicitudin semper molestie. Proin sed cursus tortor. Donec ultricies consequat enim sit amet placerat. Mauris consectetur, nulla non blandit malesuada, libero ante euismod libero, sed rutrum lectus elit posuere justo. Sed pharetra mi id lorem feugiat pellentesque.
         - group "Set main picture":
           - radio "Pick front" [checked]
