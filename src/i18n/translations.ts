@@ -41,6 +41,7 @@ export const translations = {
     merchHeading: "Final Fantasy 7 merchandising",
     setPicture: "Set main picture",
     setPictureLabel: "Pick ",
+    relatedContent: "Related content",
   },
   fr: {
     skip: "Passer au contenu principal",
@@ -85,5 +86,6 @@ export const translations = {
     merchHeading: "Produits dérivés de Final Fantasy 7",
     setPicture: "Définir l'image principale",
     setPictureLabel: "Choisir ",
+    relatedContent: "Contenu connexe",
   },
 } as const;

@@ -103,6 +103,12 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot({ fullPage: true });
   });
 
+  test("post related content nav", async ({ page }) => {
+    await page.goto("games/final-fantasy-vii-international");
+    const nav = page.locator('nav[aria-label="Related content"]');
+    await expect(nav).toHaveScreenshot();
+  });
+
   test("focus ring and theme local storage", async ({ page, isMobile }) => {
     const reloadFocusAndScreenshot = async () => {
       await page.reload();

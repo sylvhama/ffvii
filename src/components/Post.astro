@@ -222,10 +222,13 @@ const anim = (delay?: string) => ({
   </article>
   {
     previousSlug || nextSlug ? (
-      <div class="pt-8 grid grid-cols-2 gap-8">
+      <nav
+        aria-label={translate("relatedContent")}
+        class="pt-8 grid grid-cols-2 gap-8"
+      >
         {previousSlug ? (
           <Anchor
-            classname="grid grid-cols-[auto_auto] gap-1 items-center justify-start"
+            classname="grid grid-cols-[auto_auto] gap-1 items-center max-w-max"
             href={getPostUrl(previousSlug)}
           >
             <Icon
@@ -259,7 +262,7 @@ const anim = (delay?: string) => ({
         ) : (
           <div />
         )}
-      </div>
+      </nav>
     ) : null
   }
 </Layout>

@@ -84,5 +84,7 @@ test("aria snapshots", async ({ page, isMobile }) => {
           - img "front"
           - radio "Pick back"
           - img "back"
+      - navigation "Related content":
+        - link "Final Fantasy VII International"
     `);
 });
