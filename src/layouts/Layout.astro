@@ -104,6 +104,7 @@ const ogImageUrl = currentUrl.endsWith("/")
           !isFrench &&
           !localStorage.disableFrenchRedirect
         ) {
+          localStorage.disableFrenchRedirect = true;
           window.location.href = otherLocalePathname;
         }
       } catch (error) {
