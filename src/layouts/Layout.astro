@@ -108,6 +108,8 @@ const ogImageUrl = currentUrl.endsWith("/")
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        localStorage.disableFrenchRedirect = true;
       }
 
       function init() {

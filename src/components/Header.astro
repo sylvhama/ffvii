@@ -14,16 +14,6 @@ const isFrench = Astro.currentLocale === "fr";
 const { otherLocalePathname, title } = Astro.props;
 ---
 
-<script>
-  try {
-    const englishLink = document.querySelector('a[lang="en"]');
-    englishLink?.addEventListener("click", () => {
-      localStorage.disableFrenchRedirect = true;
-    });
-  } catch (error) {
-    console.error(error);
-  }
-</script>
 <header>
   <div
     class="pb-8 grid sm:grid-cols-[1fr_auto] items-center gap-4 has-[.header-slot:empty]:gap-0"
