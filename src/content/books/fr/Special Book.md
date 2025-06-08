@@ -8,12 +8,16 @@ images:
     "../images/special-book1.jpg",
     "../images/special-book2.jpg",
     "../images/special-book3.jpg",
+    "../images/special-book5.jpg",
+    "../images/special-book4.jpg",
   ]
 imagesAlt:
   [
     "Couverture avant du livre avec Cloud, Zack et Sephiroth.",
     "Quatrième de couverture avec quelques textes.",
     "Deux pages ouvertes à l’intérieur du livre montrant une chronologie de tous les jeux.",
+    "Devant de la boîte du tote bag",
+    "Derrière de la boîte du tote bag",
   ]
 ---
 
