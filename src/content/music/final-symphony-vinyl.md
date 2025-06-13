@@ -1,7 +1,7 @@
 ---
 sortOrder: 29
 title: Final Symphony Vinyl
-description: "Final Symphony: Music From Final Fantasy Vinyl"
+description: "Final Symphony: music from Final Fantasy VI, VII and X Vinyl"
 
 images:
   [
