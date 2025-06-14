@@ -5,8 +5,8 @@ description: "Theatrhythm Final Fantasy on 3DS and arcade"
 
 images:
   [
-    "./images/theatrhythm-final-fantasy6.JPG",
-    "./images/theatrhythm-final-fantasy5.JPG",
+    "./images/theatrhythm-final-fantasy6.jpg",
+    "./images/theatrhythm-final-fantasy5.jpg",
     "./images/theatrhythm-final-fantasy4.jpg",
     "./images/theatrhythm-final-fantasy1.jpg",
     "./images/theatrhythm-final-fantasy2.jpg",

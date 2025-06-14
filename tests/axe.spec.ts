@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 
 const pathnames = [
   "",
-  "games/final-fantasy-vii",
+  "games/final-fantasy-vii-pal",
   "about",
   "settings",
   "404",

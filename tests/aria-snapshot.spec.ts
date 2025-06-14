@@ -14,7 +14,8 @@ test("aria snapshots", async ({ page, isMobile }) => {
       `
       : `
     - complementary:
-      - link "Skip to main content"
+      - link "Skip to main content":
+        - /url: "#main-content"
       - heading "My Final Fantasy VII collection" [level=1]:
         - link "My Final Fantasy VII collection"
     - banner:
@@ -41,8 +42,8 @@ test("aria snapshots", async ({ page, isMobile }) => {
       - heading "Final Fantasy 7 games" [level=2]
       - list:
         - listitem:
-          - link "Final Fantasy VII":
-            - heading "Final Fantasy VII" [level=3]
+          - link "Final Fantasy VII PAL":
+            - heading "Final Fantasy VII PAL" [level=3]
     - img "Outline of the Buster Sword from Final Fantasy 7"
     - separator
     - contentinfo:
@@ -70,21 +71,21 @@ test("aria snapshots", async ({ page, isMobile }) => {
     `);
   await page.getByRole("link", { name: "Accueil" }).click();
   await page
-    .getByRole("link", { name: "Final Fantasy VII", exact: true })
+    .getByRole("link", { name: "Final Fantasy VII PAL", exact: true })
     .click();
   await page.getByRole("link", { name: "English" }).click();
   await expect(page.locator("body")).toMatchAriaSnapshot(`
     - main:
       - article:
-        - img "front"
-        - heading "Final Fantasy VII" [level=2]
-        - paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et facilisis lectus, ut porttitor arcu. Duis tortor arcu, bibendum non orci ac, mollis convallis arcu. Mauris ultricies lacus eu nulla fermentum, consequat blandit lacus efficitur. Suspendisse sit amet lectus volutpat eros condimentum finibus eu eu velit. Ut et mollis tortor, ut viverra odio. Quisque congue tempus lorem. Curabitur sollicitudin semper molestie. Proin sed cursus tortor. Donec ultricies consequat enim sit amet placerat. Mauris consectetur, nulla non blandit malesuada, libero ante euismod libero, sed rutrum lectus elit posuere justo. Sed pharetra mi id lorem feugiat pellentesque.
+        - img "Box front"
+        - heading "Final Fantasy VII PAL" [level=2]
+        - paragraph
         - group "Set main picture":
-          - radio "Pick front" [checked]
-          - img "front"
-          - radio "Pick back"
-          - img "back"
+          - radio "Pick  Box front" [checked]
+          - img "Box front"
+          - radio "Pick  Box back"
+          - img "Box back"
       - navigation "Related content":
-        - link "Final Fantasy VII International"
+        - link "Final Fantasy VII JP"
     `);
 });

@@ -4,8 +4,8 @@ description: "The very first Distant Worlds: music from FINAL FANTASY concert in
 sortOrder: 2
 images:
   [
-    "./images/distant-worlds-paris1.JPG",
-    "./images/distant-worlds-paris2.JPG",
+    "./images/distant-worlds-paris1.jpg",
+    "./images/distant-worlds-paris2.jpg",
     "./images/distant-worlds-paris3.jpg",
   ]
 imagesAlt:

@@ -4,8 +4,8 @@ description: "Mon tout premier concert Final Fantasy à La Cigale (Paris) en nov
 sortOrder: 1
 images:
   [
-    "../images/nobuo-uematsu2.JPG",
-    "../images/nobuo-uematsu1.JPG",
+    "../images/nobuo-uematsu2.jpg",
+    "../images/nobuo-uematsu1.jpg",
     "../images/nobuo-uematsu3.jpg",
   ]
 imagesAlt:

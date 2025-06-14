@@ -88,7 +88,7 @@ for (const action of ["focus", "hover"] as const) {
       page.locator('link[rel="preload"][as="image"][imagesrcset]')
     ).toHaveCount(0);
 
-    const link = page.locator('a[href="/games/final-fantasy-vii"]');
+    const link = page.locator('a[href="/games/final-fantasy-vii-pal"]');
     const srcset = await link.getAttribute("data-srcset");
     await link[action]();
     await page.getByText("Français")[action]();
@@ -104,13 +104,13 @@ for (const action of ["focus", "hover"] as const) {
 
 test(`preload second image on hover once`, async ({ page, isMobile }) => {
   test.skip(isMobile);
-  await page.goto("games/final-fantasy-vii");
+  await page.goto("games/final-fantasy-vii-pal");
 
   await expect(
     page.locator('link[rel="preload"][as="image"][imagesrcset]')
   ).toHaveCount(0);
 
-  const input = page.getByLabel("Pick back").locator("input");
+  const input = page.getByLabel("Pick  Box back").locator("input");
   await input.hover();
   await page.getByText("Français").hover();
   await input.hover();

@@ -2,7 +2,7 @@
 title: "Piano Opera: Music from Final Fantasy"
 description: "Piano Opera: Music from Final Fantasy concert à Taipei (2016)"
 sortOrder: 6
-images: ["../images/piano-opera2.JPG", "../images/piano-opera1.jpg"]
+images: ["../images/piano-opera2.jpg", "../images/piano-opera1.jpg"]
 imagesAlt:
   [
     "Hiroyuki Nakayama, Nobuo Uematsu et moi-même",

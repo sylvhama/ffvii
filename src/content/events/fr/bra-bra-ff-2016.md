@@ -4,8 +4,8 @@ description: "ＢＲＡ★ＢＲＡ　ＦＩＮＡＬ　ＦＡＮＴＡＳＹ　
 sortOrder: 10
 images:
   [
-    "../images/bra-bra161.JPG",
-    "../images/bra-bra162.JPG",
+    "../images/bra-bra161.jpg",
+    "../images/bra-bra162.jpg",
     "../images/bra-bra163.jpg",
   ]
 imagesAlt:

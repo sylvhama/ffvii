@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 const locales = ["", "fr"] as const;
 const pathnames = [
   "",
-  "/games/final-fantasy-vii",
+  "/games/final-fantasy-vii-pal",
   "/about",
   "/settings",
   "/404",
@@ -85,7 +85,7 @@ test.describe("screenshots", () => {
     test.skip(isMobile);
     await page.goto("");
     const link = page.getByRole("link", {
-      name: "Final Fantasy VII",
+      name: "Final Fantasy VII PAL",
       exact: true,
     });
     await link.hover();
@@ -97,8 +97,8 @@ test.describe("screenshots", () => {
 
   test("change main image via focus", async ({ page, isMobile }) => {
     test.skip(isMobile);
-    await page.goto("games/final-fantasy-vii");
-    await page.getByLabel("Pick front").focus();
+    await page.goto("games/final-fantasy-vii-pal");
+    await page.getByLabel("Pick  Box front").focus();
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot({ fullPage: true });
   });

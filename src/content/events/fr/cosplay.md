@@ -4,10 +4,10 @@ description: "Cosplayers de Final Fantasy VII du Tokyo Game Show (2014 et 2015)"
 sortOrder: 18
 images:
   [
-    "../images/cosplay4.JPG",
-    "../images/cosplay2.JPG",
-    "../images/cosplay3.JPG",
-    "../images/cosplay6.JPG",
+    "../images/cosplay4.jpg",
+    "../images/cosplay2.jpg",
+    "../images/cosplay3.jpg",
+    "../images/cosplay6.jpg",
     "../images/cosplay5.jpg",
     "../images/cosplay1.jpg",
   ]
