@@ -22,40 +22,41 @@ const optimizedImages = await Promise.all(
 ---
 
 <script>
-  const preloadResponsiveImage = (srcset: string) => {
-    const preloadLink = document.createElement("link");
-    preloadLink.rel = "preload";
-    preloadLink.as = "image";
-    preloadLink.imageSrcset = srcset;
-    document.head.appendChild(preloadLink);
-  };
-
-  const previewImages =
-    document.querySelectorAll<HTMLImageElement>(".preview-image");
-
-  previewImages.forEach((previewImage) => {
-    const onPreload = (event: Event) => {
-      const target = event.target;
-      const dataSrcset = "data-srcset";
-      if (
-        target instanceof HTMLAnchorElement &&
-        target.hasAttribute(dataSrcset)
-      ) {
-        preloadResponsiveImage(target.getAttribute(dataSrcset)!);
-        target.removeAttribute(dataSrcset);
-      }
+  function init() {
+    const preloadResponsiveImage = (srcset: string) => {
+      const preloadLink = document.createElement("link");
+      preloadLink.rel = "preload";
+      preloadLink.as = "image";
+      preloadLink.imageSrcset = srcset;
+      document.head.appendChild(preloadLink);
     };
-    previewImage.addEventListener("mouseenter", onPreload, {
-      once: true,
+
+    const previewImages =
+      document.querySelectorAll<HTMLImageElement>(".preview-image");
+
+    previewImages.forEach((previewImage) => {
+      const onPreload = (event: Event) => {
+        const target = event.target;
+        const dataSrcset = "data-srcset";
+        if (
+          target instanceof HTMLAnchorElement &&
+          target.hasAttribute(dataSrcset)
+        ) {
+          preloadResponsiveImage(target.getAttribute(dataSrcset)!);
+          target.removeAttribute(dataSrcset);
+        }
+      };
+      previewImage.addEventListener("mouseenter", onPreload);
+      previewImage.addEventListener("focus", onPreload);
+      previewImage.addEventListener("touchstart", onPreload, {
+        passive: true,
+      });
     });
-    previewImage.addEventListener("focus", onPreload, {
-      once: true,
-    });
-    previewImage.addEventListener("touchstart", onPreload, {
-      once: true,
-      passive: true,
-    });
-  });
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", init);
 </script>
 
 <Layout titlePrefix={translate(collection)}>

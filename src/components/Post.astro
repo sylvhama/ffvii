@@ -111,24 +111,27 @@ const anim = (delay?: string) => ({
       });
 
       const preloadResponsiveImage = (event: Event) => {
+        const dataIgnore = "data-ignore";
         const target = event.target as HTMLInputElement;
         const indexToShow = Number(target.value);
-        if (!Number.isNaN(indexToShow) && indexToShow > 0) {
+        if (
+          !Number.isNaN(indexToShow) &&
+          indexToShow > 0 &&
+          !target.hasAttribute(dataIgnore)
+        ) {
           const preloadLink = document.createElement("link");
           preloadLink.rel = "preload";
           preloadLink.as = "image";
           preloadLink.imageSrcset =
             mainImages[indexToShow].querySelector("source")!.srcset;
           document.head.appendChild(preloadLink);
+          target.setAttribute(dataIgnore, "true");
         }
       };
 
       // we don't try to preload on focus since focus will also trigger change event
-      input.addEventListener("mouseenter", preloadResponsiveImage, {
-        once: true,
-      });
+      input.addEventListener("mouseenter", preloadResponsiveImage);
       input.addEventListener("touchstart", preloadResponsiveImage, {
-        once: true,
         passive: true,
       });
     });
