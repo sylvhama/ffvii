@@ -34,6 +34,14 @@ const optimizedImages = await Promise.all(
     const previewImages =
       document.querySelectorAll<HTMLImageElement>(".preview-image");
 
+    if (previewImages.length > 0) {
+      const savedY = sessionStorage.getItem(window.location.pathname);
+      if (savedY != null) {
+        window.scrollTo(0, parseFloat(savedY));
+      }
+      sessionStorage.clear();
+    }
+
     previewImages.forEach((previewImage) => {
       const onPreload = (event: Event) => {
         const target = event.target;
@@ -50,6 +58,12 @@ const optimizedImages = await Promise.all(
       previewImage.addEventListener("focus", onPreload);
       previewImage.addEventListener("touchstart", onPreload, {
         passive: true,
+      });
+      previewImage.addEventListener("click", () => {
+        sessionStorage.setItem(
+          window.location.pathname,
+          String(window.scrollY)
+        );
       });
     });
   }

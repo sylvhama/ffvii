@@ -17,3 +17,34 @@ test("scroll to main image when not in viewport", async ({
 
   await expect(page.getByAltText("Box back").first()).toBeInViewport();
 });
+
+test("save scroll position in post list", async ({ page, baseURL }) => {
+  await page.goto("music");
+
+  const postLink = page.getByRole("link", { name: "Black Materia Vinyl" });
+  await postLink.scrollIntoViewIfNeeded();
+
+  const savedScrollY = await page.evaluate(() => {
+    return window.scrollY;
+  });
+
+  await postLink.click();
+
+  await page.waitForURL(baseURL + "/music/black-materia-vinyl");
+
+  const resetScrollY = await page.evaluate(() => {
+    return window.scrollY;
+  });
+
+  expect(resetScrollY).toBe(0);
+
+  await page.getByRole("link", { name: "Music", exact: true }).click();
+
+  await page.waitForURL(baseURL + "/music");
+
+  const ecpectedScrollY = await page.evaluate(() => {
+    return window.scrollY;
+  });
+
+  expect(ecpectedScrollY).toBe(savedScrollY);
+});
