@@ -1,7 +1,7 @@
 ---
 title: "Cosplay"
 description: "Final Fantasy VII cosplayers from Tokyo Game Show (2014 and 2015)"
-sortOrder: 18
+sortOrder: 19
 images:
   [
     "./images/cosplay4.jpg",

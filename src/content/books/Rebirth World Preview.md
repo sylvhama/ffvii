@@ -1,5 +1,5 @@
 ---
-sortOrder: 14
+sortOrder: 16
 title: Rebirth World Preview
 description: Final Fantasy VII Rebirth World Preview
 
