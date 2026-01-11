@@ -1,5 +1,5 @@
 ---
-sortOrder: 16
+sortOrder: 20
 title: Yoshitaka Amano
 description: Livres avec des illustrations de Yoshitaka Amano
 

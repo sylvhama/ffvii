@@ -1,5 +1,5 @@
 ---
-sortOrder: 15
+sortOrder: 18
 title: Rebirth Orchestra World Tour Pamphlet
 description: A pamphlet sold at the Rebirth concert
 

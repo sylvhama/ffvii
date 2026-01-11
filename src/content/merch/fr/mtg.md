@@ -9,6 +9,7 @@ images:
     "../images/mtg2.jpg",
     "../images/mtg3.jpg",
     "../images/mtg4.jpg",
+    "../images/mtg5.jpg",
     "../images/mtg6.jpg",
   ]
 imagesAlt:
@@ -17,6 +18,7 @@ imagesAlt:
     "3 boîtes de decks Magic",
     "Kit de démarrage, deck Commander, bundle (face)",
     "Kit de démarrage, deck Commander, bundle (dos)",
+    "Classeur avec la silhouette de Cloud",
     "Booster de jeu avec Cloud",
   ]
 ---

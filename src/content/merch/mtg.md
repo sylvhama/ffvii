@@ -9,6 +9,7 @@ images:
     "./images/mtg2.jpg",
     "./images/mtg3.jpg",
     "./images/mtg4.jpg",
+    "./images/mtg5.jpg",
     "./images/mtg6.jpg",
   ]
 imagesAlt:
@@ -17,6 +18,7 @@ imagesAlt:
     "3 MTG deck boxes",
     "Starter kit, commander deck, bundle front",
     "Starter kit, commander deck, bundle back",
+    "Binder with Cloud shadow on it",
     "Play booster with Cloud",
   ]
 ---
