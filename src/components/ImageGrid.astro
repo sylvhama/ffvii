@@ -17,7 +17,7 @@ const { collection } = Astro.props;
 const posts = await getLocaleCollection(collection, Astro.currentLocale);
 const translate = useTranslations(Astro.currentLocale!);
 const optimizedImages = await Promise.all(
-  posts.map(({ data: { images } }) => getOptimizedImage({ image: images[0] }))
+  posts.map(({ data: { images } }) => getOptimizedImage({ image: images[0] })),
 );
 ---
 
@@ -62,7 +62,7 @@ const optimizedImages = await Promise.all(
       previewImage.addEventListener("click", () => {
         sessionStorage.setItem(
           window.location.pathname,
-          String(window.scrollY)
+          String(window.scrollY),
         );
       });
     });
@@ -83,9 +83,9 @@ const optimizedImages = await Promise.all(
           <Anchor
             href={getRelativeLocaleUrl(
               Astro.currentLocale || "en",
-              `${collection}/${slug.replace("fr/", "")}`
+              `${collection}/${slug.replace("fr/", "")}`,
             )}
-            classname="preview-image group grid !no-underline"
+            classname="preview-image group grid !no-underline rounded-md overflow-hidden"
             data-srcset={optimizedImages[index].srcSet.attribute}
           >
             <Picture
@@ -94,7 +94,7 @@ const optimizedImages = await Promise.all(
                 class: "col-start-1 row-start-1",
                 "aria-hidden": true,
               }}
-              class="mx-auto object-cover rounded-md ff7:rounded-none w-full aspect-square"
+              class="mx-auto object-cover ff7:rounded-none w-full aspect-square transition-transform motion-reduce:transition-none group-hover:scale-125 group-focus:scale-125"
               src={data.images[0]}
               alt={data.imagesAlt[0]}
               width={250.75}
