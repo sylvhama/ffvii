@@ -22,15 +22,15 @@ const { previousSlug, nextSlug, previousTitle, nextTitle } =
   await (async function () {
     const posts = await getLocaleCollection(
       collection as CollectionKey,
-      Astro.currentLocale
+      Astro.currentLocale,
     );
     const currentIndex = posts.findIndex((post) => {
       return id === post.id;
     });
     return {
-      previousSlug: posts[currentIndex - 1]?.slug,
+      previousSlug: posts[currentIndex - 1]?.id,
       previousTitle: posts[currentIndex - 1]?.data.title,
-      nextSlug: posts[currentIndex + 1]?.slug,
+      nextSlug: posts[currentIndex + 1]?.id,
       nextTitle: posts[currentIndex + 1]?.data.title,
     };
   })();
@@ -38,7 +38,7 @@ const { previousSlug, nextSlug, previousTitle, nextTitle } =
 const getPostUrl = (slug: string) =>
   getRelativeLocaleUrl(
     Astro.currentLocale || "en",
-    `${collection}/${slug.replace("fr/", "")}`
+    `${collection}/${slug.replace("fr/", "")}`,
   );
 
 const anim = (delay?: string) => ({
@@ -79,7 +79,7 @@ const anim = (delay?: string) => ({
 <script>
   function init() {
     const inputs = document.querySelectorAll<HTMLInputElement>(
-      'input[name="image"]'
+      'input[name="image"]',
     );
     const mainImages =
       document.querySelectorAll<HTMLImageElement>(".main-image");
@@ -88,13 +88,13 @@ const anim = (delay?: string) => ({
         const target = event.target as HTMLInputElement;
         const indexToShow = Number(target.value);
         const isReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
+          "(prefers-reduced-motion: reduce)",
         ).matches;
         if (!Number.isNaN(indexToShow)) {
           mainImages.forEach((image) => {
             image.classList.add(
               isReducedMotion ? "opacity-0" : "starting:opacity-0",
-              "hidden"
+              "hidden",
             );
             image.classList.remove("opacity-100");
           });
@@ -149,7 +149,7 @@ const anim = (delay?: string) => ({
         name: translate(collection),
         path: getRelativeLocaleUrl(
           Astro.currentLocale || "en",
-          collection === "games" ? "/" : collection
+          collection === "games" ? "/" : collection,
         ),
       },
       { name: data.title },
@@ -165,7 +165,7 @@ const anim = (delay?: string) => ({
           pictureAttributes={{
             class: clsx(
               "block main-image duration-500 transition-opacity motion-reduce:transition-none",
-              index > 0 && "hidden"
+              index > 0 && "hidden",
             ),
           }}
           width={500}

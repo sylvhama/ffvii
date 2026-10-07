@@ -16,7 +16,7 @@ declare global {
 }
 
 test.describe("screenshots", () => {
-  test.skip(!process.env.CI);
+  //test.skip(!process.env.CI);
 
   test.beforeEach(async ({ context }) => {
     await context.addInitScript(() => (window.isPlaywright = true));
@@ -29,7 +29,7 @@ test.describe("screenshots", () => {
         test.beforeEach(async ({ page }) => {
           if (locale === "fr") {
             await page.goto("settings");
-            await page.getByLabel("Dark Theme").check();
+            await page.getByLabel("dark").check();
             await page.goto(url);
           } else {
             await page.goto(url);
@@ -55,19 +55,19 @@ test.describe("screenshots", () => {
     await expect(page).toHaveScreenshot();
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
       "content",
-      "#1d1e26"
+      "#1d1e26",
     );
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
       "content",
-      "#f8f8f2"
+      "#f8f8f2",
     );
     await page.keyboard.press("ArrowRight");
     await expect(page).toHaveScreenshot();
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
       "content",
-      "#000"
+      "#000",
     );
   });
 
@@ -121,7 +121,7 @@ test.describe("screenshots", () => {
         await expect(
           page.getByRole("heading", {
             name: "My Final Fantasy VII collection",
-          })
+          }),
         ).toHaveScreenshot();
       } else {
         await expect(page.getByRole("complementary")).toHaveScreenshot();
@@ -129,10 +129,10 @@ test.describe("screenshots", () => {
     };
 
     await page.goto("settings");
-    await page.getByLabel("Dark Theme").check();
+    await page.getByLabel("dark").check();
     await reloadFocusAndScreenshot();
 
-    await page.getByLabel("Light Theme").check();
+    await page.getByLabel("light").check();
     await reloadFocusAndScreenshot();
 
     await page.getByLabel("FF7 Theme").check();

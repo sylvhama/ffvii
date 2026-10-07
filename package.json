@@ -12,18 +12,18 @@
     "docker-test": "bash ./docker-playwright-test.sh"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@axe-core/playwright": "^4.10.1",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.7.13",
+    "astro": "^7.3.6",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
     "satori": "^0.13.1",
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.15.19"
   }
 }

@@ -10,7 +10,7 @@ export function getEnglishStaticPaths(collection: CollectionKey) {
     return posts.map((post) => {
       return {
         params: {
-          slug: post.slug,
+          slug: post.id,
         },
         props: {
           post,
@@ -29,7 +29,7 @@ export function getFrenchStaticPaths(collection: CollectionKey) {
     return posts.map((post) => {
       return {
         params: {
-          slug: post.slug.replace("fr/", ""),
+          slug: post.id.replace("fr/", ""),
         },
         props: {
           post,
@@ -41,7 +41,7 @@ export function getFrenchStaticPaths(collection: CollectionKey) {
 
 export async function getLocaleCollection(
   collection: CollectionKey,
-  currentLocale: string = "en"
+  currentLocale: string = "en",
 ) {
   return (
     await getCollection(collection, ({ id }) => {
@@ -55,7 +55,16 @@ type Image = {
   src: string;
   width: number;
   height: number;
-  format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  format:
+    | "png"
+    | "jpg"
+    | "jpeg"
+    | "tiff"
+    | "webp"
+    | "gif"
+    | "svg"
+    | "avif"
+    | "apng";
 };
 
 export async function getOptimizedImage({

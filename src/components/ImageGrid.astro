@@ -78,12 +78,12 @@ const optimizedImages = await Promise.all(
   <h2 class="sr-only">{translate(`${collection}Heading`)}</h2>
   <ul class="pt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     {
-      posts.map(({ id, data, slug }, index) => (
+      posts.map(({ id, data }, index) => (
         <li>
           <Anchor
             href={getRelativeLocaleUrl(
               Astro.currentLocale || "en",
-              `${collection}/${slug.replace("fr/", "")}`,
+              `${collection}/${id.replace("fr/", "")}`,
             )}
             classname="preview-image group grid !no-underline rounded-md overflow-hidden"
             data-srcset={optimizedImages[index].srcSet.attribute}

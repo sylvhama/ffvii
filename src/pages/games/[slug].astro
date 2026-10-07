@@ -1,17 +1,16 @@
 ---
 import Post from "@components/Post.astro";
 import { getEnglishStaticPaths } from "@utils";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
   return await getEnglishStaticPaths("games")();
 }
 
-const {
-  post: { id, data, render },
-} = Astro.props;
-const { Content } = await render();
+const { post } = Astro.props;
+const { Content } = await render(post);
 ---
 
-<Post id={id} data={data} collection="games">
+<Post id={post.id} data={post.data} collection="games">
   <Content />
 </Post>
