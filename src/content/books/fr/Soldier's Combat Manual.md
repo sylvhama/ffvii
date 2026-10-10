@@ -1,5 +1,5 @@
 ---
-sortOrder: 6
+sortOrder: 7
 title: Soldier's Combat Manual
 description: Un guide japonais pour Crisis Core Final Fantasy VII
 

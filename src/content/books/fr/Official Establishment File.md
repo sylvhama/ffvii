@@ -1,5 +1,5 @@
 ---
-sortOrder: 2.2
+sortOrder: 4
 title: Official Establishment File
 description: Final Fantasy VII Official Establishment File
 

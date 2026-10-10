@@ -1,5 +1,5 @@
 ---
-sortOrder: 8
+sortOrder: 22
 title: Remake Ultimania
 description: Guide de Final Fantasy VII Remake en français
 

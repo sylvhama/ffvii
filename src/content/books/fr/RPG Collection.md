@@ -1,5 +1,5 @@
 ---
-sortOrder: 5
+sortOrder: 49
 title: RPG Collection
 description: Un livre français racontant l’histoire et les secrets de Final Fantasy VII
 

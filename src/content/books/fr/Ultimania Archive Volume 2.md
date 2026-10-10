@@ -1,5 +1,5 @@
 ---
-sortOrder: 3
+sortOrder: 20
 title: Ultimania Archive Volume 2
 description: Artbook couvrant Final Fantasy VII, VIII et IX
 

@@ -1,5 +1,5 @@
 ---
-sortOrder: 11
+sortOrder: 50
 title: Midgar no Arukikata
 description: Final Fantasy VII Remake Midgar no Arukikata - How to walk the Midgar
 

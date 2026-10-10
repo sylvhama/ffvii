@@ -1,5 +1,5 @@
 ---
-sortOrder: 10
+sortOrder: 23
 title: Remake Material Ultimania Plus
 description: Livre consacré au DLC Intermission
 

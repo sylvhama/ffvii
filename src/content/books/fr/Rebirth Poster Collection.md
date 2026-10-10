@@ -1,5 +1,5 @@
 ---
-sortOrder: 17
+sortOrder: 95
 title: Rebirth Poster Collection
 description: Collection de posters Final Fantasy VII Rebirth
 

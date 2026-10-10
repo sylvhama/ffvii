@@ -1,5 +1,5 @@
 ---
-sortOrder: 15
+sortOrder: 24
 title: Rebirth Ultimania
 description: Guide stratégique de Final Fantasy VII Rebirth en Japonais
 

@@ -1,5 +1,5 @@
 ---
-sortOrder: 7
+sortOrder: 98
 title: Famitsu Final Fantasy 30th Anniversary
 description: Magazine Famitsu célébrant les 30 ans de la série Final Fantasy
 
