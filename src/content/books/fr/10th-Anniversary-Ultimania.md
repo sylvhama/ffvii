@@ -1,5 +1,5 @@
 ---
-sortOrder: 4
+sortOrder: 21
 title: 10th Anniversary Ultimania
 description: Livre Ultimania couvrant la Compilation de Final Fantasy VII
 

@@ -1,5 +1,5 @@
 ---
-sortOrder: 19
+sortOrder: 3
 title: Ehrgeiz
 description: Guide Stratégique de Ehrgeiz
 
