@@ -1,5 +1,5 @@
 ---
-sortOrder: 9
+sortOrder: 22
 title: Remake Material Ultimania
 description: Art book with some interviews
 

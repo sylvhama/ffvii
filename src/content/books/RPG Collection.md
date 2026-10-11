@@ -1,5 +1,5 @@
 ---
-sortOrder: 5
+sortOrder: 49
 title: RPG Collection
 description: A French book telling the story and secrets of Final Fantasy VII
 

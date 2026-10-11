@@ -1,5 +1,5 @@
 ---
-sortOrder: 12
+sortOrder: 94
 title: Poster Collection
 description: Final Fantasy VII Poster Collection
 

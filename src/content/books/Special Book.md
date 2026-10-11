@@ -1,5 +1,5 @@
 ---
-sortOrder: 13
+sortOrder: 8
 title: Special Book
 description: Final Fantasy VII Series Special Book
 

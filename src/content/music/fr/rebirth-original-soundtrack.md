@@ -1,5 +1,5 @@
 ---
-sortOrder: 18
+sortOrder: 18.1
 title: Rebirth Original Soundtrack
 description: Final Fantasy VII Rebirth Original Soundtrack version spéciale éditée
 
