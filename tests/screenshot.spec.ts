@@ -16,7 +16,7 @@ declare global {
 }
 
 test.describe("screenshots", () => {
-  //test.skip(!process.env.CI);
+  test.skip(!process.env.CI);
 
   test.beforeEach(async ({ context }) => {
     await context.addInitScript(() => (window.isPlaywright = true));
@@ -135,7 +135,7 @@ test.describe("screenshots", () => {
     await page.getByLabel("light").check();
     await reloadFocusAndScreenshot();
 
-    await page.getByLabel("FF7 Theme").check();
+    await page.getByLabel("FF7").check();
     await reloadFocusAndScreenshot();
   });
 
